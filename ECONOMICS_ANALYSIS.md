@@ -55,7 +55,7 @@ Only calls with returned usage metadata are included below. Failed 503 calls and
 
 The difference between total and prompt tokens is used as the estimate of billed output plus thinking tokens. The six API-failure fallbacks and five intentionally ambiguous cases account for the 11 manual-review outcomes.
 
-## 4. Final direct model cost for the experiment
+## 4. Direct model cost attributable from observed usage
 
 ```text
 input cost
@@ -66,7 +66,7 @@ output-and-thinking cost
   = 24,952 / 1,000,000 x USD 3.75
   = USD 0.09357
 
-observed direct model cost for the full 50-case experiment
+direct model cost attributable from returned usage metadata
   = USD 0.1062765
 
 average direct model cost per incoming application
@@ -82,7 +82,7 @@ direct model cost per automatically completed case
   = USD 0.00272504
 ```
 
-These amounts apply the dated paid-tier token prices to observed usage. The user's account charge may also reflect the timing of the switch from free to paid service; the calculation is the consistent economic comparison used by this report, not a reconstruction of the billing statement.
+These amounts apply the dated paid-tier token prices to returned usage metadata. Failed attempts returned no usage metadata, so the estimate does not assign them an invented token charge. The user's account charge may therefore differ because of unobserved failed-attempt usage and the timing of the switch from free to paid service. This calculation is the consistent economic comparison used by the report, not a reconstruction of the billing statement.
 
 ## 5. Rules baseline versus hybrid
 
@@ -103,7 +103,7 @@ The project has no confirmed operational volume, reviewer wage, review duration,
 
 These are sensitivity bounds from the course, not claims about a real microloan operation.
 
-Using the observed direct model cost of USD 0.002126 per incoming application:
+Using the attributable direct model cost estimate of USD 0.002126 per incoming application:
 
 ```text
 variable plus fallback cost per application
@@ -120,7 +120,7 @@ The sensitivity range is the observed review rate plus or minus 10 percentage po
 
 ## 7. Break-even interpretation
 
-At the observed model cost, the hybrid system pays for its direct inference cost if it avoids at least:
+At the attributable model-cost estimate, the hybrid system pays for that measured inference cost if it avoids at least:
 
 ```text
 light-review scenario:

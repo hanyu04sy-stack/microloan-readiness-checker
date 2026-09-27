@@ -125,9 +125,9 @@ The hybrid system passed the numerical release conditions for this prototype. Th
 
 ## 8. Cost-to-serve
 
-The final run produced 44 successful semantic responses and six 503 fallbacks. Successful calls reported 16,942 input tokens and 41,894 total tokens. I therefore estimate 24,952 billed output-plus-thinking tokens.
+The final run produced 44 successful semantic responses and six 503 fallbacks. Successful calls reported 16,942 input tokens and 41,894 total tokens. I therefore estimate 24,952 billed output-plus-thinking tokens for calls that returned usage metadata.
 
-Using the Gemini 3.8 Flash prices recorded for 27 September 2026 - USD 0.75 per million input tokens and USD 3.75 per million output or thinking tokens - the calculated direct model cost for the 50-case experiment is USD 0.1063, or USD 0.00213 per incoming application.
+Using the Gemini 3.8 Flash prices recorded for 27 September 2026 - USD 0.75 per million input tokens and USD 3.75 per million output or thinking tokens - the direct model cost attributable from returned usage metadata is USD 0.1063 for the 50-case experiment, or USD 0.00213 per incoming application. Failed attempts returned no token metadata, so this is not a reconstruction of the provider invoice and may understate any charge associated with those attempts.
 
 Direct model cost is not the full cost to serve. The observed manual-review rate was 22%. Because the project has no real reviewer wage or review-time observation, I use the two explicit course scenarios rather than inventing bank data:
 

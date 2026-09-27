@@ -95,7 +95,7 @@ Open `ECONOMICS_ANALYSIS.md` at the final observed usage table.
 
 Say:
 
-> The 50-case experiment used 16,942 input tokens and an estimated 24,952 output-plus-thinking tokens. At the dated Gemini 3.8 Flash prices, the direct model cost is about 0.106 US dollars for the experiment, or 0.00213 dollars per incoming application. At the observed 22% manual-review rate, the course's light and heavy fallback scenarios produce about 0.112 and 1.322 dollars per incoming application before fixed cost. Human fallback, not tokens, dominates the result.
+> The 50-case experiment's successful calls reported 16,942 input tokens and an estimated 24,952 output-plus-thinking tokens. At the dated Gemini 3.8 Flash prices, the direct model cost attributable from returned usage metadata is about 0.106 US dollars for the experiment, or 0.00213 dollars per incoming application. Failed calls returned no usage metadata, so this is not a reconstruction of the provider invoice. At the observed 22% manual-review rate, the course's light and heavy fallback scenarios produce about 0.112 and 1.322 dollars per incoming application before fixed cost. Human fallback, not tokens, dominates the result.
 
 ## Segment 8 - conclusion and limitation
 
