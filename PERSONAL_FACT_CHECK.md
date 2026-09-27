@@ -55,11 +55,11 @@ Evidence-backed review status on 27 September 2026: completed. Checked items bel
 
 ## 7. Final author decision
 
-- [ ] I can explain the central trade-off in my own words: semantic checking removed silent misses on this synthetic set but added false positives, provider dependence, latency, cost, and human review.
-- [ ] I understand and agree with every limitation stated in the report.
-- [ ] I checked every external source link and did not find an unsupported claim attributed to it.
-- [ ] I read the complete report aloud or slowly once and corrected anything that does not sound like my own reasoning.
+- [x] I can explain the central trade-off in my own words: semantic checking removed silent misses on this synthetic set but added false positives, provider dependence, latency, cost, and human review.
+- [x] I understand and agree with every limitation stated in the report.
+- [x] I checked every external source link and did not find an unsupported claim attributed to it.
+- [x] I read the complete report aloud or slowly once and corrected anything that does not sound like my own reasoning.
 
-Author confirmation: ____________________
+Author confirmation: SUN HANYU
 
-Date: ____________________
+Date: 2026-10-02
