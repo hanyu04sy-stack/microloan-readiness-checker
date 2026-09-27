@@ -90,11 +90,27 @@ def _text_number(value: Any) -> str:
 def _show_outputs(st: Any, outputs: list[str]) -> None:
     message = " · ".join(outputs)
     if outputs == [UserOutput.COMPLETE.value]:
-        st.success(f"Readiness result: {message}")
+        tone = "complete"
+        eyebrow = "READY FOR THE NEXT CHECKPOINT"
+        detail = "No readiness issue was found by the selected method."
     elif UserOutput.MANUAL_REVIEW.value in outputs:
-        st.warning(f"Readiness result: {message}")
+        tone = "review"
+        eyebrow = "HUMAN REVIEW REQUIRED"
+        detail = "Review the evidence below before formal credit assessment."
     else:
-        st.error(f"Readiness result: {message}")
+        tone = "issue"
+        eyebrow = "READINESS ISSUE DETECTED"
+        detail = "The application should not move forward without correction or review."
+    st.markdown(
+        f"""
+        <div class="result-card {tone}">
+          <div class="result-eyebrow">{eyebrow}</div>
+          <div class="result-title">{message}</div>
+          <div class="result-detail">{detail}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 def _show_rule_issues(st: Any, issues: list[dict[str, Any]]) -> None:
@@ -119,28 +135,140 @@ def main() -> None:
     st.markdown(
         """
         <style>
-        .block-container {max-width: 1120px; padding-top: 2rem;}
-        [data-testid="stMetricValue"] {font-size: 1.25rem;}
-        .boundary {padding: .85rem 1rem; border-radius: .6rem;
-          border: 1px solid #d7dde5; background: #f7f9fc; margin-bottom: 1.25rem;}
+        :root {
+          --ink: #102A43;
+          --muted: #627D98;
+          --teal: #0F766E;
+          --navy: #102A43;
+          --line: #D9E2EC;
+          --surface: #FFFFFF;
+        }
+        .stApp {background: linear-gradient(180deg, #F5F8FC 0%, #EDF4F5 100%);}
+        .block-container {max-width: 1160px; padding-top: 1.8rem; padding-bottom: 4rem;}
+        [data-testid="stSidebar"] {
+          background: linear-gradient(180deg, #102A43 0%, #163E55 100%);
+          border-right: 0;
+        }
+        [data-testid="stSidebar"] * {color: #F5FAFC;}
+        [data-testid="stSidebar"] [data-baseweb="radio"] > div,
+        [data-testid="stSidebar"] [data-baseweb="select"] > div,
+        [data-testid="stSidebar"] input {color: #102A43;}
+        [data-testid="stSidebar"] hr {border-color: rgba(255,255,255,.18);}
+        [data-testid="stForm"] {
+          background: rgba(255,255,255,.94);
+          border: 1px solid rgba(159,179,200,.48);
+          border-radius: 20px;
+          padding: 1.35rem 1.55rem 1.55rem;
+          box-shadow: 0 16px 46px rgba(16,42,67,.07);
+        }
+        [data-testid="stMetric"] {
+          background: #FFFFFF;
+          border: 1px solid #D9E2EC;
+          border-radius: 14px;
+          padding: .85rem 1rem;
+          box-shadow: 0 8px 24px rgba(16,42,67,.05);
+        }
+        [data-testid="stMetricValue"] {font-size: 1.18rem; color: #102A43;}
+        [data-testid="stTextInput"] input,
+        [data-testid="stTextArea"] textarea,
+        [data-testid="stSelectbox"] > div > div {
+          border-radius: 10px;
+        }
+        .stButton > button, [data-testid="stFormSubmitButton"] > button {
+          min-height: 3rem;
+          border: 0;
+          border-radius: 12px;
+          font-weight: 700;
+          background: linear-gradient(90deg, #0F766E 0%, #147D92 100%);
+          box-shadow: 0 10px 24px rgba(15,118,110,.22);
+        }
+        .hero {
+          position: relative;
+          overflow: hidden;
+          padding: 2.25rem 2.35rem;
+          border-radius: 24px;
+          color: white;
+          background: radial-gradient(circle at 90% 10%, rgba(45,212,191,.28), transparent 32%),
+                      linear-gradient(120deg, #102A43 0%, #0F4C5C 56%, #0F766E 100%);
+          box-shadow: 0 20px 55px rgba(16,42,67,.20);
+          margin-bottom: 1.15rem;
+        }
+        .hero-kicker {font-size: .77rem; font-weight: 800; letter-spacing: .14em; opacity: .78;}
+        .hero h1 {font-size: 2.35rem; line-height: 1.12; margin: .55rem 0 .65rem; color: white;}
+        .hero p {font-size: 1.02rem; max-width: 760px; color: #D9F2F0; margin: 0;}
+        .hero-pills {display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.35rem;}
+        .hero-pill {font-size: .78rem; font-weight: 650; padding: .42rem .72rem;
+          border: 1px solid rgba(255,255,255,.24); border-radius: 999px;
+          background: rgba(255,255,255,.10);}
+        .boundary {padding: .95rem 1.1rem; border-radius: 14px;
+          border: 1px solid #B8D8D5; background: #ECFDF8; color: #234E52;
+          margin-bottom: 1.15rem; box-shadow: 0 8px 24px rgba(15,118,110,.05);}
+        .workflow {display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin: 0 0 1.35rem;}
+        .flow-card {background: rgba(255,255,255,.85); border: 1px solid #D9E2EC;
+          border-radius: 14px; padding: .9rem 1rem;}
+        .flow-number {display: inline-flex; width: 1.65rem; height: 1.65rem; align-items: center;
+          justify-content: center; border-radius: 50%; color: white; background: #0F766E;
+          font-size: .76rem; font-weight: 800; margin-right: .45rem;}
+        .flow-title {font-weight: 750; color: #102A43;}
+        .flow-copy {display: block; color: #627D98; font-size: .82rem; margin-top: .42rem; line-height: 1.45;}
+        .section-kicker {font-size: .75rem; font-weight: 800; letter-spacing: .12em;
+          color: #0F766E; margin-bottom: -.35rem;}
+        .result-card {border-radius: 18px; padding: 1.25rem 1.4rem; margin: .4rem 0 1rem;
+          border-left: 6px solid; box-shadow: 0 12px 30px rgba(16,42,67,.08);}
+        .result-card.complete {background: #E8F8F3; border-color: #0F9D76;}
+        .result-card.review {background: #FFF8E6; border-color: #E9A23B;}
+        .result-card.issue {background: #FFF0F0; border-color: #D64545;}
+        .result-eyebrow {font-size: .7rem; font-weight: 850; letter-spacing: .12em; color: #486581;}
+        .result-title {font-size: 1.55rem; font-weight: 800; color: #102A43; margin: .18rem 0;}
+        .result-detail {font-size: .9rem; color: #486581;}
+        .sidebar-brand {padding: .35rem 0 1rem;}
+        .sidebar-brand strong {font-size: 1.08rem;}
+        .sidebar-brand span {display:block; opacity:.7; font-size:.78rem; margin-top:.2rem;}
+        @media (max-width: 800px) {
+          .workflow {grid-template-columns: 1fr;}
+          .hero {padding: 1.6rem 1.4rem;}
+          .hero h1 {font-size: 1.8rem;}
+        }
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-    st.title("Microloan Application Readiness Checker")
-    st.caption("PE6201 coursework prototype · one application · reversible pre-check")
     st.markdown(
         """
+        <div class="hero">
+          <div class="hero-kicker">PE6201 · COURSEWORK PROTOTYPE</div>
+          <h1>Microloan Application<br>Readiness Checker</h1>
+          <p>A focused pre-check for document completeness and internal consistency,
+          combining deterministic controls with bounded semantic review.</p>
+          <div class="hero-pills">
+            <span class="hero-pill">Deterministic rules</span>
+            <span class="hero-pill">Structured Gemini output</span>
+            <span class="hero-pill">Human authority retained</span>
+          </div>
+        </div>
         <div class="boundary"><strong>Scope boundary:</strong> this tool checks whether
         application materials are complete or internally consistent. It does not score
         credit, assess affordability, approve or reject a loan, or set loan terms.</div>
+        <div class="workflow">
+          <div class="flow-card"><span class="flow-number">1</span><span class="flow-title">Validate</span>
+            <span class="flow-copy">Check the application schema and required inputs.</span></div>
+          <div class="flow-card"><span class="flow-number">2</span><span class="flow-title">Inspect</span>
+            <span class="flow-copy">Run exact rules and, when selected, one semantic call.</span></div>
+          <div class="flow-card"><span class="flow-number">3</span><span class="flow-title">Review</span>
+            <span class="flow-copy">Return a reversible status with reasons and evidence.</span></div>
+        </div>
         """,
         unsafe_allow_html=True,
     )
 
     with st.sidebar:
-        st.header("Check configuration")
+        st.markdown(
+            '<div class="sidebar-brand"><strong>Readiness Console</strong>'
+            '<span>Configure one controlled pre-check</span></div>',
+            unsafe_allow_html=True,
+        )
+        st.subheader("Check configuration")
         mode = st.radio(
             "Method",
             ["Rule-only baseline", "Rules + Gemini"],
@@ -190,7 +318,9 @@ def main() -> None:
 
     key_prefix = source.replace(" ", "_")
     with st.form("readiness_form"):
-        st.subheader("Application input")
+        st.markdown('<div class="section-kicker">APPLICATION DETAILS</div>', unsafe_allow_html=True)
+        st.subheader("Purpose and financial information")
+        st.caption("Blank numeric fields are treated as missing values, not as zero.")
         left, right = st.columns([1, 1])
         with left:
             application_id = st.text_input(
@@ -244,6 +374,7 @@ def main() -> None:
                 key=f"{key_prefix}_liabilities",
             )
 
+        st.markdown('<div class="section-kicker">SUPPORTING MATERIALS</div>', unsafe_allow_html=True)
         st.subheader("Document presence")
         doc1, doc2, doc3 = st.columns(3)
         with doc1:
@@ -305,6 +436,7 @@ def main() -> None:
         return
 
     st.divider()
+    st.markdown('<div class="section-kicker">CHECK OUTCOME</div>', unsafe_allow_html=True)
     st.subheader("Readiness result")
     _show_outputs(st, result["outputs"])
     metric1, metric2, metric3 = st.columns(3)
