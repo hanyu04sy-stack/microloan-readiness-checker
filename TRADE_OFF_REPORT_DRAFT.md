@@ -35,7 +35,7 @@ Deterministic code owns document-presence checks, required fields, invalid numer
 
 Gemini owns a smaller semantic task: deciding whether the purpose text is too vague and whether its meaning contradicts the declared purpose category or another supplied field. This task requires language interpretation, and I did not have a real labelled corpus large enough to train a narrow classifier.
 
-I did not use retrieval-augmented generation because the task does not require answers grounded in a document collection. I did not use an agent because one application requires one semantic judgement, not a variable multi-step loop with tools. Adding an agent would add latency, cost, irreversible-action risk, and more failure modes without buying capability for this problem.
+The frozen comparison did not use retrieval-augmented generation because the original semantic task did not require an external document collection. After completing that evaluation, I added an optional RAG prototype that retrieves from the project's own readiness and human-review contracts. This makes the source used for an explanation visible and validates source identifiers, but the corpus is project-defined coursework guidance rather than real bank policy. I therefore report it as an unevaluated extension and do not attribute the completed 50-case metrics to it. I did not use an agent because one application requires one semantic judgement, not a variable multi-step loop with tools. Adding an agent would add latency, cost, irreversible-action risk, and more failure modes without buying capability for this problem.
 
 I treated the graphical interface as a presentation layer rather than the core system. The proposal made Streamlit optional, while the required first version was one application, one rule check, one LLM check, and one structured result. I first completed the reproducible command-line system, evaluation harness, and guardrails, then added a thin Streamlit interface that calls the same tested functions without changing the evaluation path.
 
@@ -48,6 +48,7 @@ I made the build-versus-buy decision layer by layer.
 | Application schema and rules | Build | These encode the project-specific definition of readiness and must be exact and testable. |
 | Orchestration and merger | Build | I need deterministic precedence, preservation of rule findings, and explicit fallback behaviour. |
 | Foundation model | Rent | Training a foundation model is unnecessary; an API provides semantic capability at low experimental cost. |
+| Optional RAG retrieval | Build | A bounded lexical retriever indexes only the project readiness and human-review contracts; it excludes labels and results. |
 | Data and ground truth | Build | The project requires reproducible synthetic data, frozen labels, and a separate semantic challenge slice. |
 | Evaluation and observability | Build | Precision, recall, slice metrics, latency, token use, retries, and failures are part of the system. |
 | Governance boundary | Build | The prohibition on credit decisions and the human-review contract cannot be delegated to the provider. |
@@ -94,7 +95,7 @@ The merger never allows the LLM to erase a deterministic finding. Missing-docume
 
 I implemented bounded retries only for 503/`UNAVAILABLE`. I disabled automatic SDK retries so that two retry layers could not multiply calls unexpectedly. Quota failures are logged separately and are not treated as model predictions. The run checkpoints after every finalized case, allowing it to resume without repeating completed applications.
 
-The repository currently passes 21 unit tests. These cover the data composition, leakage exclusions, application validation, rule behaviour, semantic schema, deterministic merger, failure fallback, and token metadata.
+The repository currently passes 28 unit tests. These cover data composition, leakage exclusions, application validation, rule behaviour, semantic schema, deterministic merger, failure fallback, token metadata, interface mapping, retrieval relevance, prompt grounding, and citation validation.
 
 ## 6. Evaluation design
 
@@ -167,9 +168,9 @@ I also accept a rented-model dependency rather than training a model. At this sc
 
 ## 11. Limitations and next version
 
-The project has five material limitations.
+The project has six material limitations.
 
-First, all data are synthetic. The experiment does not establish prevalence, accuracy, time saving, or economic value in a real institution. Second, the handwritten semantic cases have no independent reviewer. Third, one false positive exposed a possible label ambiguity that should be reviewed only in a future version. Fourth, six provider failures increased manual workload. Fifth, prompt injection and production drift monitoring remain incomplete.
+First, all data are synthetic. The experiment does not establish prevalence, accuracy, time saving, or economic value in a real institution. Second, the handwritten semantic cases have no independent reviewer. Third, one false positive exposed a possible label ambiguity that should be reviewed only in a future version. Fourth, six provider failures increased manual workload. Fifth, prompt injection and production drift monitoring remain incomplete. Sixth, the optional RAG corpus contains project-defined guidance rather than real lender policy, and the RAG path has not received a new frozen 50-case evaluation.
 
 A next version should obtain independent domain review of the semantic labels, test the system on appropriately governed representative data, add an adversarial prompt-injection suite and code-level escalation rule, and monitor input distribution, output balance, override rate, reopened cases, delayed labels, and sliced accuracy. Those changes should be versioned and evaluated against a new frozen set rather than inserted into this completed experiment.
 

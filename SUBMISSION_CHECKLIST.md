@@ -15,6 +15,8 @@ The supplied materials do not establish the report word limit, recording duratio
 - [x] Rule-only baseline implemented.
 - [x] Rules-plus-Gemini path implemented.
 - [x] Optional Streamlit demonstration interface implemented over the tested paths.
+- [x] Optional project-defined RAG prototype implemented with source citations.
+- [ ] Do not attribute the frozen 50-case hybrid metrics to RAG unless a separate RAG evaluation is completed.
 - [x] Frozen 50-case final set included.
 - [x] Fifteen handwritten semantic cases included and separately reported.
 - [x] Ground truth stored separately from inputs.

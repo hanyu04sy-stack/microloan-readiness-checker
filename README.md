@@ -1,6 +1,6 @@
 # Microloan Application Readiness Checker
 
-This repository contains the completed experimental code and evidence for the PE6201 individual End-of-Course Project. It compares a deterministic rule-only baseline with a rules-plus-Gemini readiness checker on the same frozen 50-case synthetic evaluation set.
+This repository contains the completed experimental code and evidence for the PE6201 individual End-of-Course Project. It compares a deterministic rule-only baseline with a rules-plus-Gemini readiness checker on the same frozen 50-case synthetic evaluation set. It also contains an optional project-defined RAG prototype that was added after the frozen comparison and is reported separately from those headline results.
 
 ## Current scope
 
@@ -105,6 +105,29 @@ For a fully offline demonstration, select `Rule-only baseline`; no API key or
 Gemini quota is used. The examples load application inputs only and never read
 the frozen ground-truth label file.
 
+The third interface mode, `Rules + RAG + Gemini`, retrieves relevant sections
+from the bounded `knowledge_base` corpus before making one structured Gemini
+call. The page displays retrieved chunks and validated citations. This corpus is
+project-defined coursework guidance, not real bank policy.
+
+## Optional project-defined RAG path
+
+The RAG implementation uses dependency-free BM25-style lexical retrieval over
+the project readiness and human-review contracts. It does not index course
+slides, evaluation labels, result files, or customer data. Run one live case:
+
+```bash
+set -a
+source .env
+set +a
+PYTHONPATH=src python3 -m microloan_checker.rag_cli \
+  data/sample/complete_application.json
+```
+
+See `RAG_PROTOTYPE.md` for the architecture, corpus boundary, citation control,
+and evaluation status. The existing 50-case metrics do not apply to this new
+RAG path until a separately frozen comparison is completed.
+
 ## Data status
 
 The reproducible generator and assembly script create:
@@ -157,3 +180,4 @@ python3 scripts/show_demo.py --case APP_0264
 - `TRADE_OFF_REPORT_DRAFT.md`: first-person report draft.
 - `DEMO_SCRIPT.md`: modular recorded-demonstration script.
 - `SUBMISSION_CHECKLIST.md`: confirmed requirements and remaining submission checks.
+- `RAG_PROTOTYPE.md`: optional project-defined RAG architecture and limitations.

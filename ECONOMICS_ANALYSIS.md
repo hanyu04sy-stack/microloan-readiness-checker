@@ -159,3 +159,8 @@ Because `F` and `V` are unknown, this analysis reports variable plus fallback co
 ## 9. Current defensible conclusion
 
 Under both course-sourced scenarios, the direct model charge is much smaller than expected human fallback cost. At the observed 22% manual-review rate, variable plus fallback cost is approximately USD 0.112 per incoming application in the light-review scenario and USD 1.322 in the heavier-escalation scenario, before `F / V`. The economic decision therefore depends primarily on human fallback and operational assumptions, not token price. This is a scenario conclusion, not a claim about the actual staffing cost of a real lender.
+
+The optional RAG prototype was added after this experiment. Its retrieved
+context increases prompt size, and its one-case smoke test is not a cost study.
+The figures above remain the economics of the evaluated non-RAG hybrid path;
+RAG cost-to-serve requires a separate frozen run before comparison.

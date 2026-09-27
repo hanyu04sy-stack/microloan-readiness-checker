@@ -82,3 +82,12 @@ The decision is therefore **pass for the coursework prototype evaluation**, not 
 - Checkpoint audit trail: `results/hybrid_live_checkpoint.json`.
 - Excluded quota attempts: `results/hybrid_transient_attempts.json`.
 - Frozen set and hashes: `data/final_test/manifest.json`.
+
+## 8. Optional RAG extension
+
+An optional project-defined RAG path was implemented after this frozen
+evaluation. It retrieves from the project's readiness and human-review
+contracts and validates cited chunk identifiers. It has passed offline tests and
+a single live smoke test, but it has not been evaluated on a newly frozen
+50-case comparison. None of the metrics in this report should therefore be
+attributed to RAG.

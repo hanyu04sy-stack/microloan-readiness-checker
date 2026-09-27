@@ -28,6 +28,7 @@ from microloan_checker.models import (
     PurposeCategory,
     UserOutput,
 )
+from microloan_checker.rag import run_rag_hybrid
 from microloan_checker.rules import run_rule_baseline
 from microloan_checker.semantic import SemanticChecker
 
@@ -251,6 +252,7 @@ def main() -> None:
           <div class="hero-pills">
             <span class="hero-pill">Deterministic rules</span>
             <span class="hero-pill">Structured Gemini output</span>
+            <span class="hero-pill">Optional project-grounded RAG</span>
             <span class="hero-pill">Human authority retained</span>
           </div>
         </div>
@@ -278,8 +280,8 @@ def main() -> None:
         st.subheader("Check configuration")
         mode = st.radio(
             "Method",
-            ["Rule-only baseline", "Rules + Gemini"],
-            help="The hybrid option makes one live structured Gemini call after submission.",
+            ["Rule-only baseline", "Rules + Gemini", "Rules + RAG + Gemini"],
+            help="Both AI options make one live structured Gemini call after submission.",
         )
         model = st.text_input(
             "Gemini model",
@@ -292,6 +294,12 @@ def main() -> None:
                 st.success("GEMINI_API_KEY is available")
             else:
                 st.warning("GEMINI_API_KEY is not available in this process")
+        elif mode == "Rules + RAG + Gemini":
+            if key_ready:
+                st.success("GEMINI_API_KEY is available")
+            else:
+                st.warning("GEMINI_API_KEY is not available in this process")
+            st.info("RAG uses project-defined coursework guidance, not bank policy.")
         st.divider()
         source = st.selectbox(
             "Input source",
@@ -437,7 +445,16 @@ def main() -> None:
                 )
             with st.spinner("Running deterministic checks and one Gemini semantic check..."):
                 client = GeminiStructuredClient(model=model.strip() or DEFAULT_MODEL)
-                result = run_hybrid(application, SemanticChecker(client)).to_dict()
+                if mode == "Rules + RAG + Gemini":
+                    result = run_rag_hybrid(
+                        application,
+                        client,
+                        knowledge_root=PROJECT_ROOT / "knowledge_base",
+                    ).to_dict()
+                else:
+                    result = run_hybrid(
+                        application, SemanticChecker(client)
+                    ).to_dict()
     except (DataValidationError, RuntimeError) as exc:
         st.error(f"The check could not run: {exc}")
         return
@@ -454,7 +471,22 @@ def main() -> None:
     rule_payload = result if result["system"] == "rule_only_baseline" else result["rule_result"]
     _show_rule_issues(st, rule_payload["issues"])
 
-    if result["system"] == "rules_plus_llm":
+    if result["system"] != "rule_only_baseline":
+        retrieval = result.get("retrieval")
+        if retrieval:
+            st.subheader("Retrieved project guidance")
+            st.warning(
+                "This context is project-defined coursework guidance, not real bank policy."
+            )
+            cited = set(retrieval["cited_chunk_ids"])
+            for item in retrieval["retrieved_chunks"]:
+                citation_label = " · cited by model" if item["chunk_id"] in cited else ""
+                with st.expander(
+                    f"{item['heading']} · score {item['score']:.3f}{citation_label}"
+                ):
+                    st.caption(f"{item['chunk_id']} · {item['source']}")
+                    st.write(item["text"])
+
         st.subheader("Semantic finding")
         semantic = result["semantic_result"]
         if semantic["status"] == "success":

@@ -64,7 +64,13 @@ python3 -m unittest discover -s tests -v
 
 Say:
 
-> These 24 offline tests do not call Gemini or consume quota. They cover data composition, leakage exclusions, deterministic rules, semantic response validation, failure fallback, result merging, and the interface-to-application mapping.
+> These 28 offline tests do not call Gemini or consume quota. They cover data composition, leakage exclusions, deterministic rules, semantic response validation, failure fallback, result merging, interface mapping, retrieval relevance, prompt grounding, and citation validation.
+
+If demonstrating the optional RAG mode, select `Rules + RAG + Gemini` and show
+the retrieved project-guidance sections and cited chunk identifiers. State
+clearly that this is project-defined coursework knowledge, not real bank
+policy, and that the frozen 50-case headline metrics belong to the non-RAG
+hybrid evaluation.
 
 ## Segment 4 - demonstrated silent failure
 

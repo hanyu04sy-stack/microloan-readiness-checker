@@ -17,6 +17,7 @@ app = ["google-genai>=2.25,<3", "streamlit>=1.49,<2"]
 [project.scripts]
 microloan-rule-check = "microloan_checker.cli:main"
 microloan-hybrid-check = "microloan_checker.hybrid_cli:main"
+microloan-rag-check = "microloan_checker.rag_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
