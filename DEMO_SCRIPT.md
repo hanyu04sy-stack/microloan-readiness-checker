@@ -66,7 +66,7 @@ Say:
 
 > These 33 offline tests do not call Gemini or consume quota. They cover data composition, leakage exclusions, deterministic rules, semantic response validation, failure fallback, result merging, interface mapping, retrieval relevance, prompt grounding, citation validation, RAG evaluation metrics, and the fixed prompt-injection guardrail suite.
 
-If demonstrating the optional RAG mode, select `Rules + RAG + Gemini` and show
+For the final system, leave `Rules + RAG + Gemini` selected and show
 the retrieved project-guidance sections and cited chunk identifiers. State
 clearly that this is project-defined coursework knowledge, not real bank
 policy, and that the frozen 50-case headline metrics belong to the non-RAG
@@ -113,7 +113,7 @@ python3 scripts/show_demo.py --summary
 
 Say:
 
-> Both systems ran on the same 50 frozen cases. The rule baseline had precision 1.000 but recall 0.333, missing 20 flag-worthy cases. The hybrid system achieved precision 0.857, recall 1.000, and F1 0.923. It detected all 15 handwritten semantic contradictions. Its manual-review rate was 22%, so I report that alongside recall to show that the system is not simply escalating everything.
+> Three configurations ran on the same 50 frozen cases. The rule baseline had precision 1.000 but recall 0.333, missing 20 flag-worthy cases. The earlier non-RAG hybrid achieved precision 0.857, recall 1.000, and F1 0.923. The final RAG candidate achieved precision, recall, and F1 of 1.000, detected all 15 handwritten contradictions, and had a 10% manual-review rate. The same cases were reused, so this is a controlled comparison rather than a new independent holdout.
 
 ## Segment 7 - cost
 
@@ -121,12 +121,12 @@ Open `ECONOMICS_ANALYSIS.md` at the final observed usage table.
 
 Say:
 
-> The 50-case experiment's successful calls reported 16,942 input tokens and an estimated 24,952 output-plus-thinking tokens. At the dated Gemini 3.8 Flash prices, the direct model cost attributable from returned usage metadata is about 0.106 US dollars for the experiment, or 0.00213 dollars per incoming application. Failed calls returned no usage metadata, so this is not a reconstruction of the provider invoice. At the observed 22% manual-review rate, the course's light and heavy fallback scenarios produce about 0.112 and 1.322 dollars per incoming application before fixed cost. Human fallback, not tokens, dominates the result.
+> The final RAG run reported 47,693 input tokens and an estimated 35,313 output-plus-thinking tokens. At the dated Gemini 3.8 Flash prices, attributable direct model cost was about 0.168 US dollars for 50 cases, or 0.00336 dollars per incoming application. At the observed 10% manual-review rate, the course's light and heavy fallback scenarios produce about 0.053 and 0.603 dollars per incoming application before fixed cost. These are scenarios, not measured bank costs.
 
 ## Segment 8 - conclusion and limitation
 
 Say:
 
-> I accept more false positives, API dependence, and manual review in exchange for eliminating the rule baseline's silent false negatives on this synthetic set. I do not accept autonomous credit action. This is a reversible pre-check only. The main limitations are synthetic data, no independent review of the 15 handwritten cases, six provider failures, one possible label ambiguity, and incomplete prompt-injection and production-drift testing. Therefore I conclude that the hybrid passes the coursework prototype thresholds, not that it is ready for production lending.
+> I accept provider dependence, more prompt tokens, higher direct model cost, and a 10% review rate in exchange for eliminating the rule baseline's silent false negatives and making retrieved project sources visible. I do not accept autonomous credit action. The main limitations are synthetic reused data, pending independent review, project-defined rather than bank-policy grounding, bounded prompt-injection tests, and no production drift study. Therefore I conclude that the RAG hybrid passes the coursework prototype thresholds, not that it is ready for production lending.
 
 End on the comparison table in `EVALUATION_REPORT.md`.

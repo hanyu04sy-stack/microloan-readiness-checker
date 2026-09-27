@@ -44,6 +44,10 @@ Evidence-backed review status on 27 September 2026: completed. Checked items bel
 - [x] Appropriate-review capture was 100%, and the unnecessary-review rate among clean cases was 20%.
 - [x] The final run contained 44 successful structured responses and 6 provider-failure fallbacks.
 - [ ] I agree that `APP_0278` remains a false positive under the frozen label rather than changing the label after seeing the result.
+- [x] The separately frozen RAG run achieved precision, recall, and F1 of 1.000 with 30 true positives, 20 true negatives, no false positives, and no false negatives.
+- [x] The RAG run had a 10% manual-review rate, 100% appropriate-review capture, and 0% unnecessary review among clean cases.
+- [x] All 50 RAG calls succeeded without retry; retrieval coverage, citation coverage, and citation-identifier validity were 100%.
+- [x] Automated citation validity does not prove semantic citation support, and independent review remains pending.
 
 ## 6. Cost and evidence boundaries
 
@@ -51,7 +55,8 @@ Evidence-backed review status on 27 September 2026: completed. Checked items bel
 - [x] Failed calls returned no usage metadata, so the report correctly avoids inventing their cost.
 - [x] The human-review costs are course scenarios, not actual costs measured at a bank.
 - [x] The report does not claim that the system is ready for production.
-- [x] The report does not attribute the frozen 50-case metrics to RAG.
+- [x] The report attributes the new RAG metrics only to the separately frozen RAG candidate and keeps the earlier non-RAG results distinct.
+- [x] The RAG run's USD 0.1682 direct model cost is calculated from returned usage metadata, not copied from an invoice.
 
 ## 7. Final author decision
 

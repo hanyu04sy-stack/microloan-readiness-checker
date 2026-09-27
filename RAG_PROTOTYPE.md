@@ -2,11 +2,11 @@
 
 ## Status
 
-The RAG path is implemented, selected as the final candidate, and covered by
-offline tests. It has not yet completed the preregistered 50-case experiment,
-so the repository's existing
-headline precision, recall, F1, cost, and manual-review figures continue to
-describe the evaluated Rules plus Gemini system, not the RAG prototype.
+The RAG path is implemented, selected as the final candidate, covered by
+offline tests, and evaluated on the preregistered 50-case comparison. It
+achieved precision, recall, and F1 of 1.000 with a 10% manual-review rate;
+retrieval coverage, citation coverage, and citation-identifier validity were
+all 100%. Full evidence and limitations are in `RAG_EVALUATION_REPORT.md`.
 
 ## Why this is a bounded prototype
 
@@ -70,8 +70,8 @@ occurs only after the user submits the form.
 
 - It does not prove grounding against real bank policy.
 - It does not improve or replace deterministic document and numeric checks.
-- It does not inherit the completed 50-case performance figures.
+- Its final metrics apply only to the frozen RAG version and the reused synthetic 50-case set.
 - It is not an agent: there is no planning loop, tool selection, or autonomous
   action.
-- It needs the preregistered comparison in `RAG_FINAL_EVALUATION_PLAN.md` before
-  any final RAG performance or cost claim can be made.
+- Automated citation validation does not prove semantic citation support;
+  independent manual review remains pending.

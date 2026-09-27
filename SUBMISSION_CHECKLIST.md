@@ -15,13 +15,14 @@ The student confirmed from NTULearn on 27 September 2026 that the instructor spe
 - [x] Rule-only baseline implemented.
 - [x] Rules-plus-Gemini path implemented.
 - [x] Optional Streamlit demonstration interface implemented over the tested paths.
-- [x] Optional project-defined RAG prototype implemented with source citations.
-- [x] Frozen 50-case hybrid metrics are not attributed to the later RAG prototype.
+- [x] Project-defined RAG final candidate implemented with source citations.
+- [x] RAG completed the preregistered 50-case evaluation and is reported separately from the earlier non-RAG run.
 - [x] Frozen 50-case final set included.
 - [x] Fifteen handwritten semantic cases included and separately reported.
 - [x] Ground truth stored separately from inputs.
 - [x] Frozen hashes recorded and verified.
 - [x] Full baseline and hybrid results included.
+- [x] Final RAG precision, recall, F1, abstention, citation, latency, reliability, and cost metrics recorded.
 - [x] Precision, recall, F1, confusion counts, and manual-review rate reported.
 - [x] Token use and cost analysis included.
 - [x] Failure controls and human-review contract documented.
@@ -48,6 +49,7 @@ The student confirmed from NTULearn on 27 September 2026 that the instructor spe
 - [x] Leakage controls and the absence of a genuine before/after leakage experiment stated.
 - [x] IMDA Model Artificial Intelligence Governance Framework, Second Edition named and mapped to controls.
 - [x] Absence of independent domain review retained as a limitation.
+- [ ] External reviewer completes both independent-review stages and declaration.
 - [x] Central trade-off explicitly defended.
 - [x] Cost-to-serve and sensitivity included.
 - [x] Risks paired with implemented controls.

@@ -1,6 +1,6 @@
 # Microloan Application Readiness Checker
 
-This repository contains the completed experimental code and evidence for the PE6201 individual End-of-Course Project. It compares a deterministic rule-only baseline with a rules-plus-Gemini readiness checker on the same frozen 50-case synthetic evaluation set. It also contains an optional project-defined RAG prototype that was added after the frozen comparison and is reported separately from those headline results.
+This repository contains the completed experimental code and evidence for the PE6201 individual End-of-Course Project. It compares a deterministic rule-only baseline, a rules-plus-Gemini checker, and the selected rules-plus-project-RAG-plus-Gemini final candidate on the same frozen 50-case synthetic evaluation set. The RAG corpus is project-defined coursework guidance, not real bank policy.
 
 ## Current scope
 
@@ -27,6 +27,12 @@ The rule-only baseline is the comparison system named in the submitted Project P
 |---|---:|---:|---:|---:|---:|
 | Rule-only baseline | 1.000 | 0.333 | 0.500 | 20 | 0.000 |
 | Rules plus Gemini 3.8 Flash | 0.857 | 1.000 | 0.923 | 0 | 0.220 |
+| Rules plus project RAG plus Gemini 3.8 Flash | 1.000 | 1.000 | 1.000 | 0 | 0.100 |
+
+The final RAG run completed 50/50 structured calls without retry, returned at
+least one valid retrieved-source identifier for every response, and passed the
+fixed six-attack/six-benign prompt-injection suite. Automated citation validity
+does not prove semantic citation support; independent review remains pending.
 
 The hybrid system passed the predefined recall target of 0.90 and working precision floor of 0.70 on this synthetic set. All 15 handwritten semantic contradictions were detected. This is a coursework prototype result, not evidence of production readiness.
 
@@ -125,9 +131,9 @@ PYTHONPATH=src python3 -m microloan_checker.rag_cli \
 ```
 
 See `RAG_PROTOTYPE.md` for the architecture, corpus boundary, citation control,
-security guardrail, and evaluation status. The RAG path is now the selected
-final candidate, but the existing 50-case metrics do not apply to it until the
-preregistered RAG comparison is completed.
+security guardrail, and evaluation status. The selected RAG candidate completed
+its preregistered 50-case run; see `RAG_EVALUATION_REPORT.md` and
+`results/rag_final_test.json` for the separate final evidence.
 
 ## Data status
 
@@ -181,4 +187,6 @@ python3 scripts/show_demo.py --case APP_0264
 - `TRADE_OFF_REPORT.md`: first-person trade-off report.
 - `DEMO_SCRIPT.md`: modular recorded-demonstration script.
 - `SUBMISSION_CHECKLIST.md`: confirmed requirements and remaining submission checks.
-- `RAG_PROTOTYPE.md`: optional project-defined RAG architecture and limitations.
+- `RAG_PROTOTYPE.md`: project-defined RAG final-candidate architecture and limitations.
+- `RAG_EVALUATION_REPORT.md`: final RAG quality, citation, security, latency, reliability, and cost evidence.
+- `independent_review/`: two-stage blind-label and citation-support review pack.

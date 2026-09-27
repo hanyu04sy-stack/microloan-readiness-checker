@@ -2,6 +2,12 @@
 
 Status: complete for the final 50-case experiment and the evidence available. Project-specific production volume, labour inputs, and fixed monthly cost remain unknown and are therefore retained as variables.
 
+## Final RAG update
+
+The selected RAG candidate completed 50 successful structured calls with 47,693 prompt tokens and 83,006 total tokens. Estimated output-plus-thinking tokens were 35,313. Applying the same dated prices gives an attributable direct model cost of USD 0.1681935, or USD 0.003364 per incoming application. Its manual-review rate was 10%.
+
+Using the same course-sourced scenarios, variable plus expected fallback cost becomes approximately USD 0.0534 per incoming application for a USD 0.50 light review and USD 0.6034 for a USD 6.00 heavier escalation, before `F / V`. These are scenario calculations, not measured bank costs. The earlier sections retain the non-RAG run as historical comparison; they must not be mistaken for the final RAG cost profile.
+
 ## 1. Method required by the course
 
 The analysis follows the three-layer cost-to-serve method in PE6201 Class 5 C2:
@@ -160,7 +166,8 @@ Because `F` and `V` are unknown, this analysis reports variable plus fallback co
 
 Under both course-sourced scenarios, the direct model charge is much smaller than expected human fallback cost. At the observed 22% manual-review rate, variable plus fallback cost is approximately USD 0.112 per incoming application in the light-review scenario and USD 1.322 in the heavier-escalation scenario, before `F / V`. The economic decision therefore depends primarily on human fallback and operational assumptions, not token price. This is a scenario conclusion, not a claim about the actual staffing cost of a real lender.
 
-The optional RAG prototype was added after this experiment. Its retrieved
-context increases prompt size, and its one-case smoke test is not a cost study.
-The figures above remain the economics of the evaluated non-RAG hybrid path;
-RAG cost-to-serve requires a separate frozen run before comparison.
+The detailed calculations in Sections 3-9 describe the earlier non-RAG hybrid
+run and are retained as historical comparison. The final RAG candidate has now
+completed its separate frozen run; its current economics are summarized in the
+Final RAG update at the beginning of this document and in
+`RAG_EVALUATION_REPORT.md`.

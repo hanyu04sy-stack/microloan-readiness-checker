@@ -14,18 +14,19 @@ The working release conditions, set before the final result was known, are:
 
 Manual-review rate is also reported so that recall cannot be increased merely by sending every case to a human.
 
-## 2. Rule-only baseline versus hybrid system
+## 2. Rule-only baseline, non-RAG hybrid, and final RAG candidate
 
 | System | Precision | Recall | F1 | TP | FP | TN | FN | Manual-review rate | Release conditions |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | Rule-only baseline | 1.000 | 0.333 | 0.500 | 10 | 0 | 20 | 20 | 0.000 | Fail |
 | Rules plus Gemini 3.8 Flash | 0.857 | 1.000 | 0.923 | 30 | 5 | 15 | 0 | 0.220 | Pass |
+| Rules plus project RAG plus Gemini 3.8 Flash | 1.000 | 1.000 | 1.000 | 30 | 0 | 20 | 0 | 0.100 | Pass |
 
-The rule-only baseline raised no false alarms but missed 20 of the 30 flag-worthy applications. The hybrid system found all 30 flag-worthy applications and reduced false negatives from 20 to zero, at the cost of five false positives and 11 manual-review outcomes.
+The rule-only baseline raised no false alarms but missed 20 of the 30 flag-worthy applications. The earlier non-RAG hybrid found all 30 flag-worthy applications but produced five false positives and 11 manual-review outcomes. The final RAG candidate found all 30 flag-worthy applications, produced no false positives, and routed the five expected ambiguous cases to review.
 
-This result supports the project hypothesis on this synthetic evaluation set: semantic model assistance materially improves detection compared with deterministic rules alone. It does not establish performance on real loan applications.
+These results support the project hypothesis on this synthetic evaluation set: semantic model assistance materially improves detection compared with deterministic rules alone. The RAG result establishes the performance of this frozen candidate on this run, but it does not prove that retrieval caused the improvement over the earlier run because provider reliability also differed. It does not establish performance on real loan applications.
 
-## 3. Hybrid results by required slice
+## 3. Earlier non-RAG hybrid results by required slice
 
 | Slice | Cases | Precision | Recall | F1 | Manual-review rate | Interpretation |
 |---|---:|---:|---:|---:|---:|---|
@@ -68,12 +69,12 @@ The six failed semantic calls remain part of the final system result because API
 
 ## 6. Release decision
 
-The hybrid system passes the two predefined numerical release conditions on the frozen synthetic test set:
+The earlier non-RAG hybrid passes the two predefined numerical release conditions on the frozen synthetic test set:
 
 - recall `1.000 >= 0.90`;
 - precision `0.857 >= 0.70`.
 
-The decision is therefore **pass for the coursework prototype evaluation**, not approval for production lending use. Production use is not supported by the evidence because the data are synthetic, the 15 handwritten cases have no independent reviewer, provider failures caused a 22% overall manual-review rate in this run, and real privacy, drift, staffing, and workflow conditions have not been tested.
+The later final RAG candidate also passes, with precision and recall of 1.000 and the preregistered citation-identifier and fixed security-suite conditions satisfied. This remains a **pass for the coursework prototype evaluation**, not approval for production lending use. Production use is not supported because the data are synthetic and reused, the 15 handwritten cases have no independent reviewer, the knowledge base is not bank policy, and real privacy, drift, staffing, and workflow conditions have not been tested.
 
 ## 7. Reproducible evidence
 
@@ -83,11 +84,8 @@ The decision is therefore **pass for the coursework prototype evaluation**, not 
 - Excluded quota attempts: `results/hybrid_transient_attempts.json`.
 - Frozen set and hashes: `data/final_test/manifest.json`.
 
-## 8. Optional RAG extension
+## 8. Final RAG evaluation
 
-An optional project-defined RAG path was implemented after this frozen
-evaluation. It retrieves from the project's readiness and human-review
-contracts and validates cited chunk identifiers. It has passed offline tests and
-a single live smoke test, but it has not been evaluated on a newly frozen
-50-case comparison. None of the metrics in this report should therefore be
-attributed to RAG.
+The project-defined RAG candidate subsequently completed a preregistered run on the same frozen 50 cases. It achieved precision, recall, and F1 of 1.000, with 30 true positives, 20 true negatives, no false positives, and no false negatives. Its manual-review rate was 10%, appropriate-review capture was 100%, and unnecessary review among clean cases was 0%.
+
+All 50 calls returned successful structured responses without retry. Retrieval and citation coverage were 100%; all 109 cited identifiers belonged to the chunks retrieved for their cases. The run used 47,693 prompt tokens and 83,006 total tokens, took 194.176 seconds of reported model latency, and had an attributable direct model cost of USD 0.1682. These automated citation measures do not prove semantic support. The independent 15-case blind label and citation-support audit remains pending. Full evidence and interpretation are in `RAG_EVALUATION_REPORT.md`.

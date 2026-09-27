@@ -252,7 +252,7 @@ def main() -> None:
           <div class="hero-pills">
             <span class="hero-pill">Deterministic rules</span>
             <span class="hero-pill">Structured Gemini output</span>
-            <span class="hero-pill">Optional project-grounded RAG</span>
+            <span class="hero-pill">Project-grounded RAG final candidate</span>
             <span class="hero-pill">Human authority retained</span>
           </div>
         </div>
@@ -280,7 +280,7 @@ def main() -> None:
         st.subheader("Check configuration")
         mode = st.radio(
             "Method",
-            ["Rule-only baseline", "Rules + Gemini", "Rules + RAG + Gemini"],
+            ["Rules + RAG + Gemini", "Rule-only baseline", "Rules + Gemini"],
             help="Both AI options make one live structured Gemini call after submission.",
         )
         model = st.text_input(

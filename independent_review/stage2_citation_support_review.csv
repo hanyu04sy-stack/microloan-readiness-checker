@@ -1,0 +1,481 @@
+application_id,loan_purpose_category,loan_purpose_text,system_outputs,semantic_issue_codes,model_reason,cited_chunk_ids,cited_text,reviewer_support_supported_partial_unsupported,reviewer_unsupported_or_missing_claims,reviewer_notes
+APP_0286,EDUCATION,My son's tuition and tutoring fees are already covered for the next term. I intend to use this loan first to buy him a used motorcycle for his delivery work.,Inconsistent Information,PURPOSE_CATEGORY_CONTRADICTION,"The applicant explicitly states that education costs are already covered and that the loan will be used to buy a used motorcycle for delivery work, which clearly describes a vehicle purchase rather than the declared EDUCATION category.",project_readiness_contract#purpose-category-meanings | project_readiness_contract#semantic-category-decision-rules | project_readiness_contract#semantic-issue-definitions,"[project_readiness_contract#purpose-category-meanings] - MEDICAL_EXPENSE covers treatment, medicine, medical tests, and other
+  healthcare expenses.
+- EDUCATION covers tuition, course fees, required study materials, and other
+  study or training expenditure.
+- HOME_REPAIR covers repair or maintenance of an existing residence, not
+  unrelated consumer purchases.
+- SMALL_BUSINESS covers inventory, equipment, rent, and operating expenditure
+  for a small business rather than personal consumption.
+- VEHICLE covers purchase or repair of a vehicle used for personal or
+  work-related transport.
+- DEBT_CONSOLIDATION covers combining or repaying existing debts through one
+  loan.
+- OTHER covers a specific purpose outside the six named categories. OTHER does
+  not permit vague purpose text.
+
+[project_readiness_contract#semantic-category-decision-rules] A category and purpose-text pair is inconsistent only when the text clearly
+describes a materially different purpose category. An unusual, expensive, or
+financially unwise purpose is not by itself an inconsistency. If the text could
+reasonably belong to more than one category, the result should be Manual Review
+rather than an invented contradiction. A blank or non-specific purpose is
+missing or vague, not a category contradiction.
+
+[project_readiness_contract#semantic-issue-definitions] - VAGUE_LOAN_PURPOSE means the text does not state a concrete use of funds with
+  enough specificity to compare it with the form. It requires Manual Review.
+- PURPOSE_CATEGORY_CONTRADICTION means the text describes a materially
+  different use from the structured purpose category. It produces Inconsistent
+  Information.
+- PURPOSE_FORM_CONTRADICTION means the text directly contradicts another
+  supplied structured fact and the contradiction depends on meaning rather
+  than a fixed-value comparison. It produces Inconsistent Information.
+- INSUFFICIENT_SEMANTIC_EVIDENCE means more than one reasonable interpretation
+  remains. It requires Manual Review.",,,
+APP_0287,MEDICAL_EXPENSE,The hospital confirmed that insurance has paid the surgery bill. I now plan to use the loan to complete the extension of a room at our family house.,Inconsistent Information,PURPOSE_CATEGORY_CONTRADICTION,"The structured loan purpose category is MEDICAL_EXPENSE, but the loan purpose text explicitly indicates that medical bills were covered by insurance and the loan will be used for extending a room at the family house.",project_readiness_contract#semantic-category-decision-rules | project_readiness_contract#semantic-issue-definitions | project_readiness_contract#purpose-category-meanings,"[project_readiness_contract#semantic-category-decision-rules] A category and purpose-text pair is inconsistent only when the text clearly
+describes a materially different purpose category. An unusual, expensive, or
+financially unwise purpose is not by itself an inconsistency. If the text could
+reasonably belong to more than one category, the result should be Manual Review
+rather than an invented contradiction. A blank or non-specific purpose is
+missing or vague, not a category contradiction.
+
+[project_readiness_contract#semantic-issue-definitions] - VAGUE_LOAN_PURPOSE means the text does not state a concrete use of funds with
+  enough specificity to compare it with the form. It requires Manual Review.
+- PURPOSE_CATEGORY_CONTRADICTION means the text describes a materially
+  different use from the structured purpose category. It produces Inconsistent
+  Information.
+- PURPOSE_FORM_CONTRADICTION means the text directly contradicts another
+  supplied structured fact and the contradiction depends on meaning rather
+  than a fixed-value comparison. It produces Inconsistent Information.
+- INSUFFICIENT_SEMANTIC_EVIDENCE means more than one reasonable interpretation
+  remains. It requires Manual Review.
+
+[project_readiness_contract#purpose-category-meanings] - MEDICAL_EXPENSE covers treatment, medicine, medical tests, and other
+  healthcare expenses.
+- EDUCATION covers tuition, course fees, required study materials, and other
+  study or training expenditure.
+- HOME_REPAIR covers repair or maintenance of an existing residence, not
+  unrelated consumer purchases.
+- SMALL_BUSINESS covers inventory, equipment, rent, and operating expenditure
+  for a small business rather than personal consumption.
+- VEHICLE covers purchase or repair of a vehicle used for personal or
+  work-related transport.
+- DEBT_CONSOLIDATION covers combining or repaying existing debts through one
+  loan.
+- OTHER covers a specific purpose outside the six named categories. OTHER does
+  not permit vague purpose text.",,,
+APP_0288,SMALL_BUSINESS,I will transfer the money to my cousin's new cryptocurrency trading account because he expects the investment to double within three months. I will not own or operate the account.,Inconsistent Information,PURPOSE_CATEGORY_CONTRADICTION,"The applicant selected SMALL_BUSINESS, which covers business inventory, equipment, rent, and operating expenditure, but the text describes transferring funds to a cousin's personal cryptocurrency trading account that the applicant does not own or operate.",project_readiness_contract#purpose-category-meanings | project_readiness_contract#semantic-category-decision-rules | project_readiness_contract#semantic-issue-definitions,"[project_readiness_contract#purpose-category-meanings] - MEDICAL_EXPENSE covers treatment, medicine, medical tests, and other
+  healthcare expenses.
+- EDUCATION covers tuition, course fees, required study materials, and other
+  study or training expenditure.
+- HOME_REPAIR covers repair or maintenance of an existing residence, not
+  unrelated consumer purchases.
+- SMALL_BUSINESS covers inventory, equipment, rent, and operating expenditure
+  for a small business rather than personal consumption.
+- VEHICLE covers purchase or repair of a vehicle used for personal or
+  work-related transport.
+- DEBT_CONSOLIDATION covers combining or repaying existing debts through one
+  loan.
+- OTHER covers a specific purpose outside the six named categories. OTHER does
+  not permit vague purpose text.
+
+[project_readiness_contract#semantic-category-decision-rules] A category and purpose-text pair is inconsistent only when the text clearly
+describes a materially different purpose category. An unusual, expensive, or
+financially unwise purpose is not by itself an inconsistency. If the text could
+reasonably belong to more than one category, the result should be Manual Review
+rather than an invented contradiction. A blank or non-specific purpose is
+missing or vague, not a category contradiction.
+
+[project_readiness_contract#semantic-issue-definitions] - VAGUE_LOAN_PURPOSE means the text does not state a concrete use of funds with
+  enough specificity to compare it with the form. It requires Manual Review.
+- PURPOSE_CATEGORY_CONTRADICTION means the text describes a materially
+  different use from the structured purpose category. It produces Inconsistent
+  Information.
+- PURPOSE_FORM_CONTRADICTION means the text directly contradicts another
+  supplied structured fact and the contradiction depends on meaning rather
+  than a fixed-value comparison. It produces Inconsistent Information.
+- INSUFFICIENT_SEMANTIC_EVIDENCE means more than one reasonable interpretation
+  remains. It requires Manual Review.",,,
+APP_0289,HOME_REPAIR,The contractor has postponed the renovation indefinitely and returned my deposit. I now intend to use the loan for flights and hotel costs for a family holiday.,Inconsistent Information,PURPOSE_CATEGORY_CONTRADICTION,"The declared category is HOME_REPAIR, but the purpose text states the renovation was postponed and the loan will instead fund flights and hotel expenses for a family holiday, which is a materially different purpose.",project_readiness_contract#semantic-category-decision-rules | project_readiness_contract#purpose-category-meanings | project_readiness_contract#semantic-issue-definitions,"[project_readiness_contract#semantic-category-decision-rules] A category and purpose-text pair is inconsistent only when the text clearly
+describes a materially different purpose category. An unusual, expensive, or
+financially unwise purpose is not by itself an inconsistency. If the text could
+reasonably belong to more than one category, the result should be Manual Review
+rather than an invented contradiction. A blank or non-specific purpose is
+missing or vague, not a category contradiction.
+
+[project_readiness_contract#purpose-category-meanings] - MEDICAL_EXPENSE covers treatment, medicine, medical tests, and other
+  healthcare expenses.
+- EDUCATION covers tuition, course fees, required study materials, and other
+  study or training expenditure.
+- HOME_REPAIR covers repair or maintenance of an existing residence, not
+  unrelated consumer purchases.
+- SMALL_BUSINESS covers inventory, equipment, rent, and operating expenditure
+  for a small business rather than personal consumption.
+- VEHICLE covers purchase or repair of a vehicle used for personal or
+  work-related transport.
+- DEBT_CONSOLIDATION covers combining or repaying existing debts through one
+  loan.
+- OTHER covers a specific purpose outside the six named categories. OTHER does
+  not permit vague purpose text.
+
+[project_readiness_contract#semantic-issue-definitions] - VAGUE_LOAN_PURPOSE means the text does not state a concrete use of funds with
+  enough specificity to compare it with the form. It requires Manual Review.
+- PURPOSE_CATEGORY_CONTRADICTION means the text describes a materially
+  different use from the structured purpose category. It produces Inconsistent
+  Information.
+- PURPOSE_FORM_CONTRADICTION means the text directly contradicts another
+  supplied structured fact and the contradiction depends on meaning rather
+  than a fixed-value comparison. It produces Inconsistent Information.
+- INSUFFICIENT_SEMANTIC_EVIDENCE means more than one reasonable interpretation
+  remains. It requires Manual Review.",,,
+APP_0290,DEBT_CONSOLIDATION,All of my existing debts were settled last month. I plan to use the loan as my stake in several high-value card games at a casino.,Inconsistent Information,PURPOSE_CATEGORY_CONTRADICTION,"The applicant selected DEBT_CONSOLIDATION, which covers combining or repaying existing debts, but the purpose text states that all existing debts were settled and the loan will instead be used as a stake in casino card games, describing a materially different purpose category.",project_readiness_contract#purpose-category-meanings | project_readiness_contract#semantic-issue-definitions | project_readiness_contract#semantic-category-decision-rules,"[project_readiness_contract#purpose-category-meanings] - MEDICAL_EXPENSE covers treatment, medicine, medical tests, and other
+  healthcare expenses.
+- EDUCATION covers tuition, course fees, required study materials, and other
+  study or training expenditure.
+- HOME_REPAIR covers repair or maintenance of an existing residence, not
+  unrelated consumer purchases.
+- SMALL_BUSINESS covers inventory, equipment, rent, and operating expenditure
+  for a small business rather than personal consumption.
+- VEHICLE covers purchase or repair of a vehicle used for personal or
+  work-related transport.
+- DEBT_CONSOLIDATION covers combining or repaying existing debts through one
+  loan.
+- OTHER covers a specific purpose outside the six named categories. OTHER does
+  not permit vague purpose text.
+
+[project_readiness_contract#semantic-issue-definitions] - VAGUE_LOAN_PURPOSE means the text does not state a concrete use of funds with
+  enough specificity to compare it with the form. It requires Manual Review.
+- PURPOSE_CATEGORY_CONTRADICTION means the text describes a materially
+  different use from the structured purpose category. It produces Inconsistent
+  Information.
+- PURPOSE_FORM_CONTRADICTION means the text directly contradicts another
+  supplied structured fact and the contradiction depends on meaning rather
+  than a fixed-value comparison. It produces Inconsistent Information.
+- INSUFFICIENT_SEMANTIC_EVIDENCE means more than one reasonable interpretation
+  remains. It requires Manual Review.
+
+[project_readiness_contract#semantic-category-decision-rules] A category and purpose-text pair is inconsistent only when the text clearly
+describes a materially different purpose category. An unusual, expensive, or
+financially unwise purpose is not by itself an inconsistency. If the text could
+reasonably belong to more than one category, the result should be Manual Review
+rather than an invented contradiction. A blank or non-specific purpose is
+missing or vague, not a category contradiction.",,,
+APP_0291,SMALL_BUSINESS,The supplier has already extended enough credit to cover my shop inventory. I will transfer this loan to my son so that he can pay the deposit on his personal apartment.,Inconsistent Information,PURPOSE_CATEGORY_CONTRADICTION,"The declared category is SMALL_BUSINESS, but the loan purpose text explicitly states the funds will be transferred to the applicant's son for a personal apartment deposit, which is personal expenditure rather than small business operations.",project_readiness_contract#semantic-category-decision-rules | project_readiness_contract#purpose-category-meanings | project_readiness_contract#semantic-issue-definitions,"[project_readiness_contract#semantic-category-decision-rules] A category and purpose-text pair is inconsistent only when the text clearly
+describes a materially different purpose category. An unusual, expensive, or
+financially unwise purpose is not by itself an inconsistency. If the text could
+reasonably belong to more than one category, the result should be Manual Review
+rather than an invented contradiction. A blank or non-specific purpose is
+missing or vague, not a category contradiction.
+
+[project_readiness_contract#purpose-category-meanings] - MEDICAL_EXPENSE covers treatment, medicine, medical tests, and other
+  healthcare expenses.
+- EDUCATION covers tuition, course fees, required study materials, and other
+  study or training expenditure.
+- HOME_REPAIR covers repair or maintenance of an existing residence, not
+  unrelated consumer purchases.
+- SMALL_BUSINESS covers inventory, equipment, rent, and operating expenditure
+  for a small business rather than personal consumption.
+- VEHICLE covers purchase or repair of a vehicle used for personal or
+  work-related transport.
+- DEBT_CONSOLIDATION covers combining or repaying existing debts through one
+  loan.
+- OTHER covers a specific purpose outside the six named categories. OTHER does
+  not permit vague purpose text.
+
+[project_readiness_contract#semantic-issue-definitions] - VAGUE_LOAN_PURPOSE means the text does not state a concrete use of funds with
+  enough specificity to compare it with the form. It requires Manual Review.
+- PURPOSE_CATEGORY_CONTRADICTION means the text describes a materially
+  different use from the structured purpose category. It produces Inconsistent
+  Information.
+- PURPOSE_FORM_CONTRADICTION means the text directly contradicts another
+  supplied structured fact and the contradiction depends on meaning rather
+  than a fixed-value comparison. It produces Inconsistent Information.
+- INSUFFICIENT_SEMANTIC_EVIDENCE means more than one reasonable interpretation
+  remains. It requires Manual Review.",,,
+APP_0292,HOME_REPAIR,No repair work will be carried out this year. I will place the borrowed money in futures contracts first and hope that any profit can pay for a renovation later.,Inconsistent Information,PURPOSE_CATEGORY_CONTRADICTION,"The structured loan purpose category is HOME_REPAIR, but the purpose text explicitly states that no repair work will be carried out and the funds will be invested in futures contracts instead.",project_readiness_contract#purpose-category-meanings | project_readiness_contract#semantic-category-decision-rules | project_readiness_contract#semantic-issue-definitions,"[project_readiness_contract#purpose-category-meanings] - MEDICAL_EXPENSE covers treatment, medicine, medical tests, and other
+  healthcare expenses.
+- EDUCATION covers tuition, course fees, required study materials, and other
+  study or training expenditure.
+- HOME_REPAIR covers repair or maintenance of an existing residence, not
+  unrelated consumer purchases.
+- SMALL_BUSINESS covers inventory, equipment, rent, and operating expenditure
+  for a small business rather than personal consumption.
+- VEHICLE covers purchase or repair of a vehicle used for personal or
+  work-related transport.
+- DEBT_CONSOLIDATION covers combining or repaying existing debts through one
+  loan.
+- OTHER covers a specific purpose outside the six named categories. OTHER does
+  not permit vague purpose text.
+
+[project_readiness_contract#semantic-category-decision-rules] A category and purpose-text pair is inconsistent only when the text clearly
+describes a materially different purpose category. An unusual, expensive, or
+financially unwise purpose is not by itself an inconsistency. If the text could
+reasonably belong to more than one category, the result should be Manual Review
+rather than an invented contradiction. A blank or non-specific purpose is
+missing or vague, not a category contradiction.
+
+[project_readiness_contract#semantic-issue-definitions] - VAGUE_LOAN_PURPOSE means the text does not state a concrete use of funds with
+  enough specificity to compare it with the form. It requires Manual Review.
+- PURPOSE_CATEGORY_CONTRADICTION means the text describes a materially
+  different use from the structured purpose category. It produces Inconsistent
+  Information.
+- PURPOSE_FORM_CONTRADICTION means the text directly contradicts another
+  supplied structured fact and the contradiction depends on meaning rather
+  than a fixed-value comparison. It produces Inconsistent Information.
+- INSUFFICIENT_SEMANTIC_EVIDENCE means more than one reasonable interpretation
+  remains. It requires Manual Review.",,,
+APP_0293,VEHICLE,"The mechanic confirmed that my current truck can remain in service for another year, so I have cancelled the replacement. I intend to contribute the loan to the construction fund for a local temple.",Inconsistent Information,PURPOSE_CATEGORY_CONTRADICTION,"The applicant states that the vehicle replacement was cancelled and the loan will instead be contributed to a temple construction fund, which directly and materially contradicts the selected VEHICLE category.",project_readiness_contract#semantic-category-decision-rules | project_readiness_contract#purpose-category-meanings | project_readiness_contract#semantic-issue-definitions,"[project_readiness_contract#semantic-category-decision-rules] A category and purpose-text pair is inconsistent only when the text clearly
+describes a materially different purpose category. An unusual, expensive, or
+financially unwise purpose is not by itself an inconsistency. If the text could
+reasonably belong to more than one category, the result should be Manual Review
+rather than an invented contradiction. A blank or non-specific purpose is
+missing or vague, not a category contradiction.
+
+[project_readiness_contract#purpose-category-meanings] - MEDICAL_EXPENSE covers treatment, medicine, medical tests, and other
+  healthcare expenses.
+- EDUCATION covers tuition, course fees, required study materials, and other
+  study or training expenditure.
+- HOME_REPAIR covers repair or maintenance of an existing residence, not
+  unrelated consumer purchases.
+- SMALL_BUSINESS covers inventory, equipment, rent, and operating expenditure
+  for a small business rather than personal consumption.
+- VEHICLE covers purchase or repair of a vehicle used for personal or
+  work-related transport.
+- DEBT_CONSOLIDATION covers combining or repaying existing debts through one
+  loan.
+- OTHER covers a specific purpose outside the six named categories. OTHER does
+  not permit vague purpose text.
+
+[project_readiness_contract#semantic-issue-definitions] - VAGUE_LOAN_PURPOSE means the text does not state a concrete use of funds with
+  enough specificity to compare it with the form. It requires Manual Review.
+- PURPOSE_CATEGORY_CONTRADICTION means the text describes a materially
+  different use from the structured purpose category. It produces Inconsistent
+  Information.
+- PURPOSE_FORM_CONTRADICTION means the text directly contradicts another
+  supplied structured fact and the contradiction depends on meaning rather
+  than a fixed-value comparison. It produces Inconsistent Information.
+- INSUFFICIENT_SEMANTIC_EVIDENCE means more than one reasonable interpretation
+  remains. It requires Manual Review.",,,
+APP_0294,VEHICLE,I cancelled the vehicle order after submitting the form. Most of the loan will instead be transferred to my cousin to cover the first three months of his new company's operating expenses.,Inconsistent Information,PURPOSE_CATEGORY_CONTRADICTION,"The applicant states that the vehicle purchase was cancelled and the funds will instead be used to cover operating expenses for a business, which directly contradicts the selected VEHICLE category.",project_readiness_contract#semantic-category-decision-rules | project_readiness_contract#purpose-category-meanings | project_readiness_contract#semantic-issue-definitions,"[project_readiness_contract#semantic-category-decision-rules] A category and purpose-text pair is inconsistent only when the text clearly
+describes a materially different purpose category. An unusual, expensive, or
+financially unwise purpose is not by itself an inconsistency. If the text could
+reasonably belong to more than one category, the result should be Manual Review
+rather than an invented contradiction. A blank or non-specific purpose is
+missing or vague, not a category contradiction.
+
+[project_readiness_contract#purpose-category-meanings] - MEDICAL_EXPENSE covers treatment, medicine, medical tests, and other
+  healthcare expenses.
+- EDUCATION covers tuition, course fees, required study materials, and other
+  study or training expenditure.
+- HOME_REPAIR covers repair or maintenance of an existing residence, not
+  unrelated consumer purchases.
+- SMALL_BUSINESS covers inventory, equipment, rent, and operating expenditure
+  for a small business rather than personal consumption.
+- VEHICLE covers purchase or repair of a vehicle used for personal or
+  work-related transport.
+- DEBT_CONSOLIDATION covers combining or repaying existing debts through one
+  loan.
+- OTHER covers a specific purpose outside the six named categories. OTHER does
+  not permit vague purpose text.
+
+[project_readiness_contract#semantic-issue-definitions] - VAGUE_LOAN_PURPOSE means the text does not state a concrete use of funds with
+  enough specificity to compare it with the form. It requires Manual Review.
+- PURPOSE_CATEGORY_CONTRADICTION means the text describes a materially
+  different use from the structured purpose category. It produces Inconsistent
+  Information.
+- PURPOSE_FORM_CONTRADICTION means the text directly contradicts another
+  supplied structured fact and the contradiction depends on meaning rather
+  than a fixed-value comparison. It produces Inconsistent Information.
+- INSUFFICIENT_SEMANTIC_EVIDENCE means more than one reasonable interpretation
+  remains. It requires Manual Review.",,,
+APP_0295,DEBT_CONSOLIDATION,The lenders confirmed that my outstanding balances have already been paid. I intend to use the loan to buy a newly issued cryptocurrency while its price is still low.,Inconsistent Information,PURPOSE_CATEGORY_CONTRADICTION,"The selected category is DEBT_CONSOLIDATION, which covers combining or repaying existing debts, but the purpose text explicitly states existing balances are already paid and the funds will be used to purchase cryptocurrency, clearly describing a materially different purpose category.",project_readiness_contract#semantic-category-decision-rules | project_readiness_contract#semantic-issue-definitions | project_readiness_contract#purpose-category-meanings,"[project_readiness_contract#semantic-category-decision-rules] A category and purpose-text pair is inconsistent only when the text clearly
+describes a materially different purpose category. An unusual, expensive, or
+financially unwise purpose is not by itself an inconsistency. If the text could
+reasonably belong to more than one category, the result should be Manual Review
+rather than an invented contradiction. A blank or non-specific purpose is
+missing or vague, not a category contradiction.
+
+[project_readiness_contract#semantic-issue-definitions] - VAGUE_LOAN_PURPOSE means the text does not state a concrete use of funds with
+  enough specificity to compare it with the form. It requires Manual Review.
+- PURPOSE_CATEGORY_CONTRADICTION means the text describes a materially
+  different use from the structured purpose category. It produces Inconsistent
+  Information.
+- PURPOSE_FORM_CONTRADICTION means the text directly contradicts another
+  supplied structured fact and the contradiction depends on meaning rather
+  than a fixed-value comparison. It produces Inconsistent Information.
+- INSUFFICIENT_SEMANTIC_EVIDENCE means more than one reasonable interpretation
+  remains. It requires Manual Review.
+
+[project_readiness_contract#purpose-category-meanings] - MEDICAL_EXPENSE covers treatment, medicine, medical tests, and other
+  healthcare expenses.
+- EDUCATION covers tuition, course fees, required study materials, and other
+  study or training expenditure.
+- HOME_REPAIR covers repair or maintenance of an existing residence, not
+  unrelated consumer purchases.
+- SMALL_BUSINESS covers inventory, equipment, rent, and operating expenditure
+  for a small business rather than personal consumption.
+- VEHICLE covers purchase or repair of a vehicle used for personal or
+  work-related transport.
+- DEBT_CONSOLIDATION covers combining or repaying existing debts through one
+  loan.
+- OTHER covers a specific purpose outside the six named categories. OTHER does
+  not permit vague purpose text.",,,
+APP_0296,EDUCATION,The school has granted a full fee deferment for the coming term. The loan will now be used for my elderly relative's urgent hospital procedure.,Inconsistent Information,PURPOSE_CATEGORY_CONTRADICTION,"The declared category is EDUCATION, but the loan purpose text clearly states that the loan will be used for an urgent hospital procedure, which falls under MEDICAL_EXPENSE.",project_readiness_contract#semantic-category-decision-rules | project_readiness_contract#purpose-category-meanings | project_readiness_contract#semantic-issue-definitions,"[project_readiness_contract#semantic-category-decision-rules] A category and purpose-text pair is inconsistent only when the text clearly
+describes a materially different purpose category. An unusual, expensive, or
+financially unwise purpose is not by itself an inconsistency. If the text could
+reasonably belong to more than one category, the result should be Manual Review
+rather than an invented contradiction. A blank or non-specific purpose is
+missing or vague, not a category contradiction.
+
+[project_readiness_contract#purpose-category-meanings] - MEDICAL_EXPENSE covers treatment, medicine, medical tests, and other
+  healthcare expenses.
+- EDUCATION covers tuition, course fees, required study materials, and other
+  study or training expenditure.
+- HOME_REPAIR covers repair or maintenance of an existing residence, not
+  unrelated consumer purchases.
+- SMALL_BUSINESS covers inventory, equipment, rent, and operating expenditure
+  for a small business rather than personal consumption.
+- VEHICLE covers purchase or repair of a vehicle used for personal or
+  work-related transport.
+- DEBT_CONSOLIDATION covers combining or repaying existing debts through one
+  loan.
+- OTHER covers a specific purpose outside the six named categories. OTHER does
+  not permit vague purpose text.
+
+[project_readiness_contract#semantic-issue-definitions] - VAGUE_LOAN_PURPOSE means the text does not state a concrete use of funds with
+  enough specificity to compare it with the form. It requires Manual Review.
+- PURPOSE_CATEGORY_CONTRADICTION means the text describes a materially
+  different use from the structured purpose category. It produces Inconsistent
+  Information.
+- PURPOSE_FORM_CONTRADICTION means the text directly contradicts another
+  supplied structured fact and the contradiction depends on meaning rather
+  than a fixed-value comparison. It produces Inconsistent Information.
+- INSUFFICIENT_SEMANTIC_EVIDENCE means more than one reasonable interpretation
+  remains. It requires Manual Review.",,,
+APP_0297,MEDICAL_EXPENSE,The clinic confirmed that no treatment is required. I intend to spend the loan on a studio photography package and luxury cosmetics for a personal makeover.,Inconsistent Information,PURPOSE_CATEGORY_CONTRADICTION,"The applicant states that no medical treatment is needed and that funds will be spent on a studio photography package and cosmetics, which clearly describes a materially different purpose from the selected MEDICAL_EXPENSE category.",project_readiness_contract#purpose-category-meanings | project_readiness_contract#semantic-category-decision-rules | project_readiness_contract#semantic-issue-definitions,"[project_readiness_contract#purpose-category-meanings] - MEDICAL_EXPENSE covers treatment, medicine, medical tests, and other
+  healthcare expenses.
+- EDUCATION covers tuition, course fees, required study materials, and other
+  study or training expenditure.
+- HOME_REPAIR covers repair or maintenance of an existing residence, not
+  unrelated consumer purchases.
+- SMALL_BUSINESS covers inventory, equipment, rent, and operating expenditure
+  for a small business rather than personal consumption.
+- VEHICLE covers purchase or repair of a vehicle used for personal or
+  work-related transport.
+- DEBT_CONSOLIDATION covers combining or repaying existing debts through one
+  loan.
+- OTHER covers a specific purpose outside the six named categories. OTHER does
+  not permit vague purpose text.
+
+[project_readiness_contract#semantic-category-decision-rules] A category and purpose-text pair is inconsistent only when the text clearly
+describes a materially different purpose category. An unusual, expensive, or
+financially unwise purpose is not by itself an inconsistency. If the text could
+reasonably belong to more than one category, the result should be Manual Review
+rather than an invented contradiction. A blank or non-specific purpose is
+missing or vague, not a category contradiction.
+
+[project_readiness_contract#semantic-issue-definitions] - VAGUE_LOAN_PURPOSE means the text does not state a concrete use of funds with
+  enough specificity to compare it with the form. It requires Manual Review.
+- PURPOSE_CATEGORY_CONTRADICTION means the text describes a materially
+  different use from the structured purpose category. It produces Inconsistent
+  Information.
+- PURPOSE_FORM_CONTRADICTION means the text directly contradicts another
+  supplied structured fact and the contradiction depends on meaning rather
+  than a fixed-value comparison. It produces Inconsistent Information.
+- INSUFFICIENT_SEMANTIC_EVIDENCE means more than one reasonable interpretation
+  remains. It requires Manual Review.",,,
+APP_0298,SMALL_BUSINESS,"My supplier has already delivered the shop inventory on credit, so the business does not need this money. I will use the loan to repay several overdue personal online loans.",Inconsistent Information,PURPOSE_CATEGORY_CONTRADICTION,"The structured loan purpose category is SMALL_BUSINESS, but the loan purpose text explicitly states that the business does not need the funds and that the loan will be used to repay overdue personal online loans, which falls under DEBT_CONSOLIDATION.",project_readiness_contract#purpose-category-meanings | project_readiness_contract#semantic-issue-definitions | project_readiness_contract#semantic-category-decision-rules,"[project_readiness_contract#purpose-category-meanings] - MEDICAL_EXPENSE covers treatment, medicine, medical tests, and other
+  healthcare expenses.
+- EDUCATION covers tuition, course fees, required study materials, and other
+  study or training expenditure.
+- HOME_REPAIR covers repair or maintenance of an existing residence, not
+  unrelated consumer purchases.
+- SMALL_BUSINESS covers inventory, equipment, rent, and operating expenditure
+  for a small business rather than personal consumption.
+- VEHICLE covers purchase or repair of a vehicle used for personal or
+  work-related transport.
+- DEBT_CONSOLIDATION covers combining or repaying existing debts through one
+  loan.
+- OTHER covers a specific purpose outside the six named categories. OTHER does
+  not permit vague purpose text.
+
+[project_readiness_contract#semantic-issue-definitions] - VAGUE_LOAN_PURPOSE means the text does not state a concrete use of funds with
+  enough specificity to compare it with the form. It requires Manual Review.
+- PURPOSE_CATEGORY_CONTRADICTION means the text describes a materially
+  different use from the structured purpose category. It produces Inconsistent
+  Information.
+- PURPOSE_FORM_CONTRADICTION means the text directly contradicts another
+  supplied structured fact and the contradiction depends on meaning rather
+  than a fixed-value comparison. It produces Inconsistent Information.
+- INSUFFICIENT_SEMANTIC_EVIDENCE means more than one reasonable interpretation
+  remains. It requires Manual Review.
+
+[project_readiness_contract#semantic-category-decision-rules] A category and purpose-text pair is inconsistent only when the text clearly
+describes a materially different purpose category. An unusual, expensive, or
+financially unwise purpose is not by itself an inconsistency. If the text could
+reasonably belong to more than one category, the result should be Manual Review
+rather than an invented contradiction. A blank or non-specific purpose is
+missing or vague, not a category contradiction.",,,
+APP_0299,DEBT_CONSOLIDATION,The lenders have confirmed that all of my balances are already settled. I will transfer the entire loan to my relative's overseas fish-farming project as an investment.,Inconsistent Information,PURPOSE_CATEGORY_CONTRADICTION,"The structured category is DEBT_CONSOLIDATION, but the purpose text clearly describes a materially different purpose, stating that all balances are already settled and the entire loan will be transferred to invest in an overseas fish-farming project.",project_readiness_contract#semantic-category-decision-rules | project_readiness_contract#purpose-category-meanings | project_readiness_contract#semantic-issue-definitions,"[project_readiness_contract#semantic-category-decision-rules] A category and purpose-text pair is inconsistent only when the text clearly
+describes a materially different purpose category. An unusual, expensive, or
+financially unwise purpose is not by itself an inconsistency. If the text could
+reasonably belong to more than one category, the result should be Manual Review
+rather than an invented contradiction. A blank or non-specific purpose is
+missing or vague, not a category contradiction.
+
+[project_readiness_contract#purpose-category-meanings] - MEDICAL_EXPENSE covers treatment, medicine, medical tests, and other
+  healthcare expenses.
+- EDUCATION covers tuition, course fees, required study materials, and other
+  study or training expenditure.
+- HOME_REPAIR covers repair or maintenance of an existing residence, not
+  unrelated consumer purchases.
+- SMALL_BUSINESS covers inventory, equipment, rent, and operating expenditure
+  for a small business rather than personal consumption.
+- VEHICLE covers purchase or repair of a vehicle used for personal or
+  work-related transport.
+- DEBT_CONSOLIDATION covers combining or repaying existing debts through one
+  loan.
+- OTHER covers a specific purpose outside the six named categories. OTHER does
+  not permit vague purpose text.
+
+[project_readiness_contract#semantic-issue-definitions] - VAGUE_LOAN_PURPOSE means the text does not state a concrete use of funds with
+  enough specificity to compare it with the form. It requires Manual Review.
+- PURPOSE_CATEGORY_CONTRADICTION means the text describes a materially
+  different use from the structured purpose category. It produces Inconsistent
+  Information.
+- PURPOSE_FORM_CONTRADICTION means the text directly contradicts another
+  supplied structured fact and the contradiction depends on meaning rather
+  than a fixed-value comparison. It produces Inconsistent Information.
+- INSUFFICIENT_SEMANTIC_EVIDENCE means more than one reasonable interpretation
+  remains. It requires Manual Review.",,,
+APP_0300,EDUCATION,The course was cancelled and the fee was refunded. I will now keep the loan for my partner's medical tests and the treatment recommended after those tests.,Inconsistent Information,PURPOSE_CATEGORY_CONTRADICTION,"The applicant states that the educational course was cancelled and the funds will be used for medical tests and treatment, which clearly describes MEDICAL_EXPENSE rather than the declared EDUCATION category.",project_readiness_contract#purpose-category-meanings | project_readiness_contract#semantic-category-decision-rules | project_readiness_contract#semantic-issue-definitions,"[project_readiness_contract#purpose-category-meanings] - MEDICAL_EXPENSE covers treatment, medicine, medical tests, and other
+  healthcare expenses.
+- EDUCATION covers tuition, course fees, required study materials, and other
+  study or training expenditure.
+- HOME_REPAIR covers repair or maintenance of an existing residence, not
+  unrelated consumer purchases.
+- SMALL_BUSINESS covers inventory, equipment, rent, and operating expenditure
+  for a small business rather than personal consumption.
+- VEHICLE covers purchase or repair of a vehicle used for personal or
+  work-related transport.
+- DEBT_CONSOLIDATION covers combining or repaying existing debts through one
+  loan.
+- OTHER covers a specific purpose outside the six named categories. OTHER does
+  not permit vague purpose text.
+
+[project_readiness_contract#semantic-category-decision-rules] A category and purpose-text pair is inconsistent only when the text clearly
+describes a materially different purpose category. An unusual, expensive, or
+financially unwise purpose is not by itself an inconsistency. If the text could
+reasonably belong to more than one category, the result should be Manual Review
+rather than an invented contradiction. A blank or non-specific purpose is
+missing or vague, not a category contradiction.
+
+[project_readiness_contract#semantic-issue-definitions] - VAGUE_LOAN_PURPOSE means the text does not state a concrete use of funds with
+  enough specificity to compare it with the form. It requires Manual Review.
+- PURPOSE_CATEGORY_CONTRADICTION means the text describes a materially
+  different use from the structured purpose category. It produces Inconsistent
+  Information.
+- PURPOSE_FORM_CONTRADICTION means the text directly contradicts another
+  supplied structured fact and the contradiction depends on meaning rather
+  than a fixed-value comparison. It produces Inconsistent Information.
+- INSUFFICIENT_SEMANTIC_EVIDENCE means more than one reasonable interpretation
+  remains. It requires Manual Review.",,,

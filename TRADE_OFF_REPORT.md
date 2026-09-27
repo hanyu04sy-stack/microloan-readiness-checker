@@ -13,9 +13,9 @@ I built a pre-check system for synthetic microloan applications. Its purpose is 
 
 My main design question was whether a hybrid system of deterministic Python rules plus a foundation model could detect missing information and semantic inconsistencies more effectively than a rule-only baseline. I kept exact and auditable checks in code and rented Gemini 3.8 Flash only for semantic interpretation of the free-text loan purpose. I owned the data generator, labels, orchestration, response validation, evaluation, failure handling, and governance boundary.
 
-I evaluated both systems on the same frozen 50-case synthetic test set. The rule-only baseline achieved precision 1.000 but recall 0.333, missing 20 of 30 flag-worthy cases. The hybrid system achieved precision 0.857, recall 1.000, and F1 0.923, with no false negatives, five false positives, and a 22% manual-review rate. It detected all 15 student-originated handwritten semantic contradictions. It therefore passed my predefined recall target of 0.90 and the instructor's suggested precision floor of 0.70.
+I evaluated three configurations on the same frozen 50-case synthetic test set. The rule-only baseline achieved precision 1.000 but recall 0.333, missing 20 of 30 flag-worthy cases. The earlier rules-plus-Gemini system achieved precision 0.857, recall 1.000, and F1 0.923. My selected rules-plus-project-RAG-plus-Gemini final candidate achieved precision, recall, and F1 of 1.000, detected all 15 student-originated handwritten semantic contradictions, and had a 10% manual-review rate. It passed my predefined recall target of 0.90, the instructor's suggested precision floor of 0.70, and the preregistered citation and fixed security-suite conditions.
 
-The strongest result is not simply a higher score. The experiment shows the trade-off directly: semantic interpretation removed the rule baseline's silent misses, but introduced provider dependence, five false positives, six API-failure fallbacks, more latency, and a human-review burden. I therefore accept the hybrid design only as a reversible pre-check with evidence and human authority, not as an autonomous credit decision system.
+The strongest result is not simply a higher score. The final RAG run removed the rule baseline's silent misses and returned valid retrieved-source identifiers for every response, but it increased prompt tokens and direct model cost, depends on a hosted provider, and is grounded only in project-defined guidance rather than real bank policy. Its perfect score on a reused synthetic set is not independent or production evidence. I therefore accept the RAG hybrid only as a reversible pre-check with visible evidence and human authority, not as an autonomous credit decision system.
 
 ## 1. Problem, user, and significance
 
@@ -53,7 +53,7 @@ Deterministic code owns document-presence checks, required fields, invalid numer
 
 Gemini owns a smaller semantic task: deciding whether the purpose text is too vague and whether its meaning contradicts the declared purpose category or another supplied field. This task requires language interpretation, and I did not have a real labelled corpus large enough to train a narrow classifier.
 
-The frozen comparison did not use retrieval-augmented generation because the original semantic task did not require an external document collection. After completing that evaluation, I added an optional RAG prototype that retrieves from the project's own readiness and human-review contracts. This makes the source used for an explanation visible and validates source identifiers, but the corpus is project-defined coursework guidance rather than real bank policy. I therefore report it as an unevaluated extension and do not attribute the completed 50-case metrics to it. I did not use an agent because one application requires one semantic judgement, not a variable multi-step loop with tools. Adding an agent would add latency, cost, irreversible-action risk, and more failure modes without buying capability for this problem.
+The first frozen comparison did not use retrieval-augmented generation. I subsequently selected a bounded RAG version as the final candidate and preregistered a separate evaluation before running it. It retrieves from the project's own readiness and human-review contracts, makes the source used for an explanation visible, and validates source identifiers. The corpus is still project-defined coursework guidance rather than real bank policy. I did not use an agent because one application requires one semantic judgement, not a variable multi-step loop with tools. Adding an agent would add latency, cost, irreversible-action risk, and more failure modes without buying capability for this problem.
 
 I treated the graphical interface as a presentation layer rather than the core system. The proposal made Streamlit optional, while the required first version was one application, one rule check, one LLM check, and one structured result. I first completed the reproducible command-line system, evaluation harness, and guardrails, then added a thin Streamlit interface that calls the same tested functions without changing the evaluation path.
 
@@ -67,7 +67,7 @@ I made the build-versus-buy decision layer by layer.
 | Application schema and rules | Build | These encode the project-specific definition of readiness and must be exact and testable. |
 | Orchestration and merger | Build | I need deterministic precedence, preservation of rule findings, and explicit fallback behaviour. |
 | Model service | Rent Gemini 3.8 Flash through the `google-genai` SDK | Training or serving a foundation model is unnecessary for the bounded semantic task; the hosted service supplies that commodity capability. |
-| Optional RAG retrieval | Build | A bounded lexical retriever indexes only the project readiness and human-review contracts; it excludes labels and results. |
+| RAG retrieval | Build | A bounded lexical retriever indexes only the project readiness and human-review contracts; it excludes labels and results and validates cited chunk identifiers. |
 | Data and ground truth | Build | The project requires reproducible synthetic data, frozen labels, and a separate semantic challenge slice. |
 | Evaluation and observability | Build | Precision, recall, slice metrics, latency, token use, retries, and failures are part of the system. |
 | Governance boundary | Build | The prohibition on credit decisions and the human-review contract cannot be delegated to the provider. |
@@ -124,7 +124,7 @@ The repository currently passes 33 unit tests. These cover data composition, lea
 
 ## 6. Evaluation design
 
-I compared the rule-only baseline and hybrid system on the same 50 frozen cases. A case is flag-worthy when its expected output is not only `Complete`. I calculated precision, recall, F1, true positives, false positives, true negatives, false negatives, and manual-review rate.
+I compared the rule-only baseline, the earlier non-RAG hybrid, and the final RAG hybrid on the same 50 frozen cases. A case is flag-worthy when its expected output is not only `Complete`. I calculated precision, recall, F1, true positives, false positives, true negatives, false negatives, and manual-review rate. For the final RAG candidate I also preregistered retrieval coverage, citation coverage, citation-identifier validity, prompt-injection suite performance, latency, token use, retries, failures, and direct model cost.
 
 The release conditions were fixed before seeing the final hybrid result:
 
@@ -142,29 +142,30 @@ I also measure abstention quality against the frozen labels. `Appropriate review
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | Rule-only | 1.000 | 0.333 | 0.500 | 10 | 0 | 20 | 20 | 0.000 |
 | Rules plus Gemini 3.8 Flash | 0.857 | 1.000 | 0.923 | 30 | 5 | 15 | 0 | 0.220 |
+| Rules plus project RAG plus Gemini 3.8 Flash | 1.000 | 1.000 | 1.000 | 30 | 0 | 20 | 0 | 0.100 |
 
 The rule-only baseline correctly handled all ten deterministic problem cases but missed all five ambiguous-purpose cases and all 15 handwritten semantic contradictions. Its `Complete` outputs were silent failures because nothing in the output indicated that meaning had not been checked.
 
 `APP_0286` demonstrates this failure. The category was education, but the text said tuition and tutoring were already covered and the loan would first buy a used motorcycle. The frozen label was `Inconsistent Information`. The rule-only system returned `Complete`; the hybrid system detected the semantic contradiction.
 
-The hybrid system detected all 30 flag-worthy applications and all 15 handwritten semantic cases. Five clean cases were false positives. Four were conservative `Manual Review` fallbacks after 503 failures. The fifth, `APP_0278`, was a substantive model disagreement: the frozen label treated a debt-consolidation application with zero monthly liabilities as clean, while Gemini viewed the debt statement and zero liabilities as contradictory. I kept it as a false positive because changing the label after seeing the prediction would invalidate the evaluation. Its rationale nevertheless identifies a possible annotation ambiguity for independent review in a future dataset version.
+The earlier non-RAG hybrid detected all 30 flag-worthy applications and all 15 handwritten semantic cases. Five clean cases were false positives. Four were conservative `Manual Review` fallbacks after 503 failures. The fifth, `APP_0278`, was a substantive model disagreement: the frozen label treated a debt-consolidation application with zero monthly liabilities as clean, while Gemini viewed the debt statement and zero liabilities as contradictory. I kept it as a false positive in that run because changing the label after seeing the prediction would invalidate the evaluation. The final RAG candidate classified `APP_0278` as clean, but the original non-RAG result remains unchanged in the historical comparison.
 
-The abstention results were more specific than the overall 22% manual-review rate. All five cases expected to require review were routed there, so appropriate-review capture was `5/5 = 100%`. Four of the 20 clean cases were unnecessarily routed to review after provider failures, so the unnecessary-review rate among clean cases was `4/20 = 20%`. The fifth clean false positive, `APP_0278`, was classified as inconsistent rather than abstained, so it is not counted in the unnecessary-review rate. Two further provider-failure reviews occurred on applications that already had deterministic issues; they increased the overall review rate but were not clean-case abstentions.
+The abstention results distinguish the two model-assisted runs. In the earlier non-RAG run, overall manual review was 22%, appropriate-review capture was `5/5 = 100%`, and four of 20 clean cases were unnecessarily reviewed after provider failures. In the final RAG run, all five expected review cases were again captured, no clean case was sent to review, and the overall manual-review rate was `5/50 = 10%`. The reduction cannot be attributed to retrieval alone because the RAG run also had no provider failures.
 
-The hybrid system passed the numerical release conditions for this prototype. The result does not justify production deployment because the data are synthetic, the challenge slice lacks independent review, and provider failures produced operational fallback.
+The final RAG candidate passed the numerical release conditions. All 50 calls succeeded without retry, all 50 responses cited at least one retrieved chunk, and all 109 cited identifiers were valid for their cases. Appropriate-review capture was 100%, and no clean case was unnecessarily reviewed. Identifier validity does not prove semantic citation support, which remains pending independent review. The result does not justify production deployment because the data are synthetic and reused, the challenge slice lacks independent review, and the knowledge base is not real bank policy.
 
 ## 8. Cost-to-serve
 
-The final run produced 44 successful semantic responses and six 503 fallbacks. Successful calls reported 16,942 input tokens and 41,894 total tokens. I therefore estimate 24,952 billed output-plus-thinking tokens for calls that returned usage metadata.
+The final RAG run produced 50 successful semantic responses without retry. Calls reported 47,693 input tokens and 83,006 total tokens. I therefore estimate 35,313 billed output-plus-thinking tokens.
 
-Using the Gemini 3.8 Flash prices recorded for 27 September 2026 - USD 0.75 per million input tokens and USD 3.75 per million output or thinking tokens - the direct model cost attributable from returned usage metadata is USD 0.1063 for the 50-case experiment, or USD 0.00213 per incoming application. Failed attempts returned no token metadata, so this is not a reconstruction of the provider invoice and may understate any charge associated with those attempts.
+Using the Gemini 3.8 Flash prices recorded for 27 September 2026 - USD 0.75 per million input tokens and USD 3.75 per million output or thinking tokens - the direct model cost attributable from returned usage metadata is USD 0.1682 for the 50-case RAG experiment, or USD 0.00336 per incoming application. This is a calculation from usage metadata, not a reconstruction of the provider invoice.
 
-Direct model cost is not the full cost to serve. The observed manual-review rate was 22%. Because the project has no real reviewer wage or review-time observation, I use the two explicit course scenarios rather than inventing bank data:
+Direct model cost is not the full cost to serve. The observed RAG manual-review rate was 10%. Because the project has no real reviewer wage or review-time observation, I use the two explicit course scenarios rather than inventing bank data:
 
 | Scenario | Cost per incoming application before fixed cost |
 |---|---:|
-| 45-second light review at USD 40/hour | USD 0.112 |
-| 8-minute heavier escalation at USD 45/hour | USD 1.322 |
+| 45-second light review at USD 40/hour | USD 0.053 |
+| 8-minute heavier escalation at USD 45/hour | USD 0.603 |
 
 These figures include direct model cost plus expected human fallback. They exclude monthly fixed cost, represented as `F / V`, because neither fixed monthly cost `F` nor monthly application volume `V` has been confirmed. The sensitivity analysis in the repository shows that human fallback dominates token cost. Therefore the economically important variable is not the API price alone; it is how often the system escalates and how expensive that review is.
 
@@ -191,7 +192,7 @@ Human review has three defined parts. The window is after the readiness result a
 
 ## 10. The trade-off I accept
 
-I accept higher false positives, API dependence, latency, and a 22% manual-review rate in exchange for eliminating the rule baseline's 20 false negatives on the frozen test set. This is defensible because the system is a pre-check: unnecessary review costs time, while an invisible `Complete` result can move contradictory materials forward without warning.
+I accept API dependence, additional retrieval context, higher token cost, average model latency of about 3.88 seconds, and a 10% manual-review rate in exchange for eliminating the rule baseline's 20 false negatives and making the project source used by each model response auditable. This is defensible because the system is a pre-check: an invisible `Complete` result can move contradictory materials forward without warning, while an ambiguous case remains reversible through review.
 
 I do not accept autonomous action. The system stops before credit assessment because its semantic failures are not reliably visible from a fluent output. Keeping the output reversible is the central governance choice, not a disclaimer added after implementation.
 
@@ -201,15 +202,15 @@ I also accept a rented-model dependency rather than training a model. At this sc
 
 The project has six material limitations.
 
-First, all data are synthetic. The experiment does not establish prevalence, accuracy, time saving, or economic value in a real institution. Second, the 15 student-written semantic cases meet the instructor's requested challenge-case format but have no independent lending-domain reviewer; I do not describe them as independently validated. Third, one false positive exposed a possible label ambiguity that should be reviewed only in a future version. Fourth, six provider failures increased manual workload. Fifth, prompt-injection coverage is limited to a fixed high-signal suite, and production drift monitoring remains incomplete. Sixth, the RAG corpus contains project-defined guidance rather than real lender policy, and the RAG path has not yet completed its preregistered 50-case evaluation.
+First, all data are synthetic. The experiment does not establish prevalence, accuracy, time saving, or economic value in a real institution. Second, the 15 student-written semantic cases meet the instructor's requested challenge-case format but have no independent lending-domain reviewer; I do not describe them as independently validated. Third, the same 50 cases were reused to compare the final RAG candidate, so they are not a new unseen holdout. Fourth, automated citation validity does not prove that the cited text semantically supports the conclusion; independent citation review is pending. Fifth, prompt-injection coverage is limited to a fixed high-signal suite, and production drift monitoring remains incomplete. Sixth, the RAG corpus contains project-defined guidance rather than real lender policy.
 
 A next version should obtain independent domain review of the semantic labels, test the system on appropriately governed representative data, add an adversarial prompt-injection suite and code-level escalation rule, and monitor input distribution, output balance, override rate, reopened cases, delayed labels, and sliced accuracy. Those changes should be versioned and evaluated against a new frozen set rather than inserted into this completed experiment.
 
 ## 12. Conclusion
 
-The experiment answers my narrow question. On the frozen synthetic dataset, rules plus Gemini detected missing information and semantic inconsistencies more effectively than rules alone. Recall increased from 0.333 to 1.000 and all 15 handwritten semantic contradictions were detected, while precision remained above the 0.70 working floor at 0.857.
+The experiment answers my narrow question. On the frozen synthetic dataset, the final rules-plus-project-RAG-plus-Gemini candidate detected missing information and semantic inconsistencies more effectively than rules alone. Recall increased from 0.333 to 1.000, precision was 1.000, and all 15 handwritten semantic contradictions were detected.
 
-The result also shows why the LLM must remain bounded. It introduced five false positives, six provider-failure fallbacks, additional cost, and a 22% manual-review rate. My final design is therefore a hybrid, evidence-producing, reversible pre-check. It uses deterministic code for what can be verified, a rented model for language judgement, and a human for ambiguity and failure. That is the trade-off I would defend.
+The result also shows why the LLM and retrieval layer must remain bounded. The RAG run added context and direct model cost, its perfect score is limited to a reused synthetic set, and its sources are not real policy. My final design is therefore a RAG hybrid, evidence-producing, reversible pre-check. It uses deterministic code for what can be verified, bounded project retrieval for explicit context, a rented model for language judgement, and a human for ambiguity and failure. That is the trade-off I would defend.
 
 ## References
 
