@@ -7,7 +7,7 @@ Confirmed submission facts:
 - Deadline: Sunday 4 October 2026, 23:59 Singapore time.
 - Deliverables: repository, recorded demonstration, and trade-off report.
 
-The supplied materials do not establish the report word limit, recording duration, repository naming convention, submission portal, or required file format. Confirm these in NTULearn or with the instructor before submission.
+The student confirmed from NTULearn on 27 September 2026 that the instructor specified no additional report word limit, report file format, or recorded-demonstration duration. Repository naming, the exact submission location, and any upload-size constraints should still be checked on the submission page itself.
 
 ## Repository
 
@@ -16,7 +16,7 @@ The supplied materials do not establish the report word limit, recording duratio
 - [x] Rules-plus-Gemini path implemented.
 - [x] Optional Streamlit demonstration interface implemented over the tested paths.
 - [x] Optional project-defined RAG prototype implemented with source citations.
-- [ ] Do not attribute the frozen 50-case hybrid metrics to RAG unless a separate RAG evaluation is completed.
+- [x] Frozen 50-case hybrid metrics are not attributed to the later RAG prototype.
 - [x] Frozen 50-case final set included.
 - [x] Fifteen handwritten semantic cases included and separately reported.
 - [x] Ground truth stored separately from inputs.
@@ -51,15 +51,15 @@ The supplied materials do not establish the report word limit, recording duratio
 - [x] Cost-to-serve and sensitivity included.
 - [x] Risks paired with implemented controls.
 - [x] Limitations stated without production claims.
-- [ ] Confirm required word count and file format.
+- [x] Confirmed in NTULearn: no additional word-count or report-format requirement was specified.
 - [x] First-person, spelling, grammar, and internal-consistency pass completed for the Markdown report.
 - [ ] Student performs a final personal factual review.
-- [ ] Export the approved report to the required submission format.
+- [ ] Export the approved report to a practical final format; PDF is recommended because no mandatory format was specified.
 
 ## Recorded demonstration
 
 - [x] Modular script prepared.
-- [ ] Confirm required duration and file format.
+- [x] Confirmed in NTULearn: no additional demonstration-duration or video-format requirement was specified.
 - [ ] Record readable terminal and editor footage.
 - [ ] Demonstrate the boundary, architecture, tests, silent failure, API fallback, final comparison, cost, and limitations.
 - [ ] Check that no API key, `.env`, payment information, or personal notification appears in the recording.
