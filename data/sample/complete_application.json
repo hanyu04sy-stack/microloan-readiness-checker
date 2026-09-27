@@ -1,0 +1,13 @@
+{
+  "application_id": "APP-0001",
+  "declared_monthly_income": 4000,
+  "income_proof_monthly_income": 4000,
+  "bank_statement_average_monthly_inflow": 4000,
+  "requested_loan_amount": 8000,
+  "existing_monthly_liabilities": 500,
+  "loan_purpose_category": "EDUCATION",
+  "loan_purpose_text": "Payment for a professional course fee.",
+  "identity_proof_present": true,
+  "income_proof_present": true,
+  "bank_statement_present": true
+}

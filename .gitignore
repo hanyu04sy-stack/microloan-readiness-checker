@@ -1,9 +1,13 @@
-.env
-.venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.venv/
 dist/
 build/
 *.egg-info/
+.env
 .DS_Store
+
+
+.venv/
+.env

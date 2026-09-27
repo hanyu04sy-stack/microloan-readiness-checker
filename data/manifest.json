@@ -1,0 +1,47 @@
+{
+  "files": {
+    "data/development/applications.jsonl": "09846b94baf953fd3282309d8157617cf51e96ee995c2e6072d32b29b4fbfda4",
+    "data/development/labels.jsonl": "aef9b9d7d965998658c19c52130fcfb8d69b490b8dc42e8e8cfa5b6c7cbf4c42",
+    "data/test/applications.jsonl": "3d94f1c9531be4c4e0af29743802633cb776055a619d278d6ed37661e6c2e26d",
+    "data/test/labels.jsonl": "a7175dc3b8761b8bd4b4c9d6469ac77204cd5a307b944244789e0a97a6199d04",
+    "data/validation/applications.jsonl": "1ac88ed02eb7cc6f38f67d39694f952d4446479def44744c14d532f477c5251f",
+    "data/validation/labels.jsonl": "8b096b73b675b498e18cd883228497c04516e06b8aa6f15fd5f3237ca27fe0ad"
+  },
+  "generator": "scripts/generate_synthetic_data.py",
+  "generator_version": 2,
+  "handwritten_template": "data/test/handwritten_semantic_template.csv",
+  "handwritten_template_sha256": "af7ac986243dba746ef3b997ec0b551f89c4213ea44a1d3e11211fd628f30900",
+  "random_seed": 6201,
+  "status": "incomplete_until_15_semantic_drafts_are_personally_reviewed_and_frozen",
+  "summary": {
+    "development": {
+      "counts": {
+        "ambiguous_purpose": 20,
+        "clean": 80,
+        "generated_semantic_development": 20,
+        "missing_document": 40,
+        "numeric_or_field_contradiction": 40
+      },
+      "generated_applications": 200
+    },
+    "test": {
+      "counts": {
+        "ambiguous_purpose": 5,
+        "clean": 20,
+        "missing_document": 5,
+        "numeric_or_field_contradiction": 5
+      },
+      "generated_applications": 35
+    },
+    "validation": {
+      "counts": {
+        "ambiguous_purpose": 5,
+        "clean": 20,
+        "generated_semantic_development": 5,
+        "missing_document": 10,
+        "numeric_or_field_contradiction": 10
+      },
+      "generated_applications": 50
+    }
+  }
+}

@@ -1,0 +1,2596 @@
+{
+  "evaluation_status": "complete",
+  "metrics": {
+    "ambiguous_purpose": {
+      "appropriate_review_capture": 1.0,
+      "f1": 1.0,
+      "false_negative": 0,
+      "false_positive": 0,
+      "manual_review_rate": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "true_negative": 0,
+      "true_positive": 5,
+      "unnecessary_review_rate": null
+    },
+    "deterministic": {
+      "appropriate_review_capture": null,
+      "f1": 1.0,
+      "false_negative": 0,
+      "false_positive": 0,
+      "manual_review_rate": 0.2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "true_negative": 0,
+      "true_positive": 10,
+      "unnecessary_review_rate": null
+    },
+    "full_test": {
+      "appropriate_review_capture": 1.0,
+      "f1": 0.923076923076923,
+      "false_negative": 0,
+      "false_positive": 5,
+      "manual_review_rate": 0.22,
+      "precision": 0.8571428571428571,
+      "recall": 1.0,
+      "true_negative": 15,
+      "true_positive": 30,
+      "unnecessary_review_rate": 0.2
+    },
+    "handwritten_semantic": {
+      "appropriate_review_capture": null,
+      "f1": 1.0,
+      "false_negative": 0,
+      "false_positive": 0,
+      "manual_review_rate": 0.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "true_negative": 0,
+      "true_positive": 15,
+      "unnecessary_review_rate": null
+    }
+  },
+  "model": "gemini-3.8-flash",
+  "passes_release_conditions": true,
+  "predictions": [
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0251",
+      "eval_slice": "numeric_or_field_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0251",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 3,
+          "latency_ms": 68179.19979098951,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 46,
+          "prompt_tokens": 377,
+          "retry_errors": [
+            "ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+            "ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+          ],
+          "total_tokens": 655
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0251",
+          "flag_worthy": true,
+          "issue_codes": [
+            "BANK_INFLOW_MISMATCH"
+          ],
+          "issues": [
+            {
+              "code": "BANK_INFLOW_MISMATCH",
+              "evidence_fields": [
+                "declared_monthly_income",
+                "bank_statement_average_monthly_inflow"
+              ],
+              "output": "Inconsistent Information",
+              "reason": "Declared monthly income does not match the normalized bank-statement inflow."
+            }
+          ],
+          "outputs": [
+            "Inconsistent Information"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The loan purpose text clearly describes medical expenses, which is directly consistent with the declared loan purpose category without contradiction.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0252",
+      "eval_slice": "numeric_or_field_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information",
+        "Manual Review"
+      ],
+      "result": {
+        "application_id": "APP_0252",
+        "flag_worthy": true,
+        "model_call": null,
+        "outputs": [
+          "Inconsistent Information",
+          "Manual Review"
+        ],
+        "rule_result": {
+          "application_id": "APP_0252",
+          "flag_worthy": true,
+          "issue_codes": [
+            "INVALID_NUMERIC_VALUE"
+          ],
+          "issues": [
+            {
+              "code": "INVALID_NUMERIC_VALUE",
+              "evidence_fields": [
+                "requested_loan_amount"
+              ],
+              "output": "Inconsistent Information",
+              "reason": "Requested loan amount must be greater than zero."
+            }
+          ],
+          "outputs": [
+            "Inconsistent Information"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "error": "ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+          "fallback": "Manual Review",
+          "status": "error"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0253",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Manual Review"
+      ],
+      "result": {
+        "application_id": "APP_0253",
+        "flag_worthy": true,
+        "model_call": null,
+        "outputs": [
+          "Manual Review"
+        ],
+        "rule_result": {
+          "application_id": "APP_0253",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "error": "ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+          "fallback": "Manual Review",
+          "status": "error"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0254",
+      "eval_slice": "missing_document",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Missing Documents"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Missing Documents"
+      ],
+      "result": {
+        "application_id": "APP_0254",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 6327.491333009675,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 51,
+          "prompt_tokens": 379,
+          "retry_errors": [],
+          "total_tokens": 704
+        },
+        "outputs": [
+          "Missing Documents"
+        ],
+        "rule_result": {
+          "application_id": "APP_0254",
+          "flag_worthy": true,
+          "issue_codes": [
+            "MISSING_BANK_STATEMENT"
+          ],
+          "issues": [
+            {
+              "code": "MISSING_BANK_STATEMENT",
+              "evidence_fields": [
+                "bank_statement_present"
+              ],
+              "output": "Missing Documents",
+              "reason": "Bank statement is missing."
+            }
+          ],
+          "outputs": [
+            "Missing Documents"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The stated loan purpose clearly describes repairing water damage in the residence, which is specific and directly aligns with the HOME_REPAIR category.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0255",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_outputs": [
+        "Complete"
+      ],
+      "result": {
+        "application_id": "APP_0255",
+        "flag_worthy": false,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 5485.659541009227,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 55,
+          "prompt_tokens": 378,
+          "retry_errors": [],
+          "total_tokens": 711
+        },
+        "outputs": [
+          "Complete"
+        ],
+        "rule_result": {
+          "application_id": "APP_0255",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The stated loan purpose text clearly describes vehicle repair, which directly aligns with the selected vehicle loan purpose category without any contradictions or vagueness.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0256",
+      "eval_slice": "missing_document",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Missing Documents"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Missing Documents"
+      ],
+      "result": {
+        "application_id": "APP_0256",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 3336.843166995095,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 66,
+          "prompt_tokens": 375,
+          "retry_errors": [],
+          "total_tokens": 544
+        },
+        "outputs": [
+          "Missing Documents"
+        ],
+        "rule_result": {
+          "application_id": "APP_0256",
+          "flag_worthy": true,
+          "issue_codes": [
+            "MISSING_INCOME_PROOF"
+          ],
+          "issues": [
+            {
+              "code": "MISSING_INCOME_PROOF",
+              "evidence_fields": [
+                "income_proof_present"
+              ],
+              "output": "Missing Documents",
+              "reason": "Income proof is missing."
+            }
+          ],
+          "outputs": [
+            "Missing Documents"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The loan purpose text clearly describes payment for a professional course fee, which aligns directly with the EDUCATION category and provides sufficient semantic specificity without contradictions.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0257",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_outputs": [
+        "Complete"
+      ],
+      "result": {
+        "application_id": "APP_0257",
+        "flag_worthy": false,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 6113.132832979318,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 61,
+          "prompt_tokens": 378,
+          "retry_errors": [],
+          "total_tokens": 645
+        },
+        "outputs": [
+          "Complete"
+        ],
+        "rule_result": {
+          "application_id": "APP_0257",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The stated purpose of purchasing retail inventory is sufficiently specific and aligns directly with the SMALL_BUSINESS category without semantic contradiction.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0261",
+      "eval_slice": "ambiguous_purpose",
+      "expected_manual_review": true,
+      "expected_outputs": [
+        "Manual Review"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Manual Review"
+      ],
+      "result": {
+        "application_id": "APP_0261",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 2,
+          "latency_ms": 8914.090917009162,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 90,
+          "prompt_tokens": 373,
+          "retry_errors": [
+            "ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-3.8-flash\\nPlease retry in 17.739808042s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.8-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '17s'}]}}"
+          ],
+          "total_tokens": 967
+        },
+        "outputs": [
+          "Manual Review"
+        ],
+        "rule_result": {
+          "application_id": "APP_0261",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_text"
+          ],
+          "manual_review_required": true,
+          "reason": "The stated loan purpose 'For personal needs.' is generic and not specific enough to verify or evaluate against the designated purpose category.",
+          "semantic_issue_codes": [
+            "VAGUE_LOAN_PURPOSE"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0262",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Manual Review"
+      ],
+      "result": {
+        "application_id": "APP_0262",
+        "flag_worthy": true,
+        "model_call": null,
+        "outputs": [
+          "Manual Review"
+        ],
+        "rule_result": {
+          "application_id": "APP_0262",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "error": "ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+          "fallback": "Manual Review",
+          "status": "error"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0258",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_outputs": [
+        "Complete"
+      ],
+      "result": {
+        "application_id": "APP_0258",
+        "flag_worthy": false,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 4440.867583005456,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 56,
+          "prompt_tokens": 380,
+          "retry_errors": [],
+          "total_tokens": 545
+        },
+        "outputs": [
+          "Complete"
+        ],
+        "rule_result": {
+          "application_id": "APP_0258",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The stated loan purpose text clearly aligns with the debt consolidation category without vagueness or contradiction.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0259",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_outputs": [
+        "Complete"
+      ],
+      "result": {
+        "application_id": "APP_0259",
+        "flag_worthy": false,
+        "model_call": {
+          "attempt_count": 2,
+          "latency_ms": 8242.489583004499,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 65,
+          "prompt_tokens": 378,
+          "retry_errors": [
+            "ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+          ],
+          "total_tokens": 663
+        },
+        "outputs": [
+          "Complete"
+        ],
+        "rule_result": {
+          "application_id": "APP_0259",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The stated loan purpose clearly describes payment for a scheduled medical treatment, which aligns consistently with the selected loan purpose category without ambiguity or contradiction.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0260",
+      "eval_slice": "ambiguous_purpose",
+      "expected_manual_review": true,
+      "expected_outputs": [
+        "Manual Review"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Manual Review"
+      ],
+      "result": {
+        "application_id": "APP_0260",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 4147.011833003489,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 93,
+          "prompt_tokens": 376,
+          "retry_errors": [],
+          "total_tokens": 963
+        },
+        "outputs": [
+          "Manual Review"
+        ],
+        "rule_result": {
+          "application_id": "APP_0260",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_text"
+          ],
+          "manual_review_required": true,
+          "reason": "The stated loan purpose 'For something urgent.' is too vague to determine the actual intended use of the funds or verify alignment with the category.",
+          "semantic_issue_codes": [
+            "VAGUE_LOAN_PURPOSE"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0263",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_outputs": [
+        "Complete"
+      ],
+      "result": {
+        "application_id": "APP_0263",
+        "flag_worthy": false,
+        "model_call": {
+          "attempt_count": 3,
+          "latency_ms": 15294.315375009319,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 57,
+          "prompt_tokens": 374,
+          "retry_errors": [
+            "ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+            "ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+          ],
+          "total_tokens": 763
+        },
+        "outputs": [
+          "Complete"
+        ],
+        "rule_result": {
+          "application_id": "APP_0263",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The stated loan purpose clearly describes replacing household appliances and is consistent with the provided category and fields.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0264",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Manual Review"
+      ],
+      "result": {
+        "application_id": "APP_0264",
+        "flag_worthy": true,
+        "model_call": null,
+        "outputs": [
+          "Manual Review"
+        ],
+        "rule_result": {
+          "application_id": "APP_0264",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "error": "ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+          "fallback": "Manual Review",
+          "status": "error"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0265",
+      "eval_slice": "missing_document",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Missing Documents"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Missing Documents"
+      ],
+      "result": {
+        "application_id": "APP_0265",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 2,
+          "latency_ms": 12507.590041990625,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 62,
+          "prompt_tokens": 376,
+          "retry_errors": [
+            "ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+          ],
+          "total_tokens": 632
+        },
+        "outputs": [
+          "Missing Documents"
+        ],
+        "rule_result": {
+          "application_id": "APP_0265",
+          "flag_worthy": true,
+          "issue_codes": [
+            "MISSING_IDENTITY_PROOF"
+          ],
+          "issues": [
+            {
+              "code": "MISSING_IDENTITY_PROOF",
+              "evidence_fields": [
+                "identity_proof_present"
+              ],
+              "output": "Missing Documents",
+              "reason": "Identity proof is missing."
+            }
+          ],
+          "outputs": [
+            "Missing Documents"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The stated loan purpose text clearly describes purchasing retail inventory, which is consistent and fully aligned with the SMALL_BUSINESS category.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0266",
+      "eval_slice": "numeric_or_field_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information",
+        "Manual Review"
+      ],
+      "result": {
+        "application_id": "APP_0266",
+        "flag_worthy": true,
+        "model_call": null,
+        "outputs": [
+          "Inconsistent Information",
+          "Manual Review"
+        ],
+        "rule_result": {
+          "application_id": "APP_0266",
+          "flag_worthy": true,
+          "issue_codes": [
+            "DECLARED_INCOME_MISMATCH"
+          ],
+          "issues": [
+            {
+              "code": "DECLARED_INCOME_MISMATCH",
+              "evidence_fields": [
+                "declared_monthly_income",
+                "income_proof_monthly_income"
+              ],
+              "output": "Inconsistent Information",
+              "reason": "Declared monthly income does not match the normalized income-proof value."
+            }
+          ],
+          "outputs": [
+            "Inconsistent Information"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "error": "ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+          "fallback": "Manual Review",
+          "status": "error"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0267",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Manual Review"
+      ],
+      "result": {
+        "application_id": "APP_0267",
+        "flag_worthy": true,
+        "model_call": null,
+        "outputs": [
+          "Manual Review"
+        ],
+        "rule_result": {
+          "application_id": "APP_0267",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "error": "ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+          "fallback": "Manual Review",
+          "status": "error"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0268",
+      "eval_slice": "missing_document",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Missing Documents"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Missing Documents"
+      ],
+      "result": {
+        "application_id": "APP_0268",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 3215.7698750088457,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 40,
+          "prompt_tokens": 375,
+          "retry_errors": [],
+          "total_tokens": 734
+        },
+        "outputs": [
+          "Missing Documents"
+        ],
+        "rule_result": {
+          "application_id": "APP_0268",
+          "flag_worthy": true,
+          "issue_codes": [
+            "MISSING_BANK_STATEMENT"
+          ],
+          "issues": [
+            {
+              "code": "MISSING_BANK_STATEMENT",
+              "evidence_fields": [
+                "bank_statement_present"
+              ],
+              "output": "Missing Documents",
+              "reason": "Bank statement is missing."
+            }
+          ],
+          "outputs": [
+            "Missing Documents"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The loan purpose is clear and specific, and does not contradict any structured fields.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0269",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_outputs": [
+        "Complete"
+      ],
+      "result": {
+        "application_id": "APP_0269",
+        "flag_worthy": false,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2441.1452079948504,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 72,
+          "prompt_tokens": 378,
+          "retry_errors": [],
+          "total_tokens": 676
+        },
+        "outputs": [
+          "Complete"
+        ],
+        "rule_result": {
+          "application_id": "APP_0269",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The stated loan purpose clearly describes purchasing inventory for a small retail business, which is consistent with the SMALL_BUSINESS category, and there are no contradictions with other supplied fields.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0270",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_outputs": [
+        "Complete"
+      ],
+      "result": {
+        "application_id": "APP_0270",
+        "flag_worthy": false,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2878.237083001295,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 57,
+          "prompt_tokens": 375,
+          "retry_errors": [],
+          "total_tokens": 724
+        },
+        "outputs": [
+          "Complete"
+        ],
+        "rule_result": {
+          "application_id": "APP_0270",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The stated loan purpose is sufficiently specific and does not contradict the selected category or other application fields.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0271",
+      "eval_slice": "ambiguous_purpose",
+      "expected_manual_review": true,
+      "expected_outputs": [
+        "Manual Review"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Manual Review"
+      ],
+      "result": {
+        "application_id": "APP_0271",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 3305.443582998123,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 87,
+          "prompt_tokens": 371,
+          "retry_errors": [],
+          "total_tokens": 777
+        },
+        "outputs": [
+          "Manual Review"
+        ],
+        "rule_result": {
+          "application_id": "APP_0271",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_text"
+          ],
+          "manual_review_required": true,
+          "reason": "The stated loan purpose 'For general use.' is not specific enough to determine how the funds will be used.",
+          "semantic_issue_codes": [
+            "VAGUE_LOAN_PURPOSE"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0272",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_outputs": [
+        "Complete"
+      ],
+      "result": {
+        "application_id": "APP_0272",
+        "flag_worthy": false,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2379.4965840061195,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 44,
+          "prompt_tokens": 378,
+          "retry_errors": [],
+          "total_tokens": 685
+        },
+        "outputs": [
+          "Complete"
+        ],
+        "rule_result": {
+          "application_id": "APP_0272",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The loan purpose text clearly specifies home repairs and aligns directly with the selected loan purpose category without contradiction.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0273",
+      "eval_slice": "ambiguous_purpose",
+      "expected_manual_review": true,
+      "expected_outputs": [
+        "Manual Review"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Manual Review"
+      ],
+      "result": {
+        "application_id": "APP_0273",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2690.4217079863884,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 90,
+          "prompt_tokens": 374,
+          "retry_errors": [],
+          "total_tokens": 809
+        },
+        "outputs": [
+          "Manual Review"
+        ],
+        "rule_result": {
+          "application_id": "APP_0273",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_text"
+          ],
+          "manual_review_required": true,
+          "reason": "The stated loan purpose 'To cover several things.' is overly generic and lacks sufficient detail to determine the specific use of funds.",
+          "semantic_issue_codes": [
+            "VAGUE_LOAN_PURPOSE"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0274",
+      "eval_slice": "numeric_or_field_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0274",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2260.775000002468,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 61,
+          "prompt_tokens": 378,
+          "retry_errors": [],
+          "total_tokens": 698
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0274",
+          "flag_worthy": true,
+          "issue_codes": [
+            "BANK_INFLOW_MISMATCH"
+          ],
+          "issues": [
+            {
+              "code": "BANK_INFLOW_MISMATCH",
+              "evidence_fields": [
+                "declared_monthly_income",
+                "bank_statement_average_monthly_inflow"
+              ],
+              "output": "Inconsistent Information",
+              "reason": "Declared monthly income does not match the normalized bank-statement inflow."
+            }
+          ],
+          "outputs": [
+            "Inconsistent Information"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The stated purpose of repairing a vehicle is clear, specific, and aligns with the declared VEHICLE category without contradiction.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0275",
+      "eval_slice": "ambiguous_purpose",
+      "expected_manual_review": true,
+      "expected_outputs": [
+        "Manual Review"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Manual Review"
+      ],
+      "result": {
+        "application_id": "APP_0275",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 3443.7898749893066,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 88,
+          "prompt_tokens": 375,
+          "retry_errors": [],
+          "total_tokens": 825
+        },
+        "outputs": [
+          "Manual Review"
+        ],
+        "rule_result": {
+          "application_id": "APP_0275",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_text"
+          ],
+          "manual_review_required": true,
+          "reason": "The stated loan purpose text 'For an important expense.' is too vague to determine the specific intended use of funds.",
+          "semantic_issue_codes": [
+            "VAGUE_LOAN_PURPOSE"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0276",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_outputs": [
+        "Complete"
+      ],
+      "result": {
+        "application_id": "APP_0276",
+        "flag_worthy": false,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2675.1900410163216,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 45,
+          "prompt_tokens": 378,
+          "retry_errors": [],
+          "total_tokens": 672
+        },
+        "outputs": [
+          "Complete"
+        ],
+        "rule_result": {
+          "application_id": "APP_0276",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The stated loan purpose clearly describes vehicle repair, which directly aligns with the selected vehicle category without any contradictions.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0277",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_outputs": [
+        "Complete"
+      ],
+      "result": {
+        "application_id": "APP_0277",
+        "flag_worthy": false,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2485.9020830190275,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 54,
+          "prompt_tokens": 378,
+          "retry_errors": [],
+          "total_tokens": 625
+        },
+        "outputs": [
+          "Complete"
+        ],
+        "rule_result": {
+          "application_id": "APP_0277",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The loan purpose text is specific, unambiguous, and consistent with the declared category.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0278",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0278",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 6033.28479200718,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 97,
+          "prompt_tokens": 378,
+          "retry_errors": [],
+          "total_tokens": 1399
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0278",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "existing_monthly_liabilities",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The stated purpose of combining existing personal debts into one repayment directly contradicts the declared existing monthly liabilities of zero.",
+          "semantic_issue_codes": [
+            "PURPOSE_FORM_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0279",
+      "eval_slice": "numeric_or_field_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0279",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 32187.66358299763,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 104,
+          "prompt_tokens": 371,
+          "retry_errors": [],
+          "total_tokens": 8201
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0279",
+          "flag_worthy": true,
+          "issue_codes": [
+            "INVALID_NUMERIC_VALUE"
+          ],
+          "issues": [
+            {
+              "code": "INVALID_NUMERIC_VALUE",
+              "evidence_fields": [
+                "requested_loan_amount"
+              ],
+              "output": "Inconsistent Information",
+              "reason": "Requested loan amount must be greater than zero."
+            }
+          ],
+          "outputs": [
+            "Inconsistent Information"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_text",
+            "requested_loan_amount"
+          ],
+          "manual_review_required": false,
+          "reason": "The stated loan purpose of paying for a professional course fee directly contradicts a requested loan amount of 0, as making a payment requires loan proceeds.",
+          "semantic_issue_codes": [
+            "PURPOSE_FORM_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0280",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_outputs": [
+        "Complete"
+      ],
+      "result": {
+        "application_id": "APP_0280",
+        "flag_worthy": false,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2138.530291005736,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 60,
+          "prompt_tokens": 380,
+          "retry_errors": [],
+          "total_tokens": 650
+        },
+        "outputs": [
+          "Complete"
+        ],
+        "rule_result": {
+          "application_id": "APP_0280",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The stated loan purpose clearly describes consolidating personal debts, which directly matches the debt consolidation category without contradiction or ambiguity.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0281",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_outputs": [
+        "Complete"
+      ],
+      "result": {
+        "application_id": "APP_0281",
+        "flag_worthy": false,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2497.407374990871,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 44,
+          "prompt_tokens": 378,
+          "retry_errors": [],
+          "total_tokens": 649
+        },
+        "outputs": [
+          "Complete"
+        ],
+        "rule_result": {
+          "application_id": "APP_0281",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The stated loan purpose is clear and directly consistent with the selected small business category.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0282",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_outputs": [
+        "Complete"
+      ],
+      "result": {
+        "application_id": "APP_0282",
+        "flag_worthy": false,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2026.0316249914467,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 43,
+          "prompt_tokens": 378,
+          "retry_errors": [],
+          "total_tokens": 646
+        },
+        "outputs": [
+          "Complete"
+        ],
+        "rule_result": {
+          "application_id": "APP_0282",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The loan purpose text is specific and aligns directly with the selected loan purpose category of home repair.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0283",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_outputs": [
+        "Complete"
+      ],
+      "result": {
+        "application_id": "APP_0283",
+        "flag_worthy": false,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2369.760583009338,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 40,
+          "prompt_tokens": 378,
+          "retry_errors": [],
+          "total_tokens": 647
+        },
+        "outputs": [
+          "Complete"
+        ],
+        "rule_result": {
+          "application_id": "APP_0283",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The declared loan purpose text is clear and consistent with the selected loan purpose category.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0284",
+      "eval_slice": "missing_document",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Missing Documents"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Missing Documents"
+      ],
+      "result": {
+        "application_id": "APP_0284",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2134.6856669988483,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 43,
+          "prompt_tokens": 377,
+          "retry_errors": [],
+          "total_tokens": 666
+        },
+        "outputs": [
+          "Missing Documents"
+        ],
+        "rule_result": {
+          "application_id": "APP_0284",
+          "flag_worthy": true,
+          "issue_codes": [
+            "MISSING_IDENTITY_PROOF"
+          ],
+          "issues": [
+            {
+              "code": "MISSING_IDENTITY_PROOF",
+              "evidence_fields": [
+                "identity_proof_present"
+              ],
+              "output": "Missing Documents",
+              "reason": "Identity proof is missing."
+            }
+          ],
+          "outputs": [
+            "Missing Documents"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The loan purpose text is clear, sufficiently specific, and consistent with the selected loan purpose category.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0285",
+      "eval_slice": "clean",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_outputs": [
+        "Complete"
+      ],
+      "result": {
+        "application_id": "APP_0285",
+        "flag_worthy": false,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2285.10608401848,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 50,
+          "prompt_tokens": 375,
+          "retry_errors": [],
+          "total_tokens": 552
+        },
+        "outputs": [
+          "Complete"
+        ],
+        "rule_result": {
+          "application_id": "APP_0285",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [],
+          "manual_review_required": false,
+          "reason": "The stated loan purpose clearly describes an educational expense that aligns with the selected category, with no semantic contradictions detected.",
+          "semantic_issue_codes": [],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0286",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0286",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2452.5707089924254,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 89,
+          "prompt_tokens": 401,
+          "retry_errors": [],
+          "total_tokens": 767
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0286",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_category",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The declared loan_purpose_category is EDUCATION, but the loan_purpose_text explicitly states that educational expenses are already covered and the funds will be used to purchase a motorcycle for delivery work.",
+          "semantic_issue_codes": [
+            "PURPOSE_CATEGORY_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0287",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0287",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 3634.0234169911128,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 82,
+          "prompt_tokens": 400,
+          "retry_errors": [],
+          "total_tokens": 782
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0287",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_category",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The applicant states that insurance covered the surgery and the loan proceeds will instead be used to complete a home room extension, which directly contradicts the selected medical expense category.",
+          "semantic_issue_codes": [
+            "PURPOSE_CATEGORY_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0288",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0288",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 3929.72391701187,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 116,
+          "prompt_tokens": 403,
+          "retry_errors": [],
+          "total_tokens": 1022
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0288",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_category",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The declared loan_purpose_category is SMALL_BUSINESS, but the loan_purpose_text describes transferring funds to a cousin's cryptocurrency trading account without business ownership or operations, contradicting the chosen category.",
+          "semantic_issue_codes": [
+            "PURPOSE_CATEGORY_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0289",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0289",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 3092.3451670096256,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 73,
+          "prompt_tokens": 399,
+          "retry_errors": [],
+          "total_tokens": 949
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0289",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_category",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The loan purpose text clearly describes using the funds for vacation travel and hotel expenses rather than home repairs, contradicting the declared HOME_REPAIR category.",
+          "semantic_issue_codes": [
+            "PURPOSE_CATEGORY_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0290",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0290",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 3799.098374991445,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 111,
+          "prompt_tokens": 402,
+          "retry_errors": [],
+          "total_tokens": 1122
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0290",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_category",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The stated loan purpose text specifies using funds for card games at a casino and affirms that all debts are already settled, directly contradicting the selected category of DEBT_CONSOLIDATION.",
+          "semantic_issue_codes": [
+            "PURPOSE_CATEGORY_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0291",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0291",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 3167.885375005426,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 84,
+          "prompt_tokens": 402,
+          "retry_errors": [],
+          "total_tokens": 980
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0291",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_category",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The declared loan_purpose_category is SMALL_BUSINESS, but the loan_purpose_text clearly states that the loan funds will be used for a personal apartment deposit for the applicant's son.",
+          "semantic_issue_codes": [
+            "PURPOSE_CATEGORY_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0292",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0292",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2643.01187498495,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 95,
+          "prompt_tokens": 402,
+          "retry_errors": [],
+          "total_tokens": 835
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0292",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_category",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The applicant states that no repair work will be carried out and the loan proceeds will be invested in futures contracts, which directly contradicts the selected category of HOME_REPAIR.",
+          "semantic_issue_codes": [
+            "PURPOSE_CATEGORY_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0293",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0293",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 3369.141250004759,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 81,
+          "prompt_tokens": 406,
+          "retry_errors": [],
+          "total_tokens": 961
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0293",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_category",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The loan purpose category is listed as VEHICLE, but the loan purpose text explicitly states that the vehicle replacement was cancelled and the funds will instead be used for a local temple construction fund.",
+          "semantic_issue_codes": [
+            "PURPOSE_CATEGORY_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0294",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0294",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2999.014333006926,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 113,
+          "prompt_tokens": 405,
+          "retry_errors": [],
+          "total_tokens": 861
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0294",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_category",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The stated loan purpose text explicitly cancels the vehicle purchase and designates the funds for operating expenses of a cousin's new company, directly contradicting the selected loan_purpose_category of VEHICLE.",
+          "semantic_issue_codes": [
+            "PURPOSE_CATEGORY_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0295",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0295",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 3687.476874998538,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 109,
+          "prompt_tokens": 403,
+          "retry_errors": [],
+          "total_tokens": 1035
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0295",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_category",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The declared category is DEBT_CONSOLIDATION, but the loan purpose text explicitly states that prior balances are already paid and the funds will be used to purchase cryptocurrency.",
+          "semantic_issue_codes": [
+            "PURPOSE_CATEGORY_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0296",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0296",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2208.202166017145,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 106,
+          "prompt_tokens": 397,
+          "retry_errors": [],
+          "total_tokens": 694
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0296",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_category",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The applicant states that the funds will be used for an elderly relative's urgent hospital procedure instead of education, which directly contradicts the declared loan purpose category.",
+          "semantic_issue_codes": [
+            "PURPOSE_CATEGORY_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0297",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0297",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2681.162749999203,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 116,
+          "prompt_tokens": 398,
+          "retry_errors": [],
+          "total_tokens": 821
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0297",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_category",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The applicant's loan purpose text explicitly states that no medical treatment is required and that the funds will be used for a studio photography package and cosmetics, directly contradicting the selected category of MEDICAL_EXPENSE.",
+          "semantic_issue_codes": [
+            "PURPOSE_CATEGORY_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0298",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0298",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 3450.9970840008464,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 108,
+          "prompt_tokens": 402,
+          "retry_errors": [],
+          "total_tokens": 878
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0298",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_category",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The declared category is SMALL_BUSINESS, but the text explicitly states the funds will not be used for the business and will instead be used to repay personal online loans.",
+          "semantic_issue_codes": [
+            "PURPOSE_CATEGORY_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0299",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0299",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2772.847250016639,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 121,
+          "prompt_tokens": 405,
+          "retry_errors": [],
+          "total_tokens": 955
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0299",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_category",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The selected loan purpose category is DEBT_CONSOLIDATION, but the loan purpose text explicitly states that all debt balances are already settled and the loan proceeds will be used as a business investment in an overseas fish-farming project.",
+          "semantic_issue_codes": [
+            "PURPOSE_CATEGORY_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0300",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_manual_review": false,
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ],
+      "result": {
+        "application_id": "APP_0300",
+        "flag_worthy": true,
+        "model_call": {
+          "attempt_count": 1,
+          "latency_ms": 2980.719917017268,
+          "model": "gemini-3.8-flash",
+          "output_tokens": 97,
+          "prompt_tokens": 398,
+          "retry_errors": [],
+          "total_tokens": 805
+        },
+        "outputs": [
+          "Inconsistent Information"
+        ],
+        "rule_result": {
+          "application_id": "APP_0300",
+          "flag_worthy": false,
+          "issue_codes": [],
+          "issues": [],
+          "outputs": [
+            "Complete"
+          ],
+          "system": "rule_only_baseline"
+        },
+        "semantic_result": {
+          "evidence_fields": [
+            "loan_purpose_category",
+            "loan_purpose_text"
+          ],
+          "manual_review_required": false,
+          "reason": "The loan purpose text states the funds will be used for medical tests and treatment rather than the declared education category.",
+          "semantic_issue_codes": [
+            "PURPOSE_CATEGORY_CONTRADICTION"
+          ],
+          "status": "success"
+        },
+        "system": "rules_plus_llm"
+      }
+    }
+  ],
+  "release_conditions": {
+    "precision_minimum": 0.7,
+    "recall_minimum": 0.9
+  },
+  "system": "rules_plus_llm",
+  "usage": {
+    "output_tokens": 3322,
+    "prompt_tokens": 16942,
+    "retry_count_for_successful_calls": 7,
+    "semantic_failures": 6,
+    "successful_model_calls": 44,
+    "total_attempts_for_successful_calls": 51,
+    "total_latency_ms": 269305.55349809583,
+    "total_tokens": 41894
+  }
+}
