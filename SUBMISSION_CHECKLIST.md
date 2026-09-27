@@ -25,7 +25,7 @@ The supplied materials do not establish the report word limit, recording duratio
 - [x] Precision, recall, F1, confusion counts, and manual-review rate reported.
 - [x] Token use and cost analysis included.
 - [x] Failure controls and human-review contract documented.
-- [x] Twenty-one offline tests passing.
+- [x] Twenty-eight offline tests passing.
 - [x] API key excluded through `.gitignore`.
 - [x] Run the clean-machine installation and reproduction check.
 - [x] Initialize a local Git repository on the `main` branch.
@@ -35,17 +35,25 @@ The supplied materials do not establish the report word limit, recording duratio
 
 ## Trade-off report
 
-- [x] English first-person draft completed.
+- [x] English first-person Markdown report completed.
 - [x] One problem, one primary user, and explicit non-use stated.
+- [x] Closest publicly documented commercial tool and exact project gap researched and cited.
+- [x] Known pain estimate separated from unmeasured review time, rework, labour cost, and savings.
 - [x] Build-versus-buy decision explained layer by layer.
+- [x] Streamlit serving, rented Gemini service, low-code decision, and qualitative time-to-deploy stated.
 - [x] Rule-only baseline and target thresholds stated.
 - [x] Final results and 15-case slice reported.
+- [x] Abstention quality reported: 100% appropriate-review capture and 20% unnecessary-review rate among clean cases.
+- [x] Leakage controls and the absence of a genuine before/after leakage experiment stated.
+- [x] IMDA Model Artificial Intelligence Governance Framework, Second Edition named and mapped to controls.
+- [x] Absence of independent domain review retained as a limitation.
 - [x] Central trade-off explicitly defended.
 - [x] Cost-to-serve and sensitivity included.
 - [x] Risks paired with implemented controls.
 - [x] Limitations stated without production claims.
 - [ ] Confirm required word count and file format.
-- [ ] Student performs final factual and language review.
+- [x] First-person, spelling, grammar, and internal-consistency pass completed for the Markdown report.
+- [ ] Student performs a final personal factual review.
 - [ ] Export the approved report to the required submission format.
 
 ## Recorded demonstration

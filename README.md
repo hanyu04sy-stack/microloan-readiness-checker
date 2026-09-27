@@ -177,7 +177,7 @@ python3 scripts/show_demo.py --case APP_0264
 - `EVALUATION_REPORT.md`: final baseline-versus-hybrid analysis.
 - `ECONOMICS_ANALYSIS.md`: observed token use and cost-to-serve scenarios.
 - `FAILURE_CONTROLS.md`: failure register, guardrails, and human-review contract.
-- `TRADE_OFF_REPORT_DRAFT.md`: first-person report draft.
+- `TRADE_OFF_REPORT.md`: first-person trade-off report.
 - `DEMO_SCRIPT.md`: modular recorded-demonstration script.
 - `SUBMISSION_CHECKLIST.md`: confirmed requirements and remaining submission checks.
 - `RAG_PROTOTYPE.md`: optional project-defined RAG architecture and limitations.

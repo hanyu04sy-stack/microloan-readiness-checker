@@ -8,7 +8,7 @@ Status: content-complete draft. The supplied materials do not specify a required
 2. Increase the terminal font size so JSON is readable.
 3. Do not display `.env` or the Gemini API key.
 4. Keep these files ready in the editor:
-   - `TRADE_OFF_REPORT_DRAFT.md`
+   - `TRADE_OFF_REPORT.md`
    - `EVALUATION_REPORT.md`
    - `FAILURE_CONTROLS.md`
 5. Run the offline test suite once before recording:
