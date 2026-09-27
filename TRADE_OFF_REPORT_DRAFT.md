@@ -37,7 +37,7 @@ Gemini owns a smaller semantic task: deciding whether the purpose text is too va
 
 I did not use retrieval-augmented generation because the task does not require answers grounded in a document collection. I did not use an agent because one application requires one semantic judgement, not a variable multi-step loop with tools. Adding an agent would add latency, cost, irreversible-action risk, and more failure modes without buying capability for this problem.
 
-I also did not build a graphical interface. The proposal made Streamlit optional, while the required first version was one application, one rule check, one LLM check, and one structured result. I prioritised a reproducible command-line system, evaluation harness, and guardrails over presentation polish.
+I treated the graphical interface as a presentation layer rather than the core system. The proposal made Streamlit optional, while the required first version was one application, one rule check, one LLM check, and one structured result. I first completed the reproducible command-line system, evaluation harness, and guardrails, then added a thin Streamlit interface that calls the same tested functions without changing the evaluation path.
 
 ## 3. Build-versus-buy decision
 

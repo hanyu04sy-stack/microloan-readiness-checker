@@ -87,6 +87,24 @@ PYTHONPATH=src python3 -m microloan_checker.hybrid_cli \
 
 The submitted proposal initially named Gemini 2.5 Flash. During implementation, the live API reported that `gemini-2.5-flash` was unavailable to new users and explicitly recommended `gemini-3.8-flash`. The student approved the fixed replacement model on 27 September 2026. Results must identify the model actually used.
 
+## Run the Streamlit interface
+
+The optional interface is a thin presentation layer over the same tested rule
+and hybrid functions. Opening or editing the form does not call Gemini. A live
+call occurs only after selecting `Rules + Gemini` and clicking the run button.
+
+```bash
+python3 -m pip install -e '.[app]'
+set -a
+source .env
+set +a
+streamlit run streamlit_app.py
+```
+
+For a fully offline demonstration, select `Rule-only baseline`; no API key or
+Gemini quota is used. The examples load application inputs only and never read
+the frozen ground-truth label file.
+
 ## Data status
 
 The reproducible generator and assembly script create:

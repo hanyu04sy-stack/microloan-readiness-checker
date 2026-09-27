@@ -17,13 +17,20 @@ Status: content-complete draft. The supplied materials do not specify a required
 python3 -m unittest discover -s tests -q
 ```
 
+6. Start the interface in a second terminal. Load the API key into the process
+   only if the recording will include one intentionally triggered live call:
+
+```bash
+streamlit run streamlit_app.py
+```
+
 ## Segment 1 - problem and boundary
 
 Say:
 
 > My project is an AI-assisted microloan application readiness checker for a Credit Operations Officer. It checks whether application materials are complete or internally inconsistent before formal credit assessment. It does not score credit, approve or reject a loan, set a price or limit, contact a customer, or use external credit data.
 
-Show the `Current scope` section of `README.md`.
+Show the scope-boundary panel at the top of the Streamlit interface.
 
 ## Segment 2 - architecture and trade-off
 
@@ -41,7 +48,15 @@ Then open `src/microloan_checker/semantic.py` and briefly show the structured re
 
 ## Segment 3 - reproducibility and tests
 
-Run:
+In the Streamlit interface, leave `Rule-only baseline` selected, load the sample
+complete application, and click `Run readiness check`. Show the `Complete`
+result, the absence of deterministic findings, and the structured audit output.
+
+Say:
+
+> The interface is a thin presentation layer over the same tested functions. It does not read evaluation labels, and changing the form does not call Gemini. A live semantic call occurs only when I explicitly select Rules plus Gemini and submit the form.
+
+Then run:
 
 ```bash
 python3 -m unittest discover -s tests -v
@@ -49,7 +64,7 @@ python3 -m unittest discover -s tests -v
 
 Say:
 
-> These 21 offline tests do not call Gemini or consume quota. They cover data composition, leakage exclusions, deterministic rules, semantic response validation, failure fallback, and result merging.
+> These 24 offline tests do not call Gemini or consume quota. They cover data composition, leakage exclusions, deterministic rules, semantic response validation, failure fallback, result merging, and the interface-to-application mapping.
 
 ## Segment 4 - demonstrated silent failure
 
@@ -58,6 +73,11 @@ Run:
 ```bash
 python3 scripts/show_demo.py --case APP_0286
 ```
+
+Optionally load `APP_0286` in the Streamlit interface with the rule-only mode to
+show that the same rule path returns `Complete`. Use the committed demonstration
+helper for the frozen hybrid result; do not rerun the live evaluation for the
+recording.
 
 Say:
 

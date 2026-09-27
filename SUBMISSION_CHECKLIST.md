@@ -14,6 +14,7 @@ The supplied materials do not establish the report word limit, recording duratio
 - [x] Problem and out-of-scope boundary documented.
 - [x] Rule-only baseline implemented.
 - [x] Rules-plus-Gemini path implemented.
+- [x] Optional Streamlit demonstration interface implemented over the tested paths.
 - [x] Frozen 50-case final set included.
 - [x] Fifteen handwritten semantic cases included and separately reported.
 - [x] Ground truth stored separately from inputs.

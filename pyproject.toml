@@ -5,12 +5,14 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "microloan-readiness-checker"
 version = "0.1.0"
-description = "Rule-only baseline for the PE6201 microloan application readiness project"
+description = "Hybrid rule and Gemini microloan application readiness checker"
 requires-python = ">=3.10"
 dependencies = []
 
 [project.optional-dependencies]
 live = ["google-genai>=2.25,<3"]
+web = ["streamlit>=1.49,<2"]
+app = ["google-genai>=2.25,<3", "streamlit>=1.49,<2"]
 
 [project.scripts]
 microloan-rule-check = "microloan_checker.cli:main"
