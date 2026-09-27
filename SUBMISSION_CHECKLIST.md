@@ -25,7 +25,8 @@ The student confirmed from NTULearn on 27 September 2026 that the instructor spe
 - [x] Precision, recall, F1, confusion counts, and manual-review rate reported.
 - [x] Token use and cost analysis included.
 - [x] Failure controls and human-review contract documented.
-- [x] Twenty-eight offline tests passing.
+- [x] Thirty-three offline tests passing.
+- [x] Fixed prompt-injection suite and pre-model `Manual Review` guardrail implemented.
 - [x] API key excluded through `.gitignore`.
 - [x] Run the clean-machine installation and reproduction check.
 - [x] Initialize a local Git repository on the `main` branch.

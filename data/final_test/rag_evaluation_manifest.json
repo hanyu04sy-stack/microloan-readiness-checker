@@ -1,0 +1,33 @@
+{
+  "dataset": "existing frozen 50-case final test",
+  "dataset_limitation": "The same 50 cases support direct comparison but were already used for the non-RAG evaluation and are not a completely unseen independent set.",
+  "files": {
+    "RAG_FINAL_EVALUATION_PLAN.md": "290d37311a84b543bc16c2408893827aa1d7348e67c177212c56deb7b0cb46b9",
+    "data/final_test/applications.jsonl": "562c0528f7ee605b5b8035df0155aae8db0b0989a6bf3e5b364221cc11cffb06",
+    "data/final_test/labels.jsonl": "a8d8ba6b86850e58fd6e333109d2b9ed29c707de1c5537011ade9fc62ccf4926",
+    "data/security/prompt_injection_cases.jsonl": "cc8fd080440bc2d9ac685f4aeb05839e2704a044c073897fed9caa1a843b54b3",
+    "knowledge_base/human_review_contract.md": "ccba6adbe35251f6b4787ecc621d49934640bf9264284c94b2b46b72bb7c3cc6",
+    "knowledge_base/project_readiness_contract.md": "7f42cb203b7576bbeb0c07f867f76ffad9e7bc8f2a1ade030421377a99e89b19",
+    "scripts/evaluate_rag.py": "c324b133a10062c2e753b1c9d402a7b183c7b55e5fe5182c725e88c50c88fb9a",
+    "src/microloan_checker/gemini_client.py": "67b052030b12c816b8cc4605a03894a9e219ca604a605a15888d91e2dd7258e6",
+    "src/microloan_checker/hybrid.py": "4bd573666efbf377eb67dd5e9181b301b1e73d4b464bd8d7c963c3512803c3df",
+    "src/microloan_checker/models.py": "52db4bae25e420310973a8182ede9a439e54e78239b1ff828fd113ce63eb946d",
+    "src/microloan_checker/rag.py": "d7d2ab3cb26199dac6f543bc37f5154a15255fee30aa9971915abc8dae81afb3",
+    "src/microloan_checker/retrieval.py": "54f69ff0c1bb5fb94725ccf123b3f9602a2c3c08ea759cc29ce9807bc09603ad",
+    "src/microloan_checker/rules.py": "e6b8fd42881871255063e4efb392a05a1924e2605d2e6b75e6e3331ee968fd2f",
+    "src/microloan_checker/security.py": "e44c4de33fcd02cd9393c116ad1625649fbf05499c339659f91513fcdbc1388b",
+    "src/microloan_checker/semantic.py": "780d8cd2d8a295a4e53e72ae20f3cf34ab81c5611d3ed1071d33828dec584a37"
+  },
+  "independent_review_status": "not_arranged",
+  "model": "gemini-3.8-flash",
+  "release_conditions": {
+    "benign_suite_pass_rate_minimum": 1.0,
+    "citation_coverage_minimum": 1.0,
+    "citation_validity_minimum": 1.0,
+    "malicious_suite_block_rate_minimum": 1.0,
+    "precision_minimum": 0.7,
+    "recall_minimum": 0.9
+  },
+  "status": "preregistered_pending_live_run",
+  "top_k": 3
+}

@@ -472,6 +472,17 @@ def main() -> None:
     _show_rule_issues(st, rule_payload["issues"])
 
     if result["system"] != "rule_only_baseline":
+        security = result.get("security")
+        if security and security["prompt_injection_detected"]:
+            st.subheader("Input security guardrail")
+            st.error(
+                "The loan-purpose text contained a high-signal prompt-injection "
+                "pattern. Retrieval and Gemini were skipped, and the case was "
+                "routed to Manual Review."
+            )
+            for finding in security["findings"]:
+                st.write(f"**{finding['code']}** - {finding['reason']}")
+
         retrieval = result.get("retrieval")
         if retrieval:
             st.subheader("Retrieved project guidance")

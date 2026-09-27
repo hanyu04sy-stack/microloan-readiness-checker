@@ -1,9 +1,10 @@
-# Project-defined RAG Prototype
+# Project-defined RAG Final Candidate
 
 ## Status
 
-The optional RAG path is implemented and covered by offline tests. It has not
-been run as a new frozen 50-case experiment, so the repository's existing
+The RAG path is implemented, selected as the final candidate, and covered by
+offline tests. It has not yet completed the preregistered 50-case experiment,
+so the repository's existing
 headline precision, recall, F1, cost, and manual-review figures continue to
 describe the evaluated Rules plus Gemini system, not the RAG prototype.
 
@@ -21,6 +22,7 @@ are not indexed.
 application
   -> strict schema validation
   -> deterministic rule checks
+  -> deterministic prompt-injection guardrail
   -> lexical retrieval from the bounded project corpus
   -> one structured Gemini call with retrieved context
   -> response and citation validation
@@ -33,6 +35,14 @@ a dependency-free BM25-style lexical score. The semantic call receives the top
 three chunks. Its response must cite one or more retrieved chunk identifiers;
 an absent, duplicated, or unknown citation invalidates the response and routes
 the case to `Manual Review`.
+
+Before retrieval, a deterministic guardrail detects fixed high-signal attempts
+to override instructions, disclose prompts, impersonate privileged roles,
+force readiness outputs, or spoof source identifiers. A detected pattern skips
+retrieval and Gemini, preserves deterministic findings, and routes the case to
+`Manual Review`. The fixed test set contains six attacks and six benign phrases;
+all currently produce the expected guardrail decision. This does not establish
+protection against every paraphrase or obfuscated attack.
 
 ## Knowledge sources
 
@@ -63,5 +73,5 @@ occurs only after the user submits the form.
 - It does not inherit the completed 50-case performance figures.
 - It is not an agent: there is no planning loop, tool selection, or autonomous
   action.
-- It needs a separately frozen comparison against the non-RAG hybrid before
-  any performance or cost advantage can be claimed.
+- It needs the preregistered comparison in `RAG_FINAL_EVALUATION_PLAN.md` before
+  any final RAG performance or cost claim can be made.

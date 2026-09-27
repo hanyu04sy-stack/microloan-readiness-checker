@@ -110,7 +110,7 @@ from the bounded `knowledge_base` corpus before making one structured Gemini
 call. The page displays retrieved chunks and validated citations. This corpus is
 project-defined coursework guidance, not real bank policy.
 
-## Optional project-defined RAG path
+## Final RAG candidate
 
 The RAG implementation uses dependency-free BM25-style lexical retrieval over
 the project readiness and human-review contracts. It does not index course
@@ -125,8 +125,9 @@ PYTHONPATH=src python3 -m microloan_checker.rag_cli \
 ```
 
 See `RAG_PROTOTYPE.md` for the architecture, corpus boundary, citation control,
-and evaluation status. The existing 50-case metrics do not apply to this new
-RAG path until a separately frozen comparison is completed.
+security guardrail, and evaluation status. The RAG path is now the selected
+final candidate, but the existing 50-case metrics do not apply to it until the
+preregistered RAG comparison is completed.
 
 ## Data status
 

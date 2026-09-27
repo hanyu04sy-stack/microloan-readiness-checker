@@ -120,7 +120,7 @@ The merger never allows the LLM to erase a deterministic finding. Missing-docume
 
 I implemented bounded retries only for 503/`UNAVAILABLE`. I disabled automatic SDK retries so that two retry layers could not multiply calls unexpectedly. Quota failures are logged separately and are not treated as model predictions. The run checkpoints after every finalized case, allowing it to resume without repeating completed applications.
 
-The repository currently passes 28 unit tests. These cover data composition, leakage exclusions, application validation, rule behaviour, semantic schema, deterministic merger, failure fallback, token metadata, interface mapping, retrieval relevance, prompt grounding, and citation validation.
+The repository currently passes 33 unit tests. These cover data composition, leakage exclusions, application validation, rule behaviour, semantic schema, deterministic merger, failure fallback, token metadata, interface mapping, retrieval relevance, prompt grounding, citation validation, RAG evaluation metrics, and the fixed prompt-injection guardrail suite.
 
 ## 6. Evaluation design
 
@@ -185,7 +185,7 @@ Semantic misclassification may be invisible, but every system output is reversib
 | Ground-truth leakage | Separate labels and minimized semantic payload | Synthetic design bias remains. |
 | Runaway retry cost | One SDK attempt plus bounded project retry; log usage | A production monthly budget is not defined. |
 | Automation bias | Show original fields, rule findings, reason, evidence, and API status | No real reviewer study has been run. |
-| Prompt injection in purpose text | No tools, external communications, real private data, or credit authority | A dedicated adversarial test and code guardrail remain open. |
+| Prompt injection in purpose text | A deterministic high-signal guardrail runs before retrieval and Gemini; detected attacks skip the model and become `Manual Review`; six fixed attacks and six benign controls pass | Obfuscated, paraphrased, multilingual, or unfamiliar attacks may evade pattern matching. |
 
 Human review has three defined parts. The window is after the readiness result and before formal credit assessment. The evidence includes relevant application fields, issue codes, reasons, cited evidence fields, deterministic findings, and semantic-call status. The Credit Operations Officer may confirm readiness, request correction or documents, keep the case in manual review, or override the readiness label with a reason. The officer may not use this tool to approve or reject a loan or change its terms.
 
@@ -201,7 +201,7 @@ I also accept a rented-model dependency rather than training a model. At this sc
 
 The project has six material limitations.
 
-First, all data are synthetic. The experiment does not establish prevalence, accuracy, time saving, or economic value in a real institution. Second, the 15 student-written semantic cases meet the instructor's requested challenge-case format but have no independent lending-domain reviewer; I do not describe them as independently validated. Third, one false positive exposed a possible label ambiguity that should be reviewed only in a future version. Fourth, six provider failures increased manual workload. Fifth, prompt injection and production drift monitoring remain incomplete. Sixth, the optional RAG corpus contains project-defined guidance rather than real lender policy, and the RAG path has not received a new frozen 50-case evaluation.
+First, all data are synthetic. The experiment does not establish prevalence, accuracy, time saving, or economic value in a real institution. Second, the 15 student-written semantic cases meet the instructor's requested challenge-case format but have no independent lending-domain reviewer; I do not describe them as independently validated. Third, one false positive exposed a possible label ambiguity that should be reviewed only in a future version. Fourth, six provider failures increased manual workload. Fifth, prompt-injection coverage is limited to a fixed high-signal suite, and production drift monitoring remains incomplete. Sixth, the RAG corpus contains project-defined guidance rather than real lender policy, and the RAG path has not yet completed its preregistered 50-case evaluation.
 
 A next version should obtain independent domain review of the semantic labels, test the system on appropriately governed representative data, add an adversarial prompt-injection suite and code-level escalation rule, and monitor input distribution, output balance, override rate, reopened cases, delayed labels, and sliced accuracy. Those changes should be versioned and evaluated against a new frozen set rather than inserted into this completed experiment.
 

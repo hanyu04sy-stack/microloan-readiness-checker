@@ -10,6 +10,7 @@ from typing import Any, Mapping
 from .hybrid import HybridResult, run_hybrid
 from .models import Application, DataValidationError
 from .retrieval import ProjectKnowledgeRetriever, RetrievedChunk
+from .security import SecurityFinding, detect_prompt_injection
 from .semantic import (
     SEMANTIC_RESPONSE_SCHEMA,
     ModelCall,
@@ -26,6 +27,7 @@ class RagHybridResult:
     hybrid_result: HybridResult
     retrieved_chunks: tuple[RetrievedChunk, ...]
     cited_chunk_ids: tuple[str, ...]
+    security_findings: tuple[SecurityFinding, ...]
 
     def to_dict(self) -> dict[str, Any]:
         payload = self.hybrid_result.to_dict()
@@ -34,6 +36,10 @@ class RagHybridResult:
             "corpus_status": "project-defined coursework knowledge, not bank policy",
             "retrieved_chunks": [item.to_dict() for item in self.retrieved_chunks],
             "cited_chunk_ids": list(self.cited_chunk_ids),
+        }
+        payload["security"] = {
+            "prompt_injection_detected": bool(self.security_findings),
+            "findings": [item.to_dict() for item in self.security_findings],
         }
         return payload
 
@@ -127,8 +133,19 @@ class RagSemanticChecker:
         self.top_k = top_k
         self.last_retrieved_chunks: tuple[RetrievedChunk, ...] = ()
         self.last_cited_chunk_ids: tuple[str, ...] = ()
+        self.last_security_findings: tuple[SecurityFinding, ...] = ()
 
     def check(self, application: Application) -> SemanticCheckResult:
+        self.last_security_findings = detect_prompt_injection(
+            application.loan_purpose_text
+        )
+        if self.last_security_findings:
+            self.last_retrieved_chunks = ()
+            self.last_cited_chunk_ids = ()
+            codes = ", ".join(item.code for item in self.last_security_findings)
+            return SemanticCheckResult.failure(
+                "PromptInjectionDetected: " + codes
+            )
         self.last_retrieved_chunks = self.retriever.retrieve(
             build_retrieval_query(application), top_k=self.top_k
         )
@@ -168,4 +185,5 @@ def run_rag_hybrid(
         hybrid_result=hybrid_result,
         retrieved_chunks=checker.last_retrieved_chunks,
         cited_chunk_ids=checker.last_cited_chunk_ids,
+        security_findings=checker.last_security_findings,
     )
