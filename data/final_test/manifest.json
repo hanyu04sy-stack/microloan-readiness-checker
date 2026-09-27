@@ -1,0 +1,29 @@
+{
+  "applications": 50,
+  "files": {
+    "applications.jsonl": "562c0528f7ee605b5b8035df0155aae8db0b0989a6bf3e5b364221cc11cffb06",
+    "labels.jsonl": "a8d8ba6b86850e58fd6e333109d2b9ed29c707de1c5537011ade9fc62ccf4926"
+  },
+  "frozen_input_hashes": {
+    "gemini_client.py": "67b052030b12c816b8cc4605a03894a9e219ca604a605a15888d91e2dd7258e6",
+    "handwritten_semantic_template.csv": "af7ac986243dba746ef3b997ec0b551f89c4213ea44a1d3e11211fd628f30900",
+    "rules.py": "fa1a14c6f3dd4ca612a977e4aa79198336c1bb6845d21a42b00526e643377cbd",
+    "semantic.py": "780d8cd2d8a295a4e53e72ae20f3cf34ab81c5611d3ed1071d33828dec584a37"
+  },
+  "hybrid_model": "gemini-3.8-flash",
+  "id_range": [
+    "APP_0251",
+    "APP_0300"
+  ],
+  "independent_review_status": "not_arranged",
+  "model_change_note": "The proposal named Gemini 2.5 Flash. The live API reported that it was unavailable to new users and recommended Gemini 3.8 Flash; the student approved the replacement on 27 September 2026.",
+  "provenance_note": "APP_0286 through APP_0300 originated as student-supplied Chinese scenarios and were translated and revised in English with AI assistance.",
+  "slice_counts": {
+    "ambiguous_purpose": 5,
+    "clean": 20,
+    "handwritten_semantic_contradiction": 15,
+    "missing_document": 5,
+    "numeric_or_field_contradiction": 5
+  },
+  "status": "frozen"
+}

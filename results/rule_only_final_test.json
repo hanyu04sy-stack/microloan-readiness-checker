@@ -1,0 +1,722 @@
+{
+  "metrics": {
+    "ambiguous_purpose": {
+      "f1": 0.0,
+      "false_negative": 5,
+      "false_positive": 0,
+      "manual_review_rate": 0.0,
+      "precision": null,
+      "recall": 0.0,
+      "true_negative": 0,
+      "true_positive": 0
+    },
+    "deterministic": {
+      "f1": 1.0,
+      "false_negative": 0,
+      "false_positive": 0,
+      "manual_review_rate": 0.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "true_negative": 0,
+      "true_positive": 10
+    },
+    "full_test": {
+      "f1": 0.5,
+      "false_negative": 20,
+      "false_positive": 0,
+      "manual_review_rate": 0.0,
+      "precision": 1.0,
+      "recall": 0.3333333333333333,
+      "true_negative": 20,
+      "true_positive": 10
+    },
+    "handwritten_semantic": {
+      "f1": 0.0,
+      "false_negative": 15,
+      "false_positive": 0,
+      "manual_review_rate": 0.0,
+      "precision": null,
+      "recall": 0.0,
+      "true_negative": 0,
+      "true_positive": 0
+    }
+  },
+  "passes_release_conditions": false,
+  "predictions": [
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0251",
+      "eval_slice": "numeric_or_field_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_issue_codes": [
+        "BANK_INFLOW_MISMATCH"
+      ],
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0252",
+      "eval_slice": "numeric_or_field_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_issue_codes": [
+        "INVALID_NUMERIC_VALUE"
+      ],
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0253",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0254",
+      "eval_slice": "missing_document",
+      "expected_outputs": [
+        "Missing Documents"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_issue_codes": [
+        "MISSING_BANK_STATEMENT"
+      ],
+      "predicted_outputs": [
+        "Missing Documents"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0255",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0256",
+      "eval_slice": "missing_document",
+      "expected_outputs": [
+        "Missing Documents"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_issue_codes": [
+        "MISSING_INCOME_PROOF"
+      ],
+      "predicted_outputs": [
+        "Missing Documents"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0257",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0258",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0259",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0260",
+      "eval_slice": "ambiguous_purpose",
+      "expected_outputs": [
+        "Manual Review"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0261",
+      "eval_slice": "ambiguous_purpose",
+      "expected_outputs": [
+        "Manual Review"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0262",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0263",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0264",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0265",
+      "eval_slice": "missing_document",
+      "expected_outputs": [
+        "Missing Documents"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_issue_codes": [
+        "MISSING_IDENTITY_PROOF"
+      ],
+      "predicted_outputs": [
+        "Missing Documents"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0266",
+      "eval_slice": "numeric_or_field_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_issue_codes": [
+        "DECLARED_INCOME_MISMATCH"
+      ],
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0267",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0268",
+      "eval_slice": "missing_document",
+      "expected_outputs": [
+        "Missing Documents"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_issue_codes": [
+        "MISSING_BANK_STATEMENT"
+      ],
+      "predicted_outputs": [
+        "Missing Documents"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0269",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0270",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0271",
+      "eval_slice": "ambiguous_purpose",
+      "expected_outputs": [
+        "Manual Review"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0272",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0273",
+      "eval_slice": "ambiguous_purpose",
+      "expected_outputs": [
+        "Manual Review"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0274",
+      "eval_slice": "numeric_or_field_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_issue_codes": [
+        "BANK_INFLOW_MISMATCH"
+      ],
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0275",
+      "eval_slice": "ambiguous_purpose",
+      "expected_outputs": [
+        "Manual Review"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0276",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0277",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0278",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0279",
+      "eval_slice": "numeric_or_field_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_issue_codes": [
+        "INVALID_NUMERIC_VALUE"
+      ],
+      "predicted_outputs": [
+        "Inconsistent Information"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0280",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0281",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0282",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0283",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0284",
+      "eval_slice": "missing_document",
+      "expected_outputs": [
+        "Missing Documents"
+      ],
+      "predicted_flag_worthy": true,
+      "predicted_issue_codes": [
+        "MISSING_IDENTITY_PROOF"
+      ],
+      "predicted_outputs": [
+        "Missing Documents"
+      ]
+    },
+    {
+      "actual_flag_worthy": false,
+      "application_id": "APP_0285",
+      "eval_slice": "clean",
+      "expected_outputs": [
+        "Complete"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0286",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0287",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0288",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0289",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0290",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0291",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0292",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0293",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0294",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0295",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0296",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0297",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0298",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0299",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    },
+    {
+      "actual_flag_worthy": true,
+      "application_id": "APP_0300",
+      "eval_slice": "handwritten_semantic_contradiction",
+      "expected_outputs": [
+        "Inconsistent Information"
+      ],
+      "predicted_flag_worthy": false,
+      "predicted_issue_codes": [],
+      "predicted_outputs": [
+        "Complete"
+      ]
+    }
+  ],
+  "release_conditions": {
+    "precision_minimum": 0.7,
+    "recall_minimum": 0.9
+  },
+  "system": "rule_only_baseline"
+}
