@@ -9,8 +9,16 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from pathlib import Path
 from typing import Any
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+SRC_ROOT = PROJECT_ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    # Keep the app runnable from this non-ASCII workspace path even when an
+    # editable-install .pth entry is not loaded by the local Python runtime.
+    sys.path.insert(0, str(SRC_ROOT))
 
 from microloan_checker.gemini_client import GeminiStructuredClient
 from microloan_checker.hybrid import run_hybrid
@@ -24,7 +32,6 @@ from microloan_checker.rules import run_rule_baseline
 from microloan_checker.semantic import SemanticChecker
 
 
-PROJECT_ROOT = Path(__file__).resolve().parent
 FINAL_APPLICATIONS = PROJECT_ROOT / "data" / "final_test" / "applications.jsonl"
 DEFAULT_MODEL = "gemini-3.8-flash"
 
