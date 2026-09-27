@@ -26,9 +26,9 @@ The supplied materials do not establish the report word limit, recording duratio
 - [x] API key excluded through `.gitignore`.
 - [x] Run the clean-machine installation and reproduction check.
 - [x] Initialize a local Git repository on the `main` branch.
-- [ ] Confirm no `.env`, API key, temporary file, or `__pycache__` is included in the submitted archive/repository.
-- [ ] Replace the placeholder Git author name and email, then create the first commit.
-- [ ] Add the final repository URL after publishing.
+- [x] Confirm no `.env`, API key, temporary file, or `__pycache__` is included in the submitted archive/repository.
+- [x] Replace the placeholder Git author name and email, then create the first commit.
+- [x] Publish the private repository: <https://github.com/hanyu04sy-stack/microloan-readiness-checker>.
 
 ## Trade-off report
 
