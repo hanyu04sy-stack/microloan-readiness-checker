@@ -74,7 +74,7 @@ The earlier non-RAG hybrid passes the two predefined numerical release condition
 - recall `1.000 >= 0.90`;
 - precision `0.857 >= 0.70`.
 
-The later final RAG candidate also passes, with precision and recall of 1.000 and the preregistered citation-identifier and fixed security-suite conditions satisfied. This remains a **pass for the coursework prototype evaluation**, not approval for production lending use. Production use is not supported because the data are synthetic and reused, the 15 handwritten cases have no independent reviewer, the knowledge base is not bank policy, and real privacy, drift, staffing, and workflow conditions have not been tested.
+The later final RAG candidate also passes, with precision and recall of 1.000 and the preregistered citation-identifier and fixed security-suite conditions satisfied. This remains a **pass for the coursework prototype evaluation**, not approval for production lending use. One independent reviewer subsequently agreed with all 15 handwritten case outputs and rated 14 citations fully supported and one partially supported. Production use is still not supported because the data are synthetic and reused, the review involved only one person, the knowledge base is not bank policy, and real privacy, drift, staffing, and workflow conditions have not been tested.
 
 ## 7. Reproducible evidence
 
@@ -88,4 +88,4 @@ The later final RAG candidate also passes, with precision and recall of 1.000 an
 
 The project-defined RAG candidate subsequently completed a preregistered run on the same frozen 50 cases. It achieved precision, recall, and F1 of 1.000, with 30 true positives, 20 true negatives, no false positives, and no false negatives. Its manual-review rate was 10%, appropriate-review capture was 100%, and unnecessary review among clean cases was 0%.
 
-All 50 calls returned successful structured responses without retry. Retrieval and citation coverage were 100%; all 109 cited identifiers belonged to the chunks retrieved for their cases. The run used 47,693 prompt tokens and 83,006 total tokens, took 194.176 seconds of reported model latency, and had an attributable direct model cost of USD 0.1682. These automated citation measures do not prove semantic support. The independent 15-case blind label and citation-support audit remains pending. Full evidence and interpretation are in `RAG_EVALUATION_REPORT.md`.
+All 50 calls returned successful structured responses without retry. Retrieval and citation coverage were 100%; all 109 cited identifiers belonged to the chunks retrieved for their cases. The run used 47,693 prompt tokens and 83,006 total tokens, took 194.176 seconds of reported model latency, and had an attributable direct model cost of USD 0.1682. The completed independent 15-case review found 100% blind output agreement, 14 fully supported citations, one partially supported citation, and no unsupported citation. Full evidence and interpretation are in `RAG_EVALUATION_REPORT.md`.

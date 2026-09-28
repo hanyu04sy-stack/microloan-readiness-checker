@@ -74,4 +74,4 @@ occurs only after the user submits the form.
 - It is not an agent: there is no planning loop, tool selection, or autonomous
   action.
 - Automated citation validation does not prove semantic citation support;
-  independent manual review remains pending.
+  the completed independent review rated 14 of 15 challenge-case citations fully supported and one partially supported.

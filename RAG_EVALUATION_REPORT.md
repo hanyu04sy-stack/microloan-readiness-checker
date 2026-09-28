@@ -1,6 +1,6 @@
 # Final RAG Evaluation Report
 
-Status: automated 50-case evaluation complete; independent semantic-label and citation-support review pending.
+Status: automated 50-case evaluation and two-stage independent review complete.
 
 ## Evaluation contract
 
@@ -32,7 +32,22 @@ The RAG run cannot by itself prove that retrieval caused the improvement over th
 | Citation coverage | 100% |
 | Citation-identifier validity | 100% |
 
-The schema requires at least one citation and allows only identifiers retrieved for that application. These figures establish coverage and identifier validity, not semantic support. Independent manual review of whether the cited passages support the model's conclusions remains pending.
+The schema requires at least one citation and allows only identifiers retrieved for that application. Those automated figures establish coverage and identifier validity. A subsequent independent review assessed semantic support for the 15 handwritten challenge cases.
+
+## Independent review
+
+An external reviewer, WU YUANYI, identified their role as a bank employee with undergraduate finance education and prior research on financial inclusion. Stage 1 was locked before the reviewer saw system outputs or citation materials. The reviewer independently assessed all 15 handwritten semantic cases. Stage 2 then presented the system output, reason, and cited project-defined passages for those same cases. The reviewer supplied every rating and explanation; the AI assistant only translated or formatted the supplied responses and recorded them in the review files.
+
+| Measure | Result |
+|---|---:|
+| Blind cases reviewed | 15 |
+| Blind output agreement | 15/15 (100%) |
+| Citations rated `SUPPORTED` | 14/15 |
+| Citations rated `PARTIAL` | 1/15 |
+| Citations rated `UNSUPPORTED` | 0/15 |
+| Fully supported citation rate | 93.3% |
+
+The partial case was `APP_0287`. The reviewer found that the citations supported the conclusion that a room extension is not a medical expense, but the project knowledge base did not define whether an extension belongs under `HOME_REPAIR`, `OTHER`, or another category. This does not change the case-level inconsistency judgment, but it exposes a real gap in the stated category taxonomy. One reviewer does not provide institutional validation, and the review does not turn project-defined guidance into real bank policy.
 
 ## Prompt-injection guardrail
 
@@ -58,7 +73,7 @@ The cost applies the dated price configuration to returned usage metadata. No co
 
 ## Decision and remaining boundary
 
-The automated RAG candidate passes all preregistered numerical, citation-identifier, and fixed security-suite conditions. It remains a coursework pre-check, not a production lending system. The knowledge base is project-defined guidance rather than real bank policy, the reused 50-case set is not a new independent holdout, and independent review of handwritten labels and citation support is pending.
+The RAG candidate passes all preregistered numerical, citation-identifier, fixed security-suite, and independent-review completion conditions. It remains a coursework pre-check, not a production lending system. The knowledge base is project-defined guidance rather than real bank policy, the reused 50-case set is not a new independent holdout, and the independent review used one reviewer rather than an institutional validation panel.
 
 Evidence files:
 
@@ -67,3 +82,4 @@ Evidence files:
 - `results/rag_live_checkpoint.json`
 - `data/security/prompt_injection_cases.jsonl`
 - `independent_review/`
+- `results/independent_review_summary.json`

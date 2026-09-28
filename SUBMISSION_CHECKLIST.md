@@ -48,8 +48,8 @@ The student confirmed from NTULearn on 27 September 2026 that the instructor spe
 - [x] Abstention quality reported: 100% appropriate-review capture and 20% unnecessary-review rate among clean cases.
 - [x] Leakage controls and the absence of a genuine before/after leakage experiment stated.
 - [x] IMDA Model Artificial Intelligence Governance Framework, Second Edition named and mapped to controls.
-- [x] Absence of independent domain review retained as a limitation.
-- [ ] External reviewer completes both independent-review stages and declaration.
+- [x] Independent review scope and single-reviewer limitation stated.
+- [x] External reviewer completed both independent-review stages and declaration.
 - [x] Central trade-off explicitly defended.
 - [x] Cost-to-serve and sensitivity included.
 - [x] Risks paired with implemented controls.

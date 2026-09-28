@@ -31,7 +31,7 @@ Evidence-backed review status on 27 September 2026: completed. Checked items bel
 - [x] The project contains 200 development, 50 validation, and 50 frozen final-test cases.
 - [x] The final test contains 20 clean, 5 missing-document, 5 numeric or field-contradiction, 5 ambiguous-purpose, and 15 handwritten semantic-contradiction cases.
 - [x] The 15 semantic cases originated from my own Chinese scenarios and were translated or revised in English with AI assistance.
-- [x] No independent lending-domain expert reviewed those 15 cases.
+- [x] WU YUANYI, who identified their role as a bank employee with finance education and financial-inclusion research experience, completed the two-stage independent review on 2026-09-28; this is one reviewer, not formal institutional assurance.
 - [x] Applications and labels were frozen separately before the final model evaluation.
 
 ## 5. Results and failures
@@ -47,7 +47,7 @@ Evidence-backed review status on 27 September 2026: completed. Checked items bel
 - [x] The separately frozen RAG run achieved precision, recall, and F1 of 1.000 with 30 true positives, 20 true negatives, no false positives, and no false negatives.
 - [x] The RAG run had a 10% manual-review rate, 100% appropriate-review capture, and 0% unnecessary review among clean cases.
 - [x] All 50 RAG calls succeeded without retry; retrieval coverage, citation coverage, and citation-identifier validity were 100%.
-- [x] Automated citation validity does not prove semantic citation support, and independent review remains pending.
+- [x] Automated citation validity did not by itself prove semantic support; the completed independent review rated 14 of 15 citations `SUPPORTED`, one `PARTIAL`, and none `UNSUPPORTED`.
 
 ## 6. Cost and evidence boundaries
 

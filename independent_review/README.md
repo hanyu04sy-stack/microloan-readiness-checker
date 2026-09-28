@@ -1,6 +1,6 @@
 # Independent Review Instructions
 
-Status: prepared, not yet completed.
+Status: completed and locked on 2026-09-28.
 
 The reviewer must be a person other than the project author. A classmate or a person familiar with lending operations is preferable. Record the reviewer's role and any relevant experience without adding unnecessary personal information.
 

@@ -32,7 +32,7 @@ The rule-only baseline is the comparison system named in the submitted Project P
 The final RAG run completed 50/50 structured calls without retry, returned at
 least one valid retrieved-source identifier for every response, and passed the
 fixed six-attack/six-benign prompt-injection suite. Automated citation validity
-does not prove semantic citation support; independent review remains pending.
+does not by itself prove semantic citation support. The completed independent review rated 14 of 15 challenge-case citations fully supported and one partially supported.
 
 The hybrid system passed the predefined recall target of 0.90 and working precision floor of 0.70 on this synthetic set. All 15 handwritten semantic contradictions were detected. This is a coursework prototype result, not evidence of production readiness.
 

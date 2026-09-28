@@ -1,0 +1,12 @@
+{
+  "blind_output_agreement_count": 15,
+  "blind_output_agreement_rate": 1.0,
+  "cases_reviewed": 15,
+  "citation_fully_supported_rate": 0.9333333333333333,
+  "citation_support_counts": {
+    "PARTIAL": 1,
+    "SUPPORTED": 14
+  },
+  "note": "This summary measures agreement and citation support; it does not convert one reviewer into authoritative bank policy.",
+  "review_status": "complete"
+}

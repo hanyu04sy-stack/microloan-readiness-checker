@@ -127,6 +127,6 @@ Say:
 
 Say:
 
-> I accept provider dependence, more prompt tokens, higher direct model cost, and a 10% review rate in exchange for eliminating the rule baseline's silent false negatives and making retrieved project sources visible. I do not accept autonomous credit action. The main limitations are synthetic reused data, pending independent review, project-defined rather than bank-policy grounding, bounded prompt-injection tests, and no production drift study. Therefore I conclude that the RAG hybrid passes the coursework prototype thresholds, not that it is ready for production lending.
+> I accept provider dependence, more prompt tokens, higher direct model cost, and a 10% review rate in exchange for eliminating the rule baseline's silent false negatives and making retrieved project sources visible. I do not accept autonomous credit action. One independent reviewer agreed with all 15 handwritten outputs and rated 14 citations fully supported and one partially supported. The main limitations remain synthetic reused data, a single reviewer, project-defined rather than bank-policy grounding, bounded prompt-injection tests, and no production drift study. Therefore I conclude that the RAG hybrid passes the coursework prototype thresholds, not that it is ready for production lending.
 
 End on the comparison table in `EVALUATION_REPORT.md`.
