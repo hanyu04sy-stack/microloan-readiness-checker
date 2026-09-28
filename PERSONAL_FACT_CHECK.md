@@ -14,12 +14,12 @@ Evidence-backed review status on 27 September 2026: completed. Checked items bel
 
 - [x] I intended the primary user to be a Credit Operations Officer.
 - [x] The 40-60 applications per day figure came from my persona or problem statement, not from observed bank data.
-- [ ] I agree that the tool is only a readiness pre-check and must not approve, reject, price, score, or set a loan limit.
+- [x] I agree that the tool is only a readiness pre-check and must not approve, reject, price, score, or set a loan limit.
 - [x] I did not conduct a real lender workflow study or measure time saved, rework, wages, or operational benefit.
 
 ## 3. What I built and used
 
-- [ ] I built the deterministic rules, orchestration, evaluation, synthetic-data workflow, and Streamlit interface described in the report.
+- [x] With AI assistance, I participated in and understand the deterministic rules, orchestration, evaluation, synthetic-data workflow, and Streamlit interface described in the report.
 - [x] I used the hosted Gemini model named in the report through `google-genai`.
 - [x] I did not run a low-code comparison experiment.
 - [x] I added the RAG prototype after the frozen non-RAG evaluation.
@@ -43,7 +43,7 @@ Evidence-backed review status on 27 September 2026: completed. Checked items bel
 - [x] The overall manual-review rate was 22%.
 - [x] Appropriate-review capture was 100%, and the unnecessary-review rate among clean cases was 20%.
 - [x] The final run contained 44 successful structured responses and 6 provider-failure fallbacks.
-- [ ] I agree that `APP_0278` remains a false positive under the frozen label rather than changing the label after seeing the result.
+- [x] I agree that `APP_0278` remains a false positive under the frozen label rather than changing the label after seeing the result.
 - [x] The separately frozen RAG run achieved precision, recall, and F1 of 1.000 with 30 true positives, 20 true negatives, no false positives, and no false negatives.
 - [x] The RAG run had a 10% manual-review rate, 100% appropriate-review capture, and 0% unnecessary review among clean cases.
 - [x] All 50 RAG calls succeeded without retry; retrieval coverage, citation coverage, and citation-identifier validity were 100%.

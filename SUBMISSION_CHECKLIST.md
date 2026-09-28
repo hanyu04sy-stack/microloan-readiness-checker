@@ -56,8 +56,8 @@ The student confirmed from NTULearn on 27 September 2026 that the instructor spe
 - [x] Limitations stated without production claims.
 - [x] Confirmed in NTULearn: no additional word-count or report-format requirement was specified.
 - [x] First-person, spelling, grammar, and internal-consistency pass completed for the Markdown report.
-- [ ] Student performs a final personal factual review.
-- [ ] Export the approved report to a practical final format; PDF is recommended because no mandatory format was specified.
+- [x] Student performs a final personal factual review.
+- [x] Export the approved report to a practical final format; PDF is recommended because no mandatory format was specified.
 
 ## Recorded demonstration
 
