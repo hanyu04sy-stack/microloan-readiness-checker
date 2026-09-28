@@ -41,6 +41,12 @@ def show_case(application_id: str) -> None:
             "predictions"
         ]
     }
+    rag = {
+        row["application_id"]: row
+        for row in _read_json(PROJECT_ROOT / "results" / "rag_final_test.json")[
+            "predictions"
+        ]
+    }
 
     if application_id not in applications:
         raise SystemExit(f"Unknown final-test application: {application_id}")
@@ -50,6 +56,7 @@ def show_case(application_id: str) -> None:
         "frozen_label": labels[application_id],
         "rule_only_prediction": baseline[application_id],
         "hybrid_prediction": hybrid[application_id],
+        "rag_prediction": rag[application_id],
     }
     print(json.dumps(payload, ensure_ascii=False, indent=2))
 
@@ -57,15 +64,26 @@ def show_case(application_id: str) -> None:
 def show_summary() -> None:
     baseline = _read_json(PROJECT_ROOT / "results" / "rule_only_final_test.json")
     hybrid = _read_json(PROJECT_ROOT / "results" / "hybrid_final_test.json")
+    rag = _read_json(PROJECT_ROOT / "results" / "rag_final_test.json")
+    independent_review = _read_json(
+        PROJECT_ROOT / "results" / "independent_review_summary.json"
+    )
     payload = {
-        "release_conditions": hybrid["release_conditions"],
+        "release_conditions": rag["release_conditions"],
         "rule_only_full_test": baseline["metrics"]["full_test"],
-        "hybrid_full_test": hybrid["metrics"]["full_test"],
-        "hybrid_handwritten_semantic": hybrid["metrics"][
+        "earlier_non_rag_hybrid_full_test": hybrid["metrics"]["full_test"],
+        "earlier_non_rag_hybrid_handwritten_semantic": hybrid["metrics"][
             "handwritten_semantic"
         ],
-        "hybrid_usage": hybrid["usage"],
-        "hybrid_passes_release_conditions": hybrid["passes_release_conditions"],
+        "final_rag_full_test": rag["metrics"]["full_test"],
+        "final_rag_handwritten_semantic": rag["metrics"][
+            "handwritten_semantic"
+        ],
+        "final_rag_usage": rag["usage"],
+        "final_rag_passes_release_conditions": rag[
+            "passes_release_conditions"
+        ],
+        "independent_review": independent_review,
     }
     print(json.dumps(payload, ensure_ascii=False, indent=2))
 

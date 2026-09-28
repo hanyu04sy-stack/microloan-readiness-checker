@@ -36,12 +36,12 @@ Show the scope-boundary panel at the top of the Streamlit interface.
 
 Say:
 
-> I use deterministic Python rules for exact document and numeric checks, and one structured Gemini 3.8 Flash call for semantic interpretation of the loan-purpose text. I did not use RAG because there is no document corpus to retrieve, and I did not use an agent because the task needs one judgement rather than a tool-using loop. I own the data, orchestration, evaluation, and guardrails, while renting the foundation model.
+> I use deterministic Python rules for exact document and numeric checks. A prompt-injection guardrail runs before retrieval. The final candidate retrieves bounded context from project-defined readiness and human-review contracts, then makes one structured Gemini 3.8 Flash call for semantic interpretation and requires valid retrieved-source identifiers. I did not use an agent because the task needs one judgement rather than a variable tool-using loop. I own the data, retrieval, orchestration, evaluation, and guardrails while renting the foundation model.
 
 Show:
 
 ```text
-application -> schema -> rules -> one semantic call -> validation -> merger -> readiness output
+application -> schema -> rules -> injection guardrail -> retrieval -> one semantic call -> response and citation validation -> merger -> readiness output
 ```
 
 Then open `src/microloan_checker/semantic.py` and briefly show the structured response schema and validation invariants.
@@ -54,7 +54,7 @@ result, the absence of deterministic findings, and the structured audit output.
 
 Say:
 
-> The interface is a thin presentation layer over the same tested functions. It does not read evaluation labels, and changing the form does not call Gemini. A live semantic call occurs only when I explicitly select Rules plus Gemini and submit the form.
+> The interface is a thin presentation layer over the same tested functions. It does not read evaluation labels, and changing the form does not call Gemini. A live semantic call occurs only when I explicitly submit a model-assisted mode. The final demonstration uses Rules plus RAG plus Gemini.
 
 Then run:
 
@@ -69,8 +69,8 @@ Say:
 For the final system, leave `Rules + RAG + Gemini` selected and show
 the retrieved project-guidance sections and cited chunk identifiers. State
 clearly that this is project-defined coursework knowledge, not real bank
-policy, and that the frozen 50-case headline metrics belong to the non-RAG
-hybrid evaluation.
+policy, and that the frozen 50-case headline metrics shown for the final
+candidate belong to the separately frozen RAG evaluation.
 
 ## Segment 4 - demonstrated silent failure
 
@@ -82,7 +82,7 @@ python3 scripts/show_demo.py --case APP_0286
 
 Optionally load `APP_0286` in the Streamlit interface with the rule-only mode to
 show that the same rule path returns `Complete`. Use the committed demonstration
-helper for the frozen hybrid result; do not rerun the live evaluation for the
+helper for the frozen rule-only, earlier hybrid, and final RAG results; do not rerun the live evaluation for the
 recording.
 
 Say:
@@ -99,7 +99,7 @@ python3 scripts/show_demo.py --case APP_0264
 
 Say:
 
-> This clean case received repeated 503 provider errors. The system did not invent a semantic answer and did not silently mark it complete. After bounded retries, deterministic code returned Manual Review. This is safe but not free: it creates a false positive and human workload.
+> In the earlier non-RAG run, this clean case received repeated 503 provider errors. The system did not invent a semantic answer and did not silently mark it complete. After bounded retries, deterministic code returned Manual Review. This historical result shows why failures must remain visible. The final RAG run had no provider failures, so I do not present this as a failure observed in that run.
 
 Open `src/microloan_checker/gemini_client.py` and show the bounded retry logic. Then open `src/microloan_checker/hybrid.py` and show that an absent semantic assessment adds `Manual Review` without deleting rule findings.
 

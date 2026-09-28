@@ -13,9 +13,11 @@ I built a pre-check system for synthetic microloan applications. Its purpose is 
 
 My main design question was whether a hybrid system of deterministic Python rules plus a foundation model could detect missing information and semantic inconsistencies more effectively than a rule-only baseline. I kept exact and auditable checks in code and rented Gemini 3.8 Flash only for semantic interpretation of the free-text loan purpose. I owned the data generator, labels, orchestration, response validation, evaluation, failure handling, and governance boundary.
 
-I evaluated three configurations on the same frozen 50-case synthetic test set. The rule-only baseline achieved precision 1.000 but recall 0.333, missing 20 of 30 flag-worthy cases. The earlier rules-plus-Gemini system achieved precision 0.857, recall 1.000, and F1 0.923. My selected rules-plus-project-RAG-plus-Gemini final candidate achieved precision, recall, and F1 of 1.000, detected all 15 student-originated handwritten semantic contradictions, and had a 10% manual-review rate. It passed my predefined recall target of 0.90, the instructor's suggested precision floor of 0.70, and the preregistered citation and fixed security-suite conditions.
+I evaluated three configurations on the same frozen 50-case synthetic test set. The rule-only baseline achieved precision 1.000 but recall 0.333, missing 20 of 30 flag-worthy cases. The earlier rules-plus-Gemini system achieved precision 0.857, recall 1.000, and F1 0.923. My selected rules-plus-project-RAG-plus-Gemini final candidate achieved precision, recall, and F1 of 1.000, detected all 15 student-authored handwritten semantic contradictions, and had a 10% manual-review rate. It passed my predefined recall target of 0.90, the instructor's suggested precision floor of 0.70, and the preregistered citation and fixed security-suite conditions.
 
-The strongest result is not simply a higher score. The final RAG run removed the rule baseline's silent misses and returned valid retrieved-source identifiers for every response, but it increased prompt tokens and direct model cost, depends on a hosted provider, and is grounded only in project-defined guidance rather than real bank policy. Its perfect score on a reused synthetic set is not independent or production evidence. I therefore accept the RAG hybrid only as a reversible pre-check with visible evidence and human authority, not as an autonomous credit decision system.
+After the frozen run, one external reviewer independently assessed the 15 handwritten cases before seeing system outputs, then reviewed the supporting citations. Blind output agreement was 15/15. Fourteen citations were fully supported, one was partially supported, and none was unsupported. The review strengthens the coursework evidence but does not turn one reviewer or the project-defined corpus into institutional bank validation.
+
+The strongest result is not simply a higher score. The final RAG run removed the rule baseline's silent misses and returned valid retrieved-source identifiers for every response, but it increased prompt tokens and direct model cost, depends on a hosted provider, and is grounded only in project-defined guidance rather than real bank policy. Its perfect automated score on a reused synthetic set does not establish performance in a real lending population, and the separate independent review covered only the 15 handwritten cases. I therefore accept the RAG hybrid only as a reversible pre-check with visible evidence and human authority, not as an autonomous credit decision system.
 
 ## 1. Problem, user, and significance
 
@@ -102,17 +104,21 @@ This design reduces leakage, but it does not remove the main limitation of synth
 
 ## 5. Implementation
 
-The end-to-end path is deliberately small:
+The final RAG path is deliberately small:
 
 ```text
 application
   -> strict application validation
   -> deterministic rule checks
-  -> one structured Gemini semantic check
-  -> strict response validation
+  -> prompt-injection guardrail
+  -> bounded retrieval from project-defined contracts
+  -> one structured Gemini semantic check with retrieved context
+  -> strict response and citation validation
   -> deterministic merger
   -> readiness outputs, reasons, and evidence
 ```
+
+When the guardrail detects a high-signal injection pattern, the system skips retrieval and Gemini and adds `Manual Review` while preserving deterministic findings. Otherwise, the retriever supplies only project-defined readiness and human-review text. The model must cite retrieved chunk identifiers, and code rejects identifiers that were not retrieved for that application.
 
 The semantic response must contain exactly four fields: semantic issue codes, a manual-review boolean, a non-empty reason, and evidence fields. Code rejects unknown keys, unknown issue codes, duplicate codes, unsupported evidence, and logical inconsistencies. For example, a no-issue response may not cite evidence fields, while an identified issue must cite them. An invalid response or exhausted API failure becomes `Manual Review`.
 
@@ -153,6 +159,8 @@ The earlier non-RAG hybrid detected all 30 flag-worthy applications and all 15 h
 The abstention results distinguish the two model-assisted runs. In the earlier non-RAG run, overall manual review was 22%, appropriate-review capture was `5/5 = 100%`, and four of 20 clean cases were unnecessarily reviewed after provider failures. In the final RAG run, all five expected review cases were again captured, no clean case was sent to review, and the overall manual-review rate was `5/50 = 10%`. The reduction cannot be attributed to retrieval alone because the RAG run also had no provider failures.
 
 The final RAG candidate passed the numerical release conditions. All 50 calls succeeded without retry, all 50 responses cited at least one retrieved chunk, and all 109 cited identifiers were valid for their cases. Appropriate-review capture was 100%, and no clean case was unnecessarily reviewed. In the subsequent independent review of the 15 handwritten cases, blind output agreement was 100%; 14 citations were fully supported, one was partially supported, and none was unsupported. The partial case exposed a taxonomy gap for room extensions. The result still does not justify production deployment because the data are synthetic and reused, only one reviewer participated, and the knowledge base is not real bank policy.
+
+The fixed prompt-injection suite also met its preregistered condition: all six malicious cases were blocked before retrieval and the model call, while all six benign controls passed through. This establishes expected behaviour only for the fixed high-signal patterns; it does not demonstrate general resistance to novel or obfuscated attacks.
 
 ## 8. Cost-to-serve
 

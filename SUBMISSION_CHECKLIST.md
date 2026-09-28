@@ -45,7 +45,7 @@ The student confirmed from NTULearn on 27 September 2026 that the instructor spe
 - [x] Streamlit serving, rented Gemini service, low-code decision, and qualitative time-to-deploy stated.
 - [x] Rule-only baseline and target thresholds stated.
 - [x] Final results and 15-case slice reported.
-- [x] Abstention quality reported: 100% appropriate-review capture and 20% unnecessary-review rate among clean cases.
+- [x] Abstention quality reported separately: both model-assisted runs captured 100% of expected review cases; unnecessary review among clean cases was 20% in the earlier non-RAG run and 0% in the final RAG run.
 - [x] Leakage controls and the absence of a genuine before/after leakage experiment stated.
 - [x] IMDA Model Artificial Intelligence Governance Framework, Second Edition named and mapped to controls.
 - [x] Independent review scope and single-reviewer limitation stated.
