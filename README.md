@@ -173,7 +173,7 @@ python3 scripts/assemble_final_test.py
 python3 scripts/evaluate_rule_baseline.py
 ```
 
-The frozen manifest preserves hashes for the applications, labels, rules, semantic prompt, and semantic-case source file. It also records that independent review has not been arranged. The generator never overwrites the semantic-case file after it exists.
+The frozen manifest preserves hashes for the applications, labels, rules, semantic prompt, and semantic-case source file. Its `independent_review_status: not_arranged` value records the status at the time the dataset was frozen. Independent review was completed subsequently, with evidence stored under `independent_review/`. The generator never overwrites the semantic-case file after it exists.
 
 ## Reproduce the completed evaluations
 

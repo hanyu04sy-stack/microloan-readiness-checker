@@ -1,3 +1,5 @@
+"""Tests for RAG readiness checks, citations, and injection controls."""
+
 from __future__ import annotations
 
 import json

@@ -1,3 +1,5 @@
+"""Tests for aggregate citation and security metrics in the RAG evaluator."""
+
 from __future__ import annotations
 
 import sys

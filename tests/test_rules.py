@@ -1,3 +1,5 @@
+"""Tests for deterministic readiness rules and application validation."""
+
 from __future__ import annotations
 
 import sys

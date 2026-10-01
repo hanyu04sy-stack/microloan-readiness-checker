@@ -1,3 +1,5 @@
+"""Tests for hybrid rule and semantic orchestration and failure handling."""
+
 from __future__ import annotations
 
 import sys

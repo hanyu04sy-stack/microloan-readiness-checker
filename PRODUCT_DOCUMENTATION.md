@@ -6,7 +6,7 @@ prototype. Its knowledge base is project-defined and is not real bank policy.
 
 ## Demo
 
-[Watch the 5-minute recorded demonstration](https://drive.google.com/drive/folders/REPLACE_WITH_YOUR_VIDEO_LINK) — face + screen recording, covers intro, architecture, live Streamlit demo, metrics, and limitations.
+[Watch the 5-minute recorded demonstration](https://youtu.be/OK3kQrdC20Q) - face and screen recording covering the project boundary, architecture, live Streamlit interface, evaluation metrics, controls, and limitations.
 
 ## Persona and problem
 

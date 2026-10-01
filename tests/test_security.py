@@ -1,3 +1,5 @@
+"""Tests for the fixed prompt-injection and benign-control guardrail suite."""
+
 from __future__ import annotations
 
 import json

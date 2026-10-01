@@ -1,3 +1,5 @@
+"""Tests for synthetic data generation, assembly, and label separation."""
+
 from __future__ import annotations
 
 import sys
