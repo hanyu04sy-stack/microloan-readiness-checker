@@ -10,6 +10,23 @@ For a single, assessor-oriented summary of the persona, formal inputs and
 outputs, architecture, target metrics, and reached metrics, see
 [`PRODUCT_DOCUMENTATION.md`](PRODUCT_DOCUMENTATION.md).
 
+## Repository Structure
+
+```text
+.
+├── data/                       Synthetic evaluation data and its README
+├── src/microloan_checker/      Core rule, hybrid, RAG, and CLI package
+├── tests/                      Offline unit tests with simulated model clients
+├── scripts/                    Data, evaluation, reporting, and demo helpers
+├── results/                    Frozen machine-readable evaluation outputs
+├── knowledge_base/             Bounded project-defined RAG corpus
+├── independent_review/         Independent challenge-case review evidence
+├── output/pdf/                 Final report PDF
+├── PRODUCT_DOCUMENTATION.md    Persona, inputs, outputs, architecture, metrics
+├── EVALUATION_REPORT.md        Frozen 50-case evaluation results
+└── DEMO_SCRIPT.md              Recorded-demonstration script
+```
+
 ## Current scope
 
 The baseline checks:
