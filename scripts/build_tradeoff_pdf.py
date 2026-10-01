@@ -1,3 +1,10 @@
+"""Render the final PE6201 trade-off report from Markdown to PDF.
+
+The script reads ``TRADE_OFF_REPORT.md`` from the repository root, converts
+its supported headings, paragraphs, lists, inline markup, and results table,
+and writes the submission-ready PDF under ``output/pdf``.
+"""
+
 from __future__ import annotations
 
 import html
@@ -50,8 +57,17 @@ def parse_table(lines: list[str], start: int, body_style: ParagraphStyle) -> tup
             rows.append(raw)
         index += 1
     data = [
-        [Paragraph(f"<b>{inline_markup(cell)}</b>" if row_index == 0 else inline_markup(cell), body_style)
-         for cell in row]
+        [
+            Paragraph(
+                (
+                    f'<font color="#FFFFFF"><b>{inline_markup(cell)}</b></font>'
+                    if row_index == 0
+                    else inline_markup(cell)
+                ),
+                body_style,
+            )
+            for cell in row
+        ]
         for row_index, row in enumerate(rows)
     ]
     widths = [44 * mm, 18 * mm, 18 * mm, 15 * mm, 11 * mm, 11 * mm, 11 * mm, 11 * mm, 23 * mm]

@@ -62,6 +62,8 @@ I accept provider dependence, added latency, retrieval tokens, direct model cost
 
 The evidence remains limited by synthetic reused data, one reviewer, project-defined rather than bank-policy grounding, one partially supported citation, bounded injection tests, no production drift study, and no real deployment. Therefore, the RAG hybrid passes my coursework prototype thresholds; it does not establish production lending readiness.
 
+Performance tuning focused on reducing unnecessary model work rather than enlarging the prompt. I placed deterministic checks and the injection guardrail before retrieval, limited retrieval to two short project contracts, used one structured model call, and rejected invalid schemas or citations. A future version should replace the coursework contracts with approved lender policies, use a genuinely unseen holdout set, obtain additional independent domain review, and measure reviewer time, rework, and drift. Until those steps are completed, I would retain the system as a local pre-check with mandatory human ownership.
+
 ## References
 
 - Google Cloud, *Document AI for Lending* and *Document AI overview*, accessed 27 September 2026.
