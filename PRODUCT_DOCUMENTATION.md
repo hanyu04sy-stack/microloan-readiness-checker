@@ -4,6 +4,10 @@ This file gives an assessor a single view of the product definition and the
 evidence reported elsewhere in the repository. The system is a coursework
 prototype. Its knowledge base is project-defined and is not real bank policy.
 
+## Demo
+
+[Watch the 5-minute recorded demonstration](https://drive.google.com/drive/folders/REPLACE_WITH_YOUR_VIDEO_LINK) — face + screen recording, covers intro, architecture, live Streamlit demo, metrics, and limitations.
+
 ## Persona and problem
 
 The primary user is a Credit Operations Officer who pre-checks microloan
@@ -58,30 +62,24 @@ route the case to `Manual Review`. Gemini cannot erase a deterministic issue.
 
 ## High-level architecture
 
-```text
-application JSON
-      |
-      v
-strict schema validation
-      |
-      +--> deterministic document, field, and numeric rules --------+
-      |                                                              |
-      v                                                              |
-prompt-injection guardrail -- detected --> Manual Review             |
-      |                                                              |
-      v                                                              |
-BM25-style retrieval from two project contracts                      |
-      |                                                              |
-      v                                                              |
-one structured Gemini call with retrieved context                    |
-      |                                                              |
-      v                                                              |
-schema and citation validation -- failure --> Manual Review          |
-      |                                                              |
-      +----------------> deterministic merger <----------------------+
-                               |
-                               v
- readiness outputs + reasons + evidence + retrieval + citations
+```mermaid
+flowchart TD
+    A[Input JSON] --> B{Schema Validation}
+    B -- Invalid --> MR[Manual Review]
+    B -- Valid --> R[Deterministic Rules]
+    B -- Valid --> I{Prompt-Injection Guardrail}
+
+    I -- Injection detected --> MR
+    I -- Clear --> K[Project Knowledge Retrieval]
+    K --> G[RAG + Gemini Semantic Check]
+    G -- Provider failure --> MR
+    G -- Structured response --> V{Response Schema and Citation Validation}
+    V -- Invalid --> MR
+    V -- Valid --> M[Merge]
+    R --> M
+
+    M --> O[Output Readiness Record]
+    MR --> O
 ```
 
 The external intelligence layer is Gemini 3.8 Flash, accessed through

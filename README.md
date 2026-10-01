@@ -2,6 +2,10 @@
 
 This repository contains the completed experimental code and evidence for the PE6201 individual End-of-Course Project. It compares a deterministic rule-only baseline, a rules-plus-Gemini checker, and the selected rules-plus-project-RAG-plus-Gemini final candidate on the same frozen 50-case synthetic evaluation set. The RAG corpus is project-defined coursework guidance, not real bank policy.
 
+## Demo Video
+
+[Watch the 5-minute recorded demonstration](https://drive.google.com/drive/folders/REPLACE_WITH_YOUR_VIDEO_LINK) — face + screen recording, covers intro, architecture, live Streamlit demo, metrics, and limitations.
+
 For a single, assessor-oriented summary of the persona, formal inputs and
 outputs, architecture, target metrics, and reached metrics, see
 [`PRODUCT_DOCUMENTATION.md`](PRODUCT_DOCUMENTATION.md).
