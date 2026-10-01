@@ -1,4 +1,8 @@
-"""Deterministic merger for rule and semantic-check results."""
+"""Merge deterministic rules with a structured semantic assessment.
+
+Exports ``HybridResult`` and ``run_hybrid``; semantic failures must fail closed
+to manual review and can never remove deterministic findings.
+"""
 
 from __future__ import annotations
 

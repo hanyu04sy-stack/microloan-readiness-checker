@@ -1,4 +1,8 @@
-"""Deterministic input guardrails for the RAG semantic path."""
+"""Deterministic prompt-injection guardrails for the RAG semantic path.
+
+Exports ``SecurityFinding`` and ``detect_prompt_injection``; detection is a
+fail-closed routing signal for manual review, not a credit decision.
+"""
 
 from __future__ import annotations
 

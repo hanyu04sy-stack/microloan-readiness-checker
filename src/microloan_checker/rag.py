@@ -1,4 +1,9 @@
-"""Optional retrieval-augmented semantic path for the coursework prototype."""
+"""Retrieval-augmented semantic readiness path for the coursework prototype.
+
+Exports the RAG prompt/schema helpers, ``RagSemanticChecker``, and
+``run_rag_hybrid``; citations and structured output are validated before any
+semantic finding is merged with deterministic results.
+"""
 
 from __future__ import annotations
 

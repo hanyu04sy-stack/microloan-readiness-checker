@@ -1,4 +1,8 @@
-"""Command-line entry point for the rule-only baseline."""
+"""Command-line interface for the offline rule-only baseline.
+
+Exports ``build_parser`` and ``main`` for JSON input and readiness JSON output;
+evaluation labels remain excluded through the strict ``Application`` parser.
+"""
 
 from __future__ import annotations
 

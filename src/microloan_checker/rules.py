@@ -1,7 +1,7 @@
-"""Deterministic checks for the rule-only baseline.
+"""Deterministic document, field, and numeric readiness checks.
 
-The baseline checks completeness, input validity, and exact consistency. It
-does not interpret the meaning of the free-text loan purpose.
+Exports ``run_rule_baseline`` for completeness, validity, and exact-consistency
+checks; the baseline deliberately does not interpret free-text purpose meaning.
 """
 
 from __future__ import annotations

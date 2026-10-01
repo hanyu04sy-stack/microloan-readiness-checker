@@ -1,8 +1,8 @@
-"""Optional live Gemini adapter.
+"""Optional live Gemini adapter for one structured semantic-model call.
 
-This module is not exercised by the offline test suite. It follows Google's
-official google-genai structured-output interface and is loaded only when a
-live call is explicitly requested.
+Exports ``GeminiStructuredClient``. The adapter follows the ``google-genai``
+structured-output interface and is loaded only when a live call is explicitly
+requested, so the offline test suite has no provider dependency.
 """
 
 from __future__ import annotations

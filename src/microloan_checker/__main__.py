@@ -1,8 +1,7 @@
-"""Command-line entry point for the deterministic readiness checker.
+"""Package entry point for the deterministic readiness checker.
 
-Input is the application JSON path and CLI options accepted by ``cli.main``.
-Output is the readiness result written by that function, with its exit status
-propagated to the calling shell.
+Delegates to ``cli.main`` and propagates its exit status; it intentionally
+exposes only the offline rule-only path when running ``python -m``.
 """
 
 from .cli import main

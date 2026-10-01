@@ -1,4 +1,8 @@
-"""Semantic-checking contract shared by mock and Gemini clients."""
+"""Semantic-checking contract shared by mock and live Gemini clients.
+
+Exports the provider protocol, call/result models, ``SemanticChecker``, and
+prompt helpers; strict schemas and evidence-field validation bound model output.
+"""
 
 from __future__ import annotations
 

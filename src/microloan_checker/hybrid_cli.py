@@ -1,4 +1,8 @@
-"""Explicit live entry point for the rules-plus-Gemini path."""
+"""Command-line interface for the live rules-plus-Gemini path.
+
+Exports ``build_parser`` and ``main`` for a single application; provider and
+input errors are reported without bypassing the hybrid validation contract.
+"""
 
 from __future__ import annotations
 

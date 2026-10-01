@@ -1,4 +1,8 @@
-"""Small, dependency-free lexical retriever for the bounded project corpus."""
+"""Dependency-free lexical retrieval over the bounded project corpus.
+
+Exports chunk models, ``chunk_markdown``, and ``ProjectKnowledgeRetriever``;
+only the explicitly configured project knowledge files may enter the index.
+"""
 
 from __future__ import annotations
 

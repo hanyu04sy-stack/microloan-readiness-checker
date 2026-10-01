@@ -1,8 +1,8 @@
-"""Typed data structures for the rule-only baseline.
+"""Typed application, issue, and result models for readiness checking.
 
-Only fields in the confirmed application contract are parsed. Ground-truth and
-evaluation metadata are deliberately excluded from the Application object so
-the evaluated system cannot use them as evidence.
+Exports the enums and dataclasses used across rule, hybrid, and RAG paths. Only
+confirmed application fields are parsed; ground-truth and split metadata are
+excluded so evaluation labels cannot become evidence.
 """
 
 from __future__ import annotations

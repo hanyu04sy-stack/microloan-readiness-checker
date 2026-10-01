@@ -1,4 +1,8 @@
-"""Live command-line entry point for the optional RAG prototype."""
+"""Command-line interface for the live rules-plus-RAG-plus-Gemini path.
+
+Exports ``build_parser`` and ``main`` for one application and a bounded project
+knowledge base; invalid input or provider configuration exits without a result.
+"""
 
 from __future__ import annotations
 
